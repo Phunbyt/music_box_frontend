@@ -1,0 +1,15 @@
+
+.artist-poster{
+  border-radius:50%;
+  width: 100%;
+}
+
+.artist-name{
+  color:#ffffff;
+  margin-top:5px;
+  font-size:16px;
+}
+
+.playlist{
+  margin-bottom: 25px;
+}

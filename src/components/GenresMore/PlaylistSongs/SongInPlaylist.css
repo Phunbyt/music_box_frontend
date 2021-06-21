@@ -1,0 +1,17 @@
+
+.song-poster{
+  width:10%;
+  height:80%;
+  border-radius: 4px;
+  margin-left:10px;
+}
+
+.playlist-song{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-color: green;
+}
+.playlist-song p{
+  font-size:11px;
+}

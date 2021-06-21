@@ -1,0 +1,25 @@
+body{
+  margin: 0;
+  padding:0;
+
+}
+
+.genre-poster{
+ width:100%;
+ border-radius: 5px;
+}
+
+.genre-name{
+  margin-top:-40px;
+  margin-bottom:50px;
+  margin-right:10px;
+  font-size:18px;
+  font-weight: 700;
+  text-decoration:none;
+
+}
+
+.genre:hover{
+  cursor: pointer;
+  text-decoration:none;
+}
