@@ -1,5 +1,4 @@
 import React, { createContext , useState, useEffect}  from 'react';
-import { genresData } from '../fakeapi';
 import {  AxiosRequestConfig } from "axios";
 import axios from '../utils/AxiosInterceptor'
 
@@ -7,7 +6,7 @@ export interface Props {
   
  
 }
-
+const baseUrl = 'https://music-box-a.herokuapp.com'
 
 export const GenreContext = createContext({} as Props)
 
@@ -17,6 +16,18 @@ const GenreContextProvider = ({children}:any) => {
   const [artists, setArtists] = useState([])
   const [playlists, setPlaylists] = useState([])
   const [playlistsongs, setPlaylistSongs] = useState([])
+
+  const getOneGenre = async (id: any) => {
+   try {
+    const { data } = await axios.get(
+     `${baseUrl}/music/genres/${id}`
+    );
+    return data.data[0].name
+   } catch (error) {
+    console.log(error.message);
+   }
+  };
+
   const getSearch = async (query:string) => {
     try {
       const options: AxiosRequestConfig = {
@@ -40,18 +51,17 @@ const GenreContextProvider = ({children}:any) => {
   const  getAllGenres= async() => {
     try{
       const res: any = await axios.get(
-       "https://music-box-a.herokuapp.com/music/genres"
+       `${baseUrl}/music/genres`
       );
       setGenres(res.data.data)
-
     }catch(error){
       console.log(error.message)
     }
   }
-
-  const getMusicRelatedGenres = async (id:number) =>{
+  
+  const getArtistRelatedGenres = async (id:number) =>{
     try{
-      const {data} = await axios.get(`https://music-box-a.herokuapp.com/genre/artist/${id}`)
+      const {data} = await axios.get(`${baseUrl}/genre/artist/${id}`)
       setArtists(data.data)
     }
     catch(error){
@@ -61,7 +71,7 @@ const GenreContextProvider = ({children}:any) => {
   const getPlaylistRelatedGenres = async (id:number)=>{
     try{
       const { data } = await axios.get(
-       `https://music-box-a.herokuapp.com/genre/playlist/${id}`
+       `${baseUrl}/genre/playlist/${id}`
       );
       setPlaylists(data.data)
 
@@ -72,11 +82,28 @@ const GenreContextProvider = ({children}:any) => {
 
   const getOnePlaylist= async (id:string)=>{
     try {
-      const res = await axios.get(`https://music-box-a.herokuapp.com/playlist/get/${id}`);
+      const res = await axios.get(`${baseUrl}/playlist/get/${id}`);
       setPlaylistSongs(res.data.data.songs)
       console.log(res.data.data.songs)
     } catch (error) {
       console.log(error.message)
+    }
+  }
+
+  const getArtistDetails = async (query:string) =>{
+    try {
+      const options: AxiosRequestConfig = {
+       method: "GET",
+       url: "https://deezerdevs-deezer.p.rapidapi.com/search",
+       params: { q: query },
+       headers: {
+        "x-rapidapi-key": "a44c1ad304mshf129460914513c3p1d2e6cjsne05b1b9d436c",
+        "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+       },
+      };
+      const res = await axios.request(options);
+    } catch (error) {
+      
     }
   }
   const values: Record<string, any> = {
@@ -84,18 +111,19 @@ const GenreContextProvider = ({children}:any) => {
     getAllGenres,
     searchResults,
     getSearch,
-    getMusicRelatedGenres,
+    getArtistRelatedGenres,
     artists,
     getPlaylistRelatedGenres,
     playlists,
     getOnePlaylist,
-    playlistsongs
+    playlistsongs,
+    getOneGenre,
 
   };
   const login = async () => {
    
     const {data} = await axios.post(
-     "https://music-box-a.herokuapp.com/music/signIn",
+     `${baseUrl}/music/signIn`,
      { email: "akinloludavid@mail.com", password: "password2929" }
     );
     const token =data.token
@@ -103,7 +131,7 @@ const GenreContextProvider = ({children}:any) => {
   }
   useEffect(()=>{
     login()
-    getMusicRelatedGenres(132)
+    
   },[])
 
   return ( 

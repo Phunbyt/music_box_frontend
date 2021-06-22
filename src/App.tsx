@@ -5,11 +5,12 @@ import BrowseGenres from './components/Browse/Browse';
 import GenresMore from './components/GenresMore/GenresMore';
 import PlaylistSongs from './components/GenresMore/PlaylistSongs/PlaylistSongs'
 import GenreContextProvider from './context/GenreContext';
-
+import NavigationBar from './components/Navbar/Navbar';
 
 const App =() => {
   return (
    <GenreContextProvider>
+     <NavigationBar/>
     <div>
      <Switch>
       <Route exact path="/genres" component={BrowseGenres} />

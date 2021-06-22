@@ -13,20 +13,20 @@ const PlaylistSongs = () => {
   },[])
 
   return (
-   <div className="container-fluid">
+   <div className="container-fluid" id ="playlistsongs">
     <Row className= "text-white mb-2">
-      <Col md={3}>#</Col>
-      <Col md={3}>TITLE</Col>
-      <Col md={3}>ARTIST</Col>
-      <Col md={3}>ALBUM</Col>
+      <Col md={3} lg={3}>#</Col>
+      <Col md={3} lg={3}>TITLE</Col>
+      <Col md={3} lg={3}>ARTIST</Col>
+      <Col md={3} lg={3}>ALBUM</Col>
     </Row>
 
    
      {playlistsongs.map((song: any, index:number) => {
       return (
-        
-        <SongInPlaylist key={song._id} song={song} index={index}/>
-       
+        <Row>
+          <SongInPlaylist key={song._id} song={song} index={index}/>
+        </Row>
       );
      })}
  

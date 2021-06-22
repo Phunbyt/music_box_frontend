@@ -1,9 +1,10 @@
 body{
   padding:0;
   margin:0;
-  background-color: #161A1A;
+  background-color: #161A1A!important;
 }
-.container-fluid{
-  background-color: #161A1A;
- padding:5%;
+
+#browse{
+  background: #161A1A!important;
+  padding:5%;
 }

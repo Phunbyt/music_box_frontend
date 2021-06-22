@@ -13,3 +13,6 @@
 .playlist{
   margin-bottom: 25px;
 }
+.playlist:hover{
+  text-decoration: none;
+}

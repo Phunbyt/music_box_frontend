@@ -6,3 +6,12 @@
   background-color: blue;
 
 }
+#playlistsongs{
+  background: url('../../../asset/img/BG\ 2.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin:auto;
+  padding: 5%;
+  height:100vh;
+}

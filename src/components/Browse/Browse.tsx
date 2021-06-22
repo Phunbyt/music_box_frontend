@@ -22,11 +22,10 @@ const BrowseGenres: React.SFC<BrowseGenresProps> = () => {
   
   useEffect(()=>{
     getAllGenres()
-
-  })
+  },[])
 
   return (
-   <div className= "container-fluid">
+   <div className="container-fluid" id="browse">
     <h3 className="text-white">Genres</h3>
     <Row>
      {genres.map((genre: GenresInterface) => {

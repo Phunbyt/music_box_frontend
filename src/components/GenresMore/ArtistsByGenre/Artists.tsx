@@ -11,7 +11,7 @@ const ArtistsByGenre = ({artist}:any) => {
       alt="genre poster"
       src={artist.picture_medium}
      />
-     <h3 className="artist-name text-center">{artist.name}</h3>
+     <p className="artist-name text-center">{artist.name}</p>
     </Link>
    </Col>
   );
