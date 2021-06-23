@@ -16,7 +16,8 @@ const GenreContextProvider = ({children}:any) => {
   const [artists, setArtists] = useState([])
   const [playlists, setPlaylists] = useState([])
   const [playlistsongs, setPlaylistSongs] = useState([])
-
+  const [artistSongs, setArtistSongs] = useState([])
+  const [artistAlbums, setArtistAlbums]  = useState([])
   const getOneGenre = async (id: any) => {
    try {
     const { data } = await axios.get(
@@ -92,18 +93,11 @@ const GenreContextProvider = ({children}:any) => {
 
   const getArtistDetails = async (query:string) =>{
     try {
-      const options: AxiosRequestConfig = {
-       method: "GET",
-       url: "https://deezerdevs-deezer.p.rapidapi.com/search",
-       params: { q: query },
-       headers: {
-        "x-rapidapi-key": "a44c1ad304mshf129460914513c3p1d2e6cjsne05b1b9d436c",
-        "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-       },
-      };
-      const res = await axios.request(options);
+      const res = await axios.get(`${baseUrl}/artistdetails/${query}`);
+      setArtistAlbums(res.data.albums)
+      setArtistSongs(res.data.songs)
     } catch (error) {
-      
+      console.log(error.message)
     }
   }
   const values: Record<string, any> = {
@@ -118,7 +112,9 @@ const GenreContextProvider = ({children}:any) => {
     getOnePlaylist,
     playlistsongs,
     getOneGenre,
-
+    getArtistDetails,
+    artistSongs,
+    artistAlbums
   };
   const login = async () => {
    

@@ -16,7 +16,7 @@ const NavigationBar= () => {
        <Nav.Link href="#link" className="navlink">
         Library
        </Nav.Link>
-       <Nav.Link href="#link" className="navlink" id="browse-tab">
+       <Nav.Link href="/genres" className="navlink" id="browse-tab">
         Browse
        </Nav.Link>
       </Nav>
