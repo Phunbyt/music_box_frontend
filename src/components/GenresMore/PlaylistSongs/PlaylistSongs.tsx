@@ -14,17 +14,11 @@ const PlaylistSongs = () => {
 
   return (
    <div className="container-fluid" id ="playlistsongs">
-    <Row>
-      <Col md={3} lg={3}>#</Col>
-      <Col md={3} lg={3}>TITLE</Col>
-      <Col md={3} lg={3}>ARTIST</Col>
-      <Col md={3} lg={3}>ALBUM</Col>
-    </Row>
     <Row className= "text-white mb-2">
-      <Col md={3} lg={3}>#</Col>
-      <Col md={3} lg={3}>TITLE</Col>
-      <Col md={3} lg={3}>ARTIST</Col>
-      <Col md={3} lg={3}>ALBUM</Col>
+      <Col md={3} lg={3} xs ={3}>#</Col>
+      <Col md={3} lg={3} xs = {3}>TITLE</Col>
+      <Col md={3} lg={3} xs = {3}>ARTIST</Col>
+      <Col md={3} lg={3} xs = {3}>ALBUM</Col>
     </Row>
 
    

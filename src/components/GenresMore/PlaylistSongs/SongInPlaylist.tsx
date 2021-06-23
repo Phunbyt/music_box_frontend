@@ -7,7 +7,7 @@ const SongInPlaylist= ({song ,index}:any) => {
    <div className="col-md-12 text-white mb-2 playlist-song">
     <Col md={3} xs={3} className="d-flex align-items-center">
      <p className="text-left  my-2">{index + 1}</p>
-     <img className="song-poster" alt="song poster" src={song.img} />
+     <img className="song-poster img-fluid" alt="song poster" src={song.img} />
     </Col>
     <Col md={3} xs={3}>
      <p className="text-left text-white my-2">{song.title}</p>

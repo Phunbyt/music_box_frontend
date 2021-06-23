@@ -26,7 +26,7 @@ const BrowseGenres: React.SFC<BrowseGenresProps> = () => {
 
   return (
    <div className="container-fluid" id="browse">
-    <h3 className="text-white">Genres</h3>
+    <h3 className="text-white mb-4">Genres</h3>
     <Row>
      {genres.map((genre: GenresInterface) => {
       return <Genre key={genre.id} genre={genre} />;
