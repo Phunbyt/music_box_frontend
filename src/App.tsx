@@ -1,19 +1,17 @@
-import React from 'react';
 import './App.css';
-import Header from './components/Header/Header'
-import Footer from './components/Footer/Footer'
-import LandingPage from './screens/LandingPage/LandingPage'
+import Homepage from './components/Homepage/Homepage';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 
-const App =() => {
+const App = () => {
   return (
     <>
-      <Header />
-      <main>
-      <LandingPage />
-      </main>
-      <Footer />
-      </>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/home' component={Homepage} />
+        </Switch>
+      </BrowserRouter>  
+    </>
   );
 }
 
