@@ -2,7 +2,6 @@ import React, {useEffect, useContext} from 'react';
 import { GenreContext } from '../../../context/GenreContext';
 import { useParams } from 'react-router';
 import { Row,Col } from 'react-bootstrap';
-import {TimeConverter} from '../../../utils/TimeConverter'
 import './ArtistDetails.css'
 interface Songs{
   id: number,

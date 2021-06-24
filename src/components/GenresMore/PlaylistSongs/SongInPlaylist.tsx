@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import "./SongInPlaylist.css";
 
 const SongInPlaylist= ({song ,index}:any) => {
