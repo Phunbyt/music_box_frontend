@@ -38,6 +38,8 @@ export default function Flow() {
                     height: "200px",
                     width: "100%",
                     position: "relative",
+                    background: `url(${flowcoverTwo})`,
+                    backgroundSize: "cover",
                   }}
                 >
                   <span
@@ -53,12 +55,13 @@ export default function Flow() {
                   <FaPlayCircle
                     style={{
                       cursor: "pointer",
-                      color: "grey",
+                      color: "#1C1C1C",
                       borderRadius: "50%",
                       fontSize: "30px",
                       position: "absolute",
                       top: "140px",
                       left: "50px",
+                      background: "#FFFFFF",
                     }}
                   />
                 </div>
@@ -66,7 +69,12 @@ export default function Flow() {
               <div className="col-md-4 col">
                 <div
                   className="card m-2 m-lg-0"
-                  style={{ height: "200px", width: "100%" }}
+                  style={{
+                    height: "200px",
+                    width: "100%",
+                    background: `url(${flowcover})`,
+                    backgroundSize: "cover",
+                  }}
                 >
                   <span
                     style={{
@@ -81,12 +89,13 @@ export default function Flow() {
                   <FaPlusCircle
                     style={{
                       cursor: "pointer",
-                      color: "grey",
+                      color: "#1C1C1C",
                       borderRadius: "50%",
                       fontSize: "30px",
                       position: "absolute",
                       top: "140px",
                       left: "50px",
+                      background: "#FFFFFF",
                     }}
                   />
                 </div>
@@ -94,7 +103,12 @@ export default function Flow() {
               <div className="col-md-4 col">
                 <div
                   className="card m-2 m-lg-0"
-                  style={{ height: "200px", width: "100%" }}
+                  style={{
+                    height: "200px",
+                    width: "100%",
+                    background: `url(${flowcoverTwo})`,
+                    backgroundSize: "cover",
+                  }}
                 >
                   <span
                     style={{
@@ -109,12 +123,13 @@ export default function Flow() {
                   <FaPlusCircle
                     style={{
                       cursor: "pointer",
-                      color: "grey",
+                      color: "#1C1C1C",
                       borderRadius: "50%",
                       fontSize: "30px",
                       position: "absolute",
                       top: "140px",
                       left: "50px",
+                      background: "#FFFFFF",
                     }}
                   />
                 </div>
