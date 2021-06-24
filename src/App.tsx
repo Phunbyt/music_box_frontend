@@ -1,19 +1,20 @@
 import React from 'react';
+import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import ListeningHistory from './components/ListeningHistory/ListeningHistory'
+import UserForm from './components/userProfile/userForm'
 import './App.css';
-import Header from './components/Header/Header'
-import Footer from './components/Footer/Footer'
-import LandingPage from './screens/LandingPage/LandingPage'
-
 
 const App =() => {
   return (
-    <>
-      <Header />
-      <main>
-      <LandingPage />
-      </main>
-      <Footer />
-      </>
+    <div className='App'>
+      <Router>
+          <Switch>
+            <Route exact path='/user-profile' component={UserForm} />
+            <Route exact path='/listening-history' component={ListeningHistory} />
+            {/* <Route exact path='/' component={LandingPage} /> */}
+          </Switch>
+        </Router>
+      </div>
   );
 }
 
