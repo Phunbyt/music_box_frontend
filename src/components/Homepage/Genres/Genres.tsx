@@ -14,7 +14,8 @@ interface Props {
 
 export default function Genres({genres}: Props) {
   return (
-    <div className="main mt-5">
+    <div className="main mt-5" style={{position: "relative"}}>
+      <p style={{ color: "white", position: "absolute", left: "180px", top: "10px"}}>Genres</p>
       <div className="container">
         <div className="row">
           <div className="col-md-10 mx-auto">
