@@ -10,8 +10,13 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "axios": "^0.21.1",
+    "bootstrap": "^5.0.1",
     "react": "^17.0.2",
+    "react-bootstrap": "^1.6.1",
     "react-dom": "^17.0.2",
+    "react-icon": "^1.0.0",
+    "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "typescript": "^4.1.2",
@@ -24,7 +29,7 @@
     "@babel/preset-typescript": "^7.12.1",
     "@babel/runtime": "^7.12.5",
     "@types/eslint": "^7.2.13",
-    "@types/react-router-dom": "^5.1.6",
+    "@types/react-router-dom": "^5.1.7",
     "eslint": "^7.29.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-typescript-prettier": "^4.2.0",
@@ -32,8 +37,7 @@
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
     "prettier": "^2.3.1",
-    "serve": "^12.0.0",
-    "typescript": "^4.3.4"
+    "serve": "^12.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

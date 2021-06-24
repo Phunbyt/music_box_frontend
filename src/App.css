@@ -1,4 +1,16 @@
-.App {
-  text-align: center;
+body {
+  background-color: #161a1a;
+  bottom: 0;
 }
 
+.App {
+  text-align: center;
+  justify-content: left;
+}
+
+.bodyView {
+  background-color: #161a1a;
+  background-size: cover;
+  background-attachment: fixed;
+  /* padding-bottom:100% */
+}

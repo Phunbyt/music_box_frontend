@@ -1,19 +1,17 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header/Header'
-import Footer from './components/Footer/Footer'
-import LandingPage from './screens/LandingPage/LandingPage'
+// import Header from './components/Header/Header'
+// import Footer from './components/Footer/Footer'
+// import LandingPage from './screens/LandingPage/LandingPage'
+import LibraryComponents from './components/LibraryComponents/LibraryComponents';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 
 const App =() => {
   return (
-    <>
-      <Header />
-      <main>
-      <LandingPage />
-      </main>
-      <Footer />
-      </>
+    <div className="bodyView">
+      <LibraryComponents />
+    </div>
   );
 }
 
