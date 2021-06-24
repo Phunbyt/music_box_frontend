@@ -1,0 +1,72 @@
+.Footer {
+  width: 100vw;
+  background: #111313 0% 0% no-repeat padding-box;
+  opacity: 1;
+  position: relative;
+  bottom: 0;
+}
+
+.FooterWrapper {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.FooterOtherWrapper {
+  width: calc(100% - 30px);
+  display: flex;
+  flex-direction: column;
+}
+
+.FWrapperHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.FHeader {
+  color: #848484;
+  font-size: 24px;
+  letter-spacing: 0.24px;
+  padding: 0 40px;
+}
+
+.Fbody {
+  color: #ffffff;
+  font-size: 24px;
+  letter-spacing: 0.09px;
+  padding: 0 40px;
+}
+.FLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.FLinksBody {
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 10px;
+  padding-left: 40px;
+}
+
+.FIconsWrapper {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 45px;
+  padding-left: 20px;
+  padding-bottom: 30px;
+}
+.FIcons {
+  width: 80px;
+  height: 80px;
+  padding-left: 20px;
+}
+
+@media (min-width: 1080px) {
+  .Footer {
+    display: flex;
+    bottom: 0;
+    /* top: 100% */
+  }
+}

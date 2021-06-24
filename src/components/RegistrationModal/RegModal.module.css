@@ -1,0 +1,197 @@
+.ModalWrapper {
+  position: fixed;
+  z-index: 500;
+  background-color: white;
+  width: 50%;
+  max-width: 500px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 3px;
+  margin-top: 1px;
+  box-sizing: border-box;
+  transition: all 0.5s ease-out;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.show {
+  opacity: 1;
+  top: 55%;
+  /* transform: translate(-50%, -50%); */
+}
+.hide {
+  opacity: 0;
+  top: -100%;
+
+  /* transform: translate(0, 0); */
+}
+
+.ModalBody {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+}
+
+.ModalHeaderText {
+  color: #161a1a;
+  letter-spacing: 0.17px;
+  text-align: center;
+  font-size: 28px;
+  margin-top: -20px;
+}
+
+.ModalSocialMedial {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 12px;
+}
+.ModalFaceBookButton {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 35%;
+  height: 35px;
+  border-radius: 50px;
+  font-size: 18px;
+  opacity: 1;
+  color: #fff;
+  font-size: 20px;
+  background: #4267b2 0% 0% no-repeat padding-box;
+  margin-left: 20px;
+  padding-right: 40px;
+  border: none;
+  outline: none;
+  margin-right: 10px;
+}
+
+.ModalGoogleButton {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 35%;
+  height: 35px;
+  border-radius: 50px;
+  font-size: 20px;
+  opacity: 1;
+  color: #303033;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  padding-right: 40px;
+}
+
+.form {
+  width: 90%;
+  margin: 0 auto;
+  padding: 0 30px;
+  margin-top: 30px;
+}
+.Form {
+  display: flex;
+  width: 85%;
+  flex-direction: column;
+  margin-bottom: 30px;
+  /* margin-top: 15px; */
+  margin-left: 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.FormInput {
+  width: 100%;
+  margin-top: -5px;
+  height: 27px;
+  border-radius: 5px;
+  color: #161a1a;
+  opacity: 0.78px;
+  font-size: 0.9rem;
+  border: 1px solid #2d9bef;
+  padding: 0 20px;
+  /* padding-left: 20px; */
+  background: #f8fcff 0% 0% no-repeat padding-box;
+}
+
+.FormSelect {
+  width: 100%;
+  display: flex;
+  height: 40px;
+  justify-content: space-between;
+}
+
+.FormInputDate {
+  width: 40%;
+  height: 85%;
+  background: 1px solid #161a1a;
+  border-radius: 4px;
+  margin-left: 35px;
+  padding-left: 5px;
+  font-size: 18px;
+}
+
+.select {
+  width: 30%;
+  height: 90%;
+  background: 1px solid #161a1a;
+  font-size: 18px;
+  border-radius: 4px;
+  margin-right: 35px;
+  padding-left: 7px;
+}
+
+.ModalFormChild {
+  display: flex;
+  justify-content: space-between;
+  width: 65%;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #959da2;
+  margin: 30px auto;
+}
+
+.ModalFormChilds {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.Icon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #99999f;
+  letter-spacing: 0.07px;
+}
+.ModalRecaptcha {
+  width: 25px;
+  height: 30px;
+  opacity: 1;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.ModalTerms {
+  width: 100%;
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -30px;
+  padding-bottom: 20px;
+}
+
+.ModalSignUp {
+  width: 50%;
+  height: 32px;
+  border-radius: 40px;
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 8px;
+  margin-top: 35px;
+  outline: none;
+  margin-left: 25%;
+  opacity: 1;
+  background: #2d9bef 0% 0% no-repeat padding-box;
+  border: none;
+}

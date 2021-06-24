@@ -1,0 +1,108 @@
+* {
+  box-sizing: border-box;
+}
+.Wrapper {
+  width: 100vw;
+  height: 100vh;
+  background: transparent linear-gradient(189deg, #ca42f2 0%, #6a42f2 40%, #4294f2 72%, #42b5f2 100%) 0% 0% no-repeat
+    padding-box;
+}
+
+.BackArrow {
+  margin-top: 50px;
+  padding-left: 20px;
+  color: #fff;
+}
+
+.LoginText {
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.FormWrapper {
+  width: 90%;
+  margin: 50px auto;
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  /* height: 40px; */
+}
+
+.FormLabel {
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.FormInput {
+  width: 100%;
+  margin-top: -5px;
+  height: 40px;
+  border-radius: 5px;
+  color: #161a1a;
+  opacity: 0.78px;
+  font-size: 0.9rem;
+  border: none;
+  padding: 0 20px;
+  /* padding-left: 20px; */
+  background: #ffffff 0% 0% no-repeat padding-box;
+}
+
+.FormButton {
+  width: 130px;
+  height: 38px;
+  border: 2px solid #ffffff;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  margin: 10px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  opacity: 1;
+  color: #fff;
+  background: none;
+}
+.Buttons {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  margin: 200px auto;
+  width: 300px;
+}
+
+.FaceBookButton {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  border-radius: 50px;
+  font-size: 18px;
+  margin: 5px auto;
+  opacity: 1;
+  color: #fff;
+  background: #4267b2 0% 0% no-repeat padding-box;
+  border: none;
+  outline: none;
+}
+
+.GoogleButton {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  border-radius: 50px;
+  font-size: 18px;
+  margin: 5px auto;
+  opacity: 1;
+  color: #303033;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: none;
+  outline: none;
+}
