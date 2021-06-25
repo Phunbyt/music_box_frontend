@@ -3,8 +3,8 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
-    height: 500px;
     overflow: scroll;
+    width: 300px;
 }
 
 #myUL li a {
@@ -12,15 +12,15 @@
     /* Add a border to all links */
     margin-top: -1px;
     /* Prevent double borders */
-    background-color: #bfbfbf;
+    background-color: #303033 0% 0% no-repeat padding-box;
     /* Grey background color */
     padding: 12px;
     /* Add some padding */
     text-decoration: none;
     /* Remove default text underline */
-    font-size: 18px;
+    font: normal normal normal 15px/61px Lato;
     /* Increase the font-size */
-    color: #2c2c2b;
+    color: #FFFFFF;
     /* Add a black text color */
     display: block;
     /* Make it into a block element to fill the whole list */

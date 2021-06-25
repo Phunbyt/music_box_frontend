@@ -3,6 +3,7 @@ import axios from 'axios';
 import { FaUser, FaSearch } from "react-icons/fa";
 import { Navbar, Container, Nav, NavDropdown, Form } from "react-bootstrap";
 import "./Navbar.css";
+import home from './home.png';
 
 
 interface property {
@@ -16,13 +17,16 @@ interface Props {
   firstName: string;
   lastName: string;
 }
+
 export default function NavigationBar({
   firstName,
   lastName,
 }: Props) {
-  const container = useRef<HTMLUListElement>(null);
+  const container = useRef<HTMLDivElement>(null);
   const [allData, setAllData] = useState({} as property);
   const [info, setInfo] = useState("");
+  const [display, setDisplay] =  useState(false);
+  const [limit, setLimit] = useState(3);
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setInfo(e.target.value);
@@ -39,6 +43,7 @@ export default function NavigationBar({
       };
       const { data: { data } } = await axios.get(`https://music-box-a.herokuapp.com/music/search/?search=${info}`, config);
       setAllData(data)
+      setDisplay(true)
     }
     catch (error) {
       console.log(error);
@@ -50,6 +55,7 @@ export default function NavigationBar({
     }
     setAllData({});
     setInfo("");
+    setDisplay(false)
   }
 
   useEffect(() => {
@@ -59,6 +65,8 @@ export default function NavigationBar({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  console.log(allData.artist);
 
   return (
     <Navbar collapseOnSelect expand="lg" variant="dark">
@@ -86,6 +94,7 @@ export default function NavigationBar({
                   height: "40px",
                   width: "300px",
                   backgroundColor: "#898B91",
+                  font: "normal normal normal 18px/52px Lato"
                 }}
                 id="search"
                 type="search"
@@ -106,42 +115,56 @@ export default function NavigationBar({
                   }}
                 />
               </i>
-              {allData.artist ? (
-                <ul
-                  id="myUL"
-                  style={{
+              <div ref={container} style={{
                     zIndex: 99,
                     color: "white",
                     position: "absolute",
                     top: "50px",
                     height: "400px",
                     borderRadius: "3%",
-                  }}
-                  className="container"
-                  ref={container}
-                >
-                  {allData && allData.artist ? (
-                    allData.allData &&
-                    allData.allData.map((item: Record<string, any>) => (
-                      <li key={item.id}>
-                        <a href="/artist">
-                          {item.name || item.title}
-                          <span style={{ display: "none" }}>{item.id}</span>
-                        </a>
-                      </li>
-                    ))
-                  ) : (
-                    <></>
-                  )}
-                </ul>
-              ) : (
-                ""
-              )}
+                  }}>
+                {allData ? (
+                  <ul id="myUL">
+                    <p style={{visibility: display ? "visible": "hidden"}}>Artists</p>
+                    {allData.artist ? (
+                      allData.artist.map((item: Record<string, any>) => (
+                        <li key={item.id} style={{display: "inlineBlock"}}>
+                          <a href="/artist">
+                          <img className="pic" style={{width: "50px", height: "50px", backgroundImage: `url(${item.picture})`, borderRadius: "50%"}}></img> 
+                          {"  "}
+                          {item.name}
+                          </a>
+                        </li>
+                      )).slice(0, limit)
+                    ): (<></>)}
+                  </ul>
+                ) : <></> 
+                }
+                {allData ? (
+                  <ul id="myUL">
+                    <p style={{visibility: display ? "visible": "hidden"}}>Albums</p>
+                    {allData.album ? (
+                      allData.album.map((item: Record<string, any>, index) => (
+                        <li key={item.id}>
+                          <a href="/artist">
+                          <img className="pic" style={{width: "50px", height: "50px", backgroundImage: `url(${item.cover})`, borderRadius: "50%"}}></img> 
+                            {"  "}
+                            {item.title}
+                            <span className="pic">Hello</span>
+                          </a>
+                        </li>
+                      )).slice(0, limit)
+                    ): (<></>)}
+                  </ul>
+                ) : <></> 
+                }
+                
+              </div>
             </Form>
           </div>
           <NavDropdown
             title={
-              <span className="text-white my-auto">
+              <span className="text-white my-auto" style={{font: "normal normal normal 16px/32px Lato"}}>
                 <FaUser
                   style={{
                     color: "white",
@@ -150,7 +173,7 @@ export default function NavigationBar({
                     borderRadius: "50%",
                     fontSize: "30px",
                   }}
-                />
+                />{"    "}
                 {firstName} {lastName}
               </span>
             }

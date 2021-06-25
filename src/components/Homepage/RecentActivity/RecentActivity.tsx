@@ -39,7 +39,7 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
             <div className="row">
               <div className="col-md-12">
                 <div className="top my-4">
-                  <p className="float-start text-white">Recently played</p>
+                  <p className="float-start text-white" style={{font: "normal normal bold 24px/61px Lato"}}>Recently played</p>
                   <p className="float-end text-white">
                     <FaChevronLeft
                       style={{
@@ -75,13 +75,13 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
                       }}
                     ></div>
                     <div>
-                      <p className="mx-auto">{artistName}</p>
+                      <p className="mx-auto" style={{ font: "normal normal normal 16px/24px Lato"}}>Artist - {artistName}</p>
                     </div>
                     <div style={{ marginTop: "-20px" }}>
                       <FaHeart
                         style={{
                           cursor: "pointer",
-                          color: "white",
+                          color: "#99999F 0% 0% no-repeat padding-box",
                           borderRadius: "50%",
                           fontSize: "20px",
                         }}
@@ -100,7 +100,7 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
                       }}
                     ></div>
                     <div>
-                      <p className="mx-auto">{albumTitle}</p>
+                      <p className="mx-auto" style={{ font: "normal normal normal 16px/24px Lato"}} > Album - {albumTitle}</p>
                     </div>
                     <div style={{ marginTop: "-20px" }}>
                       <FaHeart
@@ -125,7 +125,7 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
                       }}
                     ></div>
                     <div>
-                      <p className="mx-auto">{playListName}</p>
+                      <p className="mx-auto" style={{ font: "normal normal normal 16px/24px Lato"}} >Playlist - {playListName}</p>
                     </div>
                     <div style={{ marginTop: "-20px" }}>
                       <FaHeart
@@ -150,7 +150,7 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
                       }}
                     ></div>
                     <div>
-                      <p className="mx-auto">Soul</p>
+                      <p className="mx-auto" style={{ font: "normal normal normal 16px/24px Lato"}} >Soul</p>
                     </div>
                     <div style={{ marginTop: "-20px" }}>
                       <FaHeart
@@ -175,7 +175,7 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
                       }}
                     ></div>
                     <div>
-                      <p className="mx-auto">Guitar</p>
+                      <p className="mx-auto" style={{ font: "normal normal normal 16px/24px Lato"}} >Guitar</p>
                     </div>
                     <div style={{ marginTop: "-20px" }}>
                       <FaHeart
@@ -200,7 +200,7 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
                       }}
                     ></div>
                     <div>
-                      <p className="mx-auto">Pop</p>
+                      <p className="mx-auto" style={{ font: "normal normal normal 16px/24px Lato"}} >Pop</p>
                     </div>
                     <div style={{ marginTop: "-20px" }}>
                       <FaHeart
