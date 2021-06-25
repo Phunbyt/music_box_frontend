@@ -1,10 +1,15 @@
-import React, { ChangeEvent, FormEvent, useRef, useState, useEffect } from "react";
-import axios from 'axios';
+import React, {
+  ChangeEvent,
+  FormEvent,
+  useRef,
+  useState,
+  useEffect
+} from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 import { FaUser, FaSearch } from "react-icons/fa";
 import { Navbar, Container, Nav, NavDropdown, Form } from "react-bootstrap";
 import "./Navbar.css";
-import home from './home.png';
-
 
 interface property {
   artist?: Record<string, any>[];
@@ -15,47 +20,58 @@ interface property {
 
 interface Props {
   firstName: string;
-  lastName: string;
+  lastName: string; 
 }
 
-export default function NavigationBar({
-  firstName,
-  lastName,
-}: Props) {
+export default function NavigationBar({ firstName, lastName }: Props) {
   const container = useRef<HTMLDivElement>(null);
   const [allData, setAllData] = useState({} as property);
   const [info, setInfo] = useState("");
-  const [display, setDisplay] =  useState(false);
-  const [limit, setLimit] = useState(3);
+  const [display, setDisplay] = useState(false);
+  const [artistLimit, setArtistLimit] = useState(3);
+  const [albumLimit, setAlbumLimit] = useState(3);
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setInfo(e.target.value);
   }
 
+  function viewMoreArtists() {
+    setArtistLimit((prev) => prev + 5);
+  }
+  function viewMoreAlbums() {
+    setAlbumLimit((prev) => prev + 5);
+  }
+
   const fetchAll = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       const token = localStorage.getItem("Token");
       const config = {
         headers: {
-          "Authorization": `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
       };
-      const { data: { data } } = await axios.get(`https://music-box-a.herokuapp.com/music/search/?search=${info}`, config);
-      setAllData(data)
-      setDisplay(true)
-    }
-    catch (error) {
+      const {
+        data: { data },
+      } = await axios.get(
+        `https://music-box-a.herokuapp.com/music/search/?search=${info}`,
+        config
+      );
+      setAllData(data);
+      setDisplay(true);
+      setArtistLimit(3);
+      setAlbumLimit(3);
+    } catch (error) {
       console.log(error);
     }
-  }
+  };
   function handleClickOutside(event: { target: any }) {
     if (container.current?.contains(event.target)) {
       return;
     }
     setAllData({});
     setInfo("");
-    setDisplay(false)
+    setDisplay(false);
   }
 
   useEffect(() => {
@@ -69,6 +85,7 @@ export default function NavigationBar({
   console.log(allData.artist);
 
   return (
+  
     <Navbar collapseOnSelect expand="lg" variant="dark">
       <Container>
         <Navbar.Brand href="/home">Music-Box</Navbar.Brand>
@@ -116,49 +133,97 @@ export default function NavigationBar({
                 />
               </i>
               <div ref={container} style={{
-                    zIndex: 99,
+                    zIndex: 99999,
                     color: "white",
                     position: "absolute",
                     top: "50px",
-                    height: "400px",
+                    height: "500px",
+                    background: "#3A3A3D 0% 0% no-repeat padding-box",
+                    visibility: display ? "visible": "hidden",
                     borderRadius: "3%",
                   }}>
                 {allData ? (
-                  <ul id="myUL">
-                    <p style={{visibility: display ? "visible": "hidden"}}>Artists</p>
+                  <ul id="myUL" style={{height: "216px", overflowY: "scroll"}}>
+                    <p style={{visibility: display ? "visible": "hidden", paddingLeft: 10, paddingTop: 10, font: 'normal normal bold 18px Lato', letterSpacing: 0.11, color: '#FFFFFF', opacity: 1}}>Artists<i className="italic" style={{position: "absolute", left: "220px"}} onClick={viewMoreArtists}>view more</i></p>
                     {allData.artist ? (
                       allData.artist.map((item: Record<string, any>) => (
-                        <li key={item.id} style={{display: "inlineBlock"}}>
-                          <a href="/artist">
-                          <img className="pic" style={{width: "50px", height: "50px", backgroundImage: `url(${item.picture})`, borderRadius: "50%"}}></img> 
-                          {"  "}
-                          {item.name}
-                          </a>
+                        <li key={item.id} style={{display: "inlineBlock", paddingLeft: "10px", paddingTop: "5px", position: "relative"}}>
+                          <Link to="/artist"
+                            style={{ 
+                              display: 'flex',
+                            }}
+                          >
+                            <div style={{ width: "50px", height: "50px" }}>
+                                <img className="pic" src={item.picture}
+                                  style={{
+                                    height: '100%',
+                                    width: '100%',
+                                    display: 'block',
+                                    objectFit: 'cover',
+                                    borderRadius: '50%' 
+                                  }}
+                                />
+                            </div>
+                          <span
+                            style={{
+                              marginLeft: 10,
+                              position: "absolute",
+                              top: 20,
+                              left: 60,
+                              font: "normal normal normal 15px Lato",
+                              letterSpacing: "0.09px",
+                              color: "#FFFFFF",
+                              opacity: 1
+                            }}
+                          >{item.name}</span>
+                          </Link>
                         </li>
-                      )).slice(0, limit)
+                      )).slice(0, artistLimit)
                     ): (<></>)}
                   </ul>
-                ) : <></> 
+                ) : <></>
                 }
                 {allData ? (
-                  <ul id="myUL">
-                    <p style={{visibility: display ? "visible": "hidden"}}>Albums</p>
+                  <ul id="myUL" style={{height: "230px", overflowY: "scroll", paddingTop: 20}}>
+                    <p style={{visibility: display ? "visible": "hidden", paddingLeft: 10, paddingTop: 10, font: 'normal normal bold 18px Lato', letterSpacing: 0.11, color: '#FFFFFF', opacity: 1}}>Album<i className="italic" style={{position: "absolute", left: "220px"}} onClick={viewMoreAlbums}>view more</i></p>
                     {allData.album ? (
-                      allData.album.map((item: Record<string, any>, index) => (
-                        <li key={item.id}>
-                          <a href="/artist">
-                          <img className="pic" style={{width: "50px", height: "50px", backgroundImage: `url(${item.cover})`, borderRadius: "50%"}}></img> 
-                            {"  "}
-                            {item.title}
-                            <span className="pic">Hello</span>
-                          </a>
+                      allData.album.map((item: Record<string, any>) => (
+                        <li key={item.id} style={{display: "inlineBlock", paddingLeft: "10px", paddingTop: 10, position: "relative"}}>
+                          <Link to="/artist"
+                            style={{ 
+                              display: 'flex',
+                            }}
+                          >
+                            <div style={{ width: 50, height: 50 }}>
+                                <img className="pic" src={item.cover}
+                                  style={{
+                                    height: '100%',
+                                    width: '100%',
+                                    display: 'block',
+                                    objectFit: 'cover', 
+                                  }}
+                                />
+                            </div>
+                          <span
+                            style={{
+                              marginLeft: 10,
+                              position: "absolute",
+                              top: 20,
+                              left: 60,
+                              font: "normal normal normal 15px Lato",
+                              letterSpacing: "0.09px",
+                              color: "#FFFFFF",
+                              opacity: 1
+                            }}
+                          >{item.title}</span>
+                          </Link>
                         </li>
-                      )).slice(0, limit)
+                      )).slice(0, albumLimit)
                     ): (<></>)}
                   </ul>
-                ) : <></> 
+                ) : <></>
                 }
-                
+
               </div>
             </Form>
           </div>

@@ -9,56 +9,14 @@ interface Props{
 }
 export default function Flow() {
   return (
-    <div className="main">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-10 mx-auto">
-            <div className="row">
-              <div className="col-md-12">
-                <div className="top my-4">
-                  <p className="float-start text-white" style={{font: "normal normal bold 24px/52px Lato"}}>Flow</p>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-4 col">
-                <div
-                  className="card m-2 m-lg-0"
-                  style={{
-                    height: "200px",
-                    width: "100%",
-                    position: "relative",
-                    background: `url(${flowcoverTwo})`,
-                    backgroundSize: "cover",
-                  }}
-                >
-                  <span
-                    style={{
-                      background: `url(${flowcover})`,
-                      height: "100px",
-                      width: "100px",
-                      position: "absolute",
-                      left: "20px",
-                      top: "55px",
-                    }}
-                  ></span>
-                  <FaPlayCircle
-                    style={{
-                      cursor: "pointer",
-                      color: "#1C1C1C",
-                      borderRadius: "50%",
-                      fontSize: "40px",
-                      position: "absolute",
-                      top: "134px",
-                      left: "50px",
-                      background: "#FFFFFF",
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+    <div className="flow">
+      <div className="top">
+        <p className="recently">Flow</p>
+        <p><FaEllipsisH className="dots"/></p>
         </div>
+      <div className="card">
+        <div className="front-image"></div>
+        <div className="image"><FaPlayCircle className="play"/></div>
       </div>
     </div>
   );

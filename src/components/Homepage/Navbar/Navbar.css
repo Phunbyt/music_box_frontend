@@ -1,5 +1,5 @@
 #myUL {
-    /* Remove default list styling */
+
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -7,50 +7,45 @@
     width: 300px;
 }
 
-#myUL li a {
-    border: none;
-    /* Add a border to all links */
-    margin-top: -1px;
-    /* Prevent double borders */
-    background-color: #303033 0% 0% no-repeat padding-box;
-    /* Grey background color */
-    padding: 12px;
-    /* Add some padding */
-    text-decoration: none;
-    /* Remove default text underline */
-    font: normal normal normal 15px/61px Lato;
-    /* Increase the font-size */
-    color: #FFFFFF;
-    /* Add a black text color */
-    display: block;
-    /* Make it into a block element to fill the whole list */
-}
-
-#myUL li a:hover:not(.header) {
-    background-color: #eee;
-    color: #2c2c2b;
-    /* Add a hover effect to all links, except for headers */
- }
- /*
+#myUl li{
+    padding-top: 2px;
+} 
 #search{
     color: white !important;
-} */
+}
+
+.view{
+    font-family: Lato;
+}
+
+.italic{
+    font: normal normal normal 14px Lato;
+    letter-spacing: 0.08px;
+    color: #D5D5D5;
+    opacity: 1;
+}
+
+.italic :hover{
+    cursor: pointer;
+}
+
 input::-webkit-input-placeholder {
-    /* WebKit browsers */
+
     color: #bfbfbf;
 }
 
 input:-moz-placeholder {
-    /* Mozilla Firefox 4 to 18 */
+
     color: #bfbfbf;
 }
 
 input::-moz-placeholder {
-    /* Mozilla Firefox 19+ */
+
     color: #bfbfbf;
 }
 
 input:-ms-input-placeholder {
-    /* Internet Explorer 10+ */
+
     color: #bfbfbf;
 }
+
