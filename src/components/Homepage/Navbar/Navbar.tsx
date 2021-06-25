@@ -189,7 +189,7 @@ export default function NavigationBar({ firstName, lastName }: Props) {
                     {allData.album ? (
                       allData.album.map((item: Record<string, any>) => (
                         <li key={item.id} style={{display: "inlineBlock", paddingLeft: "10px", paddingTop: 10, position: "relative"}}>
-                          <Link to="/artist"
+                          <Link to="/album"
                             style={{ 
                               display: 'flex',
                             }}
