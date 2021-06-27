@@ -1,0 +1,27 @@
+.genres-main{
+    width: 75%;
+    height: 197px;
+    margin-left: 12.5%;
+    color: white;
+    margin-top: 50px;
+}
+
+.genres-top{
+    height: 50px;
+    font: normal normal bold 24px Lato;
+}
+
+.genres-bottom{
+    height: 100%;
+    display: flex;
+    overflow-x: scroll;
+}
+
+.genres{
+    height: 128px;
+    min-width: 200px;
+    border-radius: 8px;
+    opacity: 1;
+    margin-right: 10px;
+    position: relative;
+}

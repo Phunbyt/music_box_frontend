@@ -21,14 +21,14 @@ export interface recentPlay {
 
 export default function Homepage() {
 
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
     const [recentlyPlayed, setRecentlyPlayed] = useState({} as recentPlay)
     const [genres, setGenres] = useState([] as Record<string, any>)
    
 
     let token;
-    let userId
+    let userId;
+    let firstName;
+    let lastName;
     const callApi = async () => {
     try {
       const { data } = await axios.post(
@@ -37,11 +37,13 @@ export default function Homepage() {
       );
     token = data.token;
     userId = data.user._id;
-    setFirstName(data.user.firstName);
-    setLastName(data.user.lastName)
+    firstName = data.user.firstName;
+    lastName = data.user.lastName;
     
     localStorage.setItem("Token", token);
     localStorage.setItem("UserId", userId);
+    localStorage.setItem("lastName", lastName)
+    localStorage.setItem("firstName", firstName)
     } catch (err) {
       console.log(err);
     }
@@ -62,29 +64,9 @@ export default function Homepage() {
         }
     }
 
-    const getGenres = async () => {
-        try {
-            const token = localStorage.getItem("Token");
-            const config = {
-                headers: {
-                    "Authorization": `Bearer ${token}`
-                },
-            };
-            const { data: {data} } = await axios.get(
-              "https://music-box-a.herokuapp.com/music/genres",
-              config
-            );
-            setGenres(data);
-        }
-        catch (error) {
-            
-        }
-    }
-
     useEffect(() => {
         callApi();
         getRecentlyPlayed();
-        getGenres();
 
         return () => {
         console.log("hello");
@@ -94,10 +76,10 @@ export default function Homepage() {
     
     return (
         <div>
-            <Navigationbar firstName={firstName} lastName={lastName}/>
+            <Navigationbar />
             <Flow />
             <RecentActivity value={recentlyPlayed} />
-            <Genres genres={genres}/>
+            <Genres/>
         </div>
     )
 }

@@ -2,6 +2,7 @@ import React from "react";
 import { FaHeart, FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { recentPlay } from "../Homepage";
 import "./RecentActivity.css";
+import rock from './rock.png';
 
 export interface RecentActivityProps {
   value: recentPlay;
@@ -68,7 +69,7 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
           </div>
           <div className="pic-text">
             <div className="image" style={{
-              background: `url(${artistPic}) center center no-repeat`
+              background: `url(${rock}) center center no-repeat`
             }}></div>
             <div>
               <p className="details" style={{textAlign: "center", marginTop: "10px"}}>

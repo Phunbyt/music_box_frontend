@@ -12,11 +12,11 @@ export default function Flow() {
     <div className="flow">
       <div className="top">
         <p className="recently">Flow</p>
-        <p><FaEllipsisH className="dots"/></p>
+        <p><i className="dots fa fa-ellipsis-h" /></p>
         </div>
       <div className="card">
         <div className="front-image"></div>
-        <div className="image"><FaPlayCircle className="play"/></div>
+        <div className="image"><i className="play fa fa-play-circle"/></div>
       </div>
     </div>
   );

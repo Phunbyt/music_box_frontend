@@ -7,9 +7,9 @@ import React, {
 } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { FaUser, FaSearch } from "react-icons/fa";
 import { Navbar, Container, Nav, NavDropdown, Form } from "react-bootstrap";
 import "./Navbar.css";
+import 'font-awesome/css/font-awesome.min.css';
 
 interface property {
   artist?: Record<string, any>[];
@@ -23,23 +23,20 @@ interface Props {
   lastName: string; 
 }
 
-export default function NavigationBar({ firstName, lastName }: Props) {
+export default function NavigationBar() {
   const container = useRef<HTMLDivElement>(null);
   const [allData, setAllData] = useState({} as property);
   const [info, setInfo] = useState("");
   const [display, setDisplay] = useState(false);
   const [artistLimit, setArtistLimit] = useState(3);
   const [albumLimit, setAlbumLimit] = useState(3);
+  const [artistList, setArtistList] = useState(230);
+  const [albumList, setAlbumList] = useState(230);
+  const [playlistLimit, setPlaylistList] = useState(250);
+  const [allList, setAllList] = useState(600)
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setInfo(e.target.value);
-  }
-
-  function viewMoreArtists() {
-    setArtistLimit((prev) => prev + 5);
-  }
-  function viewMoreAlbums() {
-    setAlbumLimit((prev) => prev + 5);
   }
 
   const fetchAll = async (e: FormEvent<HTMLFormElement>) => {
@@ -72,7 +69,11 @@ export default function NavigationBar({ firstName, lastName }: Props) {
     setAllData({});
     setInfo("");
     setDisplay(false);
+    setAllList(600);
   }
+
+  const lastName = localStorage.getItem("lastName");
+  const firstName = localStorage.getItem("firstName");
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
@@ -82,16 +83,14 @@ export default function NavigationBar({ firstName, lastName }: Props) {
     };
   }, []);
 
-  console.log(allData.artist);
-
   return (
   
-    <Navbar collapseOnSelect expand="lg" variant="dark">
+    <Navbar collapseOnSelect expand="lg" variant="dark" style={{position: 'fixed', top: 0, width: '100%', backgroundColor: '#161a1a', zIndex: 99}}>  
       <Container>
         <Navbar.Brand href="/home">Music-Box</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="me-auto active">
             <Nav.Link href="/Browse">Browse</Nav.Link>
             <Nav.Link href="/Library">Library</Nav.Link>
             <Nav.Link href="/Home">Home</Nav.Link>
@@ -122,7 +121,7 @@ export default function NavigationBar({ firstName, lastName }: Props) {
                 value={info}
               />
               <i style={{ position: "absolute", left: "10px", top: "6px" }}>
-                <FaSearch
+                <i className="fa fa-search"
                   style={{
                     cursor: "pointer",
                     border: "none",
@@ -137,14 +136,14 @@ export default function NavigationBar({ firstName, lastName }: Props) {
                     color: "white",
                     position: "absolute",
                     top: "50px",
-                    height: "500px",
+                    height: allList,
                     background: "#3A3A3D 0% 0% no-repeat padding-box",
                     visibility: display ? "visible": "hidden",
                     borderRadius: "3%",
                   }}>
-                {allData ? (
-                  <ul id="myUL" style={{height: "216px", overflowY: "scroll"}}>
-                    <p style={{visibility: display ? "visible": "hidden", paddingLeft: 10, paddingTop: 10, font: 'normal normal bold 18px Lato', letterSpacing: 0.11, color: '#FFFFFF', opacity: 1}}>Artists<i className="italic" style={{position: "absolute", left: "220px"}} onClick={viewMoreArtists}>view more</i></p>
+                {allData && allData.artist ? ( 
+                  allData.artist.length > 0 && <ul id="myUL" style={{height: artistList, overflowY: "scroll"}}>
+                    <p style={{visibility: display ? "visible": "hidden", paddingLeft: 10, paddingTop: 10, font: 'normal normal bold 18px Lato', letterSpacing: 0.11, color: '#FFFFFF', opacity: 1}}>Artists<i className="italic" style={{position: "absolute", left: "220px"}}><Link style={{textDecoration: 'none', color: '#D5D5D5'}} to={{pathname: "/artistdetails", state: {artistDetails: allData.artist, info: info}}}>view All</Link></i></p>
                     {allData.artist ? (
                       allData.artist.map((item: Record<string, any>) => (
                         <li key={item.id} style={{display: "inlineBlock", paddingLeft: "10px", paddingTop: "5px", position: "relative"}}>
@@ -168,7 +167,7 @@ export default function NavigationBar({ firstName, lastName }: Props) {
                             style={{
                               marginLeft: 10,
                               position: "absolute",
-                              top: 20,
+                              top: 15,
                               left: 60,
                               font: "normal normal normal 15px Lato",
                               letterSpacing: "0.09px",
@@ -181,15 +180,17 @@ export default function NavigationBar({ firstName, lastName }: Props) {
                       )).slice(0, artistLimit)
                     ): (<></>)}
                   </ul>
-                ) : <></>
+                ) : <></> 
                 }
-                {allData ? (
-                  <ul id="myUL" style={{height: "230px", overflowY: "scroll", paddingTop: 20}}>
-                    <p style={{visibility: display ? "visible": "hidden", paddingLeft: 10, paddingTop: 10, font: 'normal normal bold 18px Lato', letterSpacing: 0.11, color: '#FFFFFF', opacity: 1}}>Album<i className="italic" style={{position: "absolute", left: "220px"}} onClick={viewMoreAlbums}>view more</i></p>
+                {allData && allData.album ? ( 
+                 allData.album.length > 0 && <ul id="myUL" style={{height: albumList, overflowY: "scroll", paddingTop: 20}}>
+                    <p style={{visibility: display ? "visible": "hidden", paddingLeft: 10, paddingTop: 10, font: 'normal normal bold 18px Lato', letterSpacing: 0.11, color: '#FFFFFF', opacity: 1}}>Albums<i className="italic" style={{position: "absolute", left: "220px"}}> 
+                     <Link style={{textDecoration: 'none', color: '#D5D5D5'}} to={{pathname: "/albumdetails", state: {albumDetails: allData.album, info: info}}}>view more</Link>
+                    </i></p>
                     {allData.album ? (
                       allData.album.map((item: Record<string, any>) => (
                         <li key={item.id} style={{display: "inlineBlock", paddingLeft: "10px", paddingTop: 10, position: "relative"}}>
-                          <Link to="/album"
+                          <Link to="/albumdetails"
                             style={{ 
                               display: 'flex',
                             }}
@@ -208,7 +209,7 @@ export default function NavigationBar({ firstName, lastName }: Props) {
                             style={{
                               marginLeft: 10,
                               position: "absolute",
-                              top: 20,
+                              top: 15,
                               left: 60,
                               font: "normal normal normal 15px Lato",
                               letterSpacing: "0.09px",
@@ -216,9 +217,69 @@ export default function NavigationBar({ firstName, lastName }: Props) {
                               opacity: 1
                             }}
                           >{item.title}</span>
+                          <span style={{
+                            marginLeft: 10,
+                            position: "absolute",
+                            top: 30,
+                            left: 60,
+                            font: "normal normal normal 14px Lato",
+                            letterSpacing: "0.08px",
+                            color: "#99999F",
+                            opacity: 1,
+                          }}>{item.artistName}</span>
                           </Link>
                         </li>
                       )).slice(0, albumLimit)
+                    ): (<></>)}
+                  </ul>
+                ) : <></>
+                }
+                {allData && allData.playlist ? ( 
+                 allData.playlist.length > 0 && <ul id="myUL" style={{height: albumList, overflowY: "scroll", paddingTop: 20}}>
+                    <p style={{visibility: display ? "visible": "hidden", paddingLeft: 10, paddingTop: 10, font: 'normal normal bold 18px Lato', letterSpacing: 0.11, color: '#FFFFFF', opacity: 1}}>Playlists<i className="italic" style={{position: "absolute", left: "220px"}}>view more</i></p>
+                    {allData.playlist ? (
+                      allData.playlist.map((item: Record<string, any>) => (
+                        <li key={item.id} style={{display: "inlineBlock", paddingLeft: "10px", paddingTop: 10, position: "relative"}}>
+                          <Link to="/artist"
+                            style={{ 
+                              display: 'flex',
+                            }}
+                          >
+                            <div style={{ width: 50, height: 50 }}>
+                                <img className="pic" src={item.cover}
+                                  style={{
+                                    height: '100%',
+                                    width: '100%',
+                                    display: 'block',
+                                    objectFit: 'cover', 
+                                  }}
+                                />
+                            </div>
+                          <span
+                            style={{
+                              marginLeft: 10,
+                              position: "absolute",
+                              top: 15,
+                              left: 60,
+                              font: "normal normal normal 15px Lato",
+                              letterSpacing: "0.09px",
+                              color: "#FFFFFF",
+                              opacity: 1
+                            }}
+                          >{item.title}</span>
+                          <span style={{
+                            marginLeft: 10,
+                            position: "absolute",
+                            top: 30,
+                            left: 60,
+                            font: "normal normal normal 14px Lato",
+                            letterSpacing: "0.08px",
+                            color: "#99999F",
+                            opacity: 1,
+                          }}>{item.artistName}</span>
+                          </Link>
+                        </li>
+                      )).slice(0, playlistLimit)
                     ): (<></>)}
                   </ul>
                 ) : <></>
@@ -230,13 +291,14 @@ export default function NavigationBar({ firstName, lastName }: Props) {
           <NavDropdown
             title={
               <span className="text-white my-auto" style={{font: "normal normal normal 16px/32px Lato"}}>
-                <FaUser
+                <i className="fa fa-user-circle-o"
                   style={{
                     color: "white",
                     cursor: "pointer",
-                    border: "2px solid white",
+                    border: "1px solid white",
                     borderRadius: "50%",
                     fontSize: "30px",
+                    marginRight: '5px'
                   }}
                 />{"    "}
                 {firstName} {lastName}

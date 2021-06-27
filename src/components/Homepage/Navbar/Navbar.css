@@ -1,3 +1,7 @@
+.active{
+    background: transparent linear-gradient(273deg, #9B2DEF 0%, #2D9BEF 58%, #35EDFB 100%) 0% 0% no-repeat padding-box;
+}
+
 #myUL {
 
     list-style-type: none;
@@ -25,6 +29,11 @@
     opacity: 1;
     border: none;
     background-color: rgba(255,255,255, 0);
+}
+
+.italic:hover{
+    cursor: pointer !important;
+    color: #fff !important;
 }
 
 input::-webkit-input-placeholder {
