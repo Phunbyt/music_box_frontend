@@ -185,7 +185,7 @@ export default function NavigationBar() {
                 {allData && allData.album ? ( 
                  allData.album.length > 0 && <ul id="myUL" style={{height: albumList, overflowY: "scroll", paddingTop: 20}}>
                     <p style={{visibility: display ? "visible": "hidden", paddingLeft: 10, paddingTop: 10, font: 'normal normal bold 18px Lato', letterSpacing: 0.11, color: '#FFFFFF', opacity: 1}}>Albums<i className="italic" style={{position: "absolute", left: "220px"}}> 
-                     <Link style={{textDecoration: 'none', color: '#D5D5D5'}} to={{pathname: "/albumdetails", state: {albumDetails: allData.album, info: info}}}>view more</Link>
+                     <Link style={{textDecoration: 'none', color: '#D5D5D5'}} to={{pathname: "/albumdetails", state: {albumDetails: allData.album, info: info}}}>view All</Link>
                     </i></p>
                     {allData.album ? (
                       allData.album.map((item: Record<string, any>) => (

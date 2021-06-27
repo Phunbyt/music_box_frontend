@@ -11,7 +11,7 @@
     width: 100%;
     display: block;
     font: normal normal bold 24px Lato;
-    /* margin-bottom: 10px; */
+    margin-bottom: 15px;
 }
 
 .recently-played .bottom{
@@ -25,10 +25,34 @@
     overflow-x: scroll;
 }
 
-.recently-played .bottom .cards .image{
+.recent-activity-image{
     height: 210px;
-    min-width: 210px;
+    width: 210px;
     margin: auto 0;
     object-fit: cover;
     margin-right: 10px;
+    position: relative;
+    transition: .5s ease;
 }
+
+.recent-artist{
+    border-radius: 50%;
+}
+
+.recent-activity-real-image:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.play{
+    position: absolute;
+    top: 150px;
+    left: 10px;
+    font-size: 50px;  
+}
+
+.play:hover{
+    font-size: 55px;
+    cursor: pointer;
+}
+

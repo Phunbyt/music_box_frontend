@@ -2,7 +2,7 @@ import React from "react";
 import { FaHeart, FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { recentPlay } from "../Homepage";
 import "./RecentActivity.css";
-import rock from './rock.png';
+import 'font-awesome/css/font-awesome.min.css';
 
 export interface RecentActivityProps {
   value: recentPlay;
@@ -13,6 +13,7 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
   let albumTitle = "";
   let albumLikes = "";
   let artistPic = "";
+  let playlistPic = "https://cdns-images.dzcdn.net/images/artist//500x500-000000-80-0-0.jpg"
   let artistName = "";
   let artistLikes;
   let playListName = "";
@@ -43,10 +44,19 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
       <div className="bottom">
         <div className="cards">
           <div className="pic-text">
-            <div className="image" style={{
-              background: `url(${artistPic}) center center no-repeat`,
-              borderRadius: "50%",
-            }}></div>
+            <div className="recent-activity-image">
+              <img 
+                className="recent-activity-real-image"
+                src={artistPic}
+                style={{
+                  height: "100%",
+                  width: "100%",
+                  display: "block",
+                  objectFit: "cover",
+                  borderRadius: '50%'
+                 }} />
+              <div><i className="fa fa-play-circle play" style={{left: '80px'}}></i></div>
+            </div>
             <div>
               <p className="details" style={{textAlign: "center", marginTop: "10px"}}>
                 Artist - {artistName}
@@ -55,30 +65,51 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
               {artistLikes}</p>
             </div>
           </div> 
+
+
           <div className="pic-text">
-            <div className="image" style={{
-              background: `url(${albumPic}) center center no-repeat`
-            }}></div>
+            <div className="recent-activity-image">
+              <img 
+                className="recent-activity-real-image"
+                src={albumPic}
+                style={{
+                  height: "100%",
+                  width: "100%",
+                  display: "block",
+                  objectFit: "cover",
+                 }} />
+              <div><i className="fa fa-play-circle play"></i></div>
+            </div>
             <div>
               <p className="details" style={{textAlign: "center", marginTop: "10px"}}>
-                Album - {albumTitle}
+                Artist - {albumTitle}
               </p>
               <p style={{textAlign: "center", marginTop: "-20px", color: "#99999F"}}><FaHeart className="love" />{" "} 
               {albumLikes}</p>
             </div>
-          </div>
+          </div> 
+
           <div className="pic-text">
-            <div className="image" style={{
-              background: `url(${rock}) center center no-repeat`
-            }}></div>
+            <div className="recent-activity-image">
+              <img 
+                className="recent-activity-real-image"
+                src={playlistPic}
+                style={{
+                  height: "100%",
+                  width: "100%",
+                  display: "block",
+                  objectFit: "cover",
+                 }} />
+              <div><i className="fa fa-play-circle play"></i></div>
+            </div>
             <div>
               <p className="details" style={{textAlign: "center", marginTop: "10px"}}>
-                Playlist - {playListName}
+                Artist - {playListName}
               </p>
               <p style={{textAlign: "center", marginTop: "-20px", color: "#99999F"}}><FaHeart className="love" />{" "} 
               {playListLikes}</p>
             </div>
-          </div>
+          </div> 
         </div>
       </div>
     </div>
