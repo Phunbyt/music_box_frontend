@@ -4,6 +4,7 @@ import RecentActivity from './RecentActivity/RecentActivity'
 import axios from 'axios';
 import { useEffect, useState, ChangeEvent, FormEvent } from 'react';
 import Genres from './Genres/Genres'
+import ArtistsYouMayLike from './ArtistsYouMayLike/ArtistsYouMayLike';
 
 
 export interface property {
@@ -80,6 +81,7 @@ export default function Homepage() {
             <Flow />
             <RecentActivity value={recentlyPlayed} />
             <Genres/>
+            <ArtistsYouMayLike />
         </div>
     )
 }

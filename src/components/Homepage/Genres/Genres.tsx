@@ -29,7 +29,7 @@ export default function Genres() {
   useEffect(() => {
     getGenres();
     return () => {
-      console.log("got genres");
+      
     };
   });
 

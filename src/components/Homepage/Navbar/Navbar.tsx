@@ -147,34 +147,11 @@ export default function NavigationBar() {
                     {allData.artist ? (
                       allData.artist.map((item: Record<string, any>) => (
                         <li key={item.id} style={{display: "inlineBlock", paddingLeft: "10px", paddingTop: "5px", position: "relative"}}>
-                          <Link to="/artist"
-                            style={{ 
-                              display: 'flex',
-                            }}
-                          >
+                          <Link to="/artist" style={{ display: 'flex'}}>
                             <div style={{ width: "50px", height: "50px" }}>
-                                <img className="pic" src={item.picture}
-                                  style={{
-                                    height: '100%',
-                                    width: '100%',
-                                    display: 'block',
-                                    objectFit: 'cover',
-                                    borderRadius: '50%' 
-                                  }}
-                                />
+                                <img className="artist-album-playlist-pic" src={item.picture}/>
                             </div>
-                          <span
-                            style={{
-                              marginLeft: 10,
-                              position: "absolute",
-                              top: 15,
-                              left: 60,
-                              font: "normal normal normal 15px Lato",
-                              letterSpacing: "0.09px",
-                              color: "#FFFFFF",
-                              opacity: 1
-                            }}
-                          >{item.name}</span>
+                          <span className="names-of-artists-albums">{item.name}</span>
                           </Link>
                         </li>
                       )).slice(0, artistLimit)
@@ -196,27 +173,9 @@ export default function NavigationBar() {
                             }}
                           >
                             <div style={{ width: 50, height: 50 }}>
-                                <img className="pic" src={item.cover}
-                                  style={{
-                                    height: '100%',
-                                    width: '100%',
-                                    display: 'block',
-                                    objectFit: 'cover', 
-                                  }}
-                                />
+                              <img className="artist-album-playlist-pic" src={item.cover}/>
                             </div>
-                          <span
-                            style={{
-                              marginLeft: 10,
-                              position: "absolute",
-                              top: 15,
-                              left: 60,
-                              font: "normal normal normal 15px Lato",
-                              letterSpacing: "0.09px",
-                              color: "#FFFFFF",
-                              opacity: 1
-                            }}
-                          >{item.title}</span>
+                          <span className="names-of-artists-albums">{item.title}</span>
                           <span style={{
                             marginLeft: 10,
                             position: "absolute",
@@ -246,14 +205,7 @@ export default function NavigationBar() {
                             }}
                           >
                             <div style={{ width: 50, height: 50 }}>
-                                <img className="pic" src={item.cover}
-                                  style={{
-                                    height: '100%',
-                                    width: '100%',
-                                    display: 'block',
-                                    objectFit: 'cover', 
-                                  }}
-                                />
+                                <img className="artist-album-playlist-pic" src={item.cover}/>
                             </div>
                           <span
                             style={{
@@ -266,17 +218,7 @@ export default function NavigationBar() {
                               color: "#FFFFFF",
                               opacity: 1
                             }}
-                          >{item.title}</span>
-                          <span style={{
-                            marginLeft: 10,
-                            position: "absolute",
-                            top: 30,
-                            left: 60,
-                            font: "normal normal normal 14px Lato",
-                            letterSpacing: "0.08px",
-                            color: "#99999F",
-                            opacity: 1,
-                          }}>{item.artistName}</span>
+                          >{item.name}</span>
                           </Link>
                         </li>
                       )).slice(0, playlistLimit)
@@ -290,16 +232,9 @@ export default function NavigationBar() {
           </div>
           <NavDropdown
             title={
-              <span className="text-white my-auto" style={{font: "normal normal normal 16px/32px Lato"}}>
+              <span className="text-white my-auto" style={{font: "normal normal normal 20px Lato"}}>
                 <i className="fa fa-user-circle-o"
-                  style={{
-                    color: "white",
-                    cursor: "pointer",
-                    border: "1px solid white",
-                    borderRadius: "50%",
-                    fontSize: "30px",
-                    marginRight: '5px'
-                  }}
+                  style={{fontSize: "30px"}}
                 />{"    "}
                 {firstName} {lastName}
               </span>

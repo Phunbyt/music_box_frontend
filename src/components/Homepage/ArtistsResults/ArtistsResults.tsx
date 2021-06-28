@@ -1,5 +1,5 @@
 import NavigationBar from '../Navbar/Navbar';
-import {useState, useEffect} from 'react';
+import {useEffect} from 'react';
 import {useLocation, Link} from 'react-router-dom';
 import './ArtistResults.css'
 import 'font-awesome/css/font-awesome.min.css';

@@ -1,58 +1,81 @@
-.active{
-    background: transparent linear-gradient(273deg, #9B2DEF 0%, #2D9BEF 58%, #35EDFB 100%) 0% 0% no-repeat padding-box;
+.active {
+  background: transparent
+    linear-gradient(273deg, #9b2def 0%, #2d9bef 58%, #35edfb 100%) 0% 0%
+    no-repeat padding-box;
 }
 
 #myUL {
-
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    overflow: scroll;
-    width: 300px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  overflow: scroll;
+  width: 300px;
 }
 
-#myUl li{
-    padding-top: 2px;
-} 
-#search{
-    color: white !important;
+#myUl li {
+  padding-top: 2px;
+}
+#search {
+  color: white !important;
 }
 
-.view{
-    font-family: Lato;
+.view {
+  font-family: Lato;
 }
 
-.italic{
-    font: normal normal normal 14px Lato;
-    letter-spacing: 0.08px;
-    color: #D5D5D5;
-    opacity: 1;
-    border: none;
-    background-color: rgba(255,255,255, 0);
+.italic {
+  font: normal normal normal 14px Lato;
+  letter-spacing: 0.08px;
+  color: #d5d5d5;
+  opacity: 1;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
 }
 
-.italic:hover{
-    cursor: pointer !important;
-    color: #fff !important;
+.italic:hover {
+  cursor: pointer !important;
+  color: #fff !important;
 }
+
+.names-of-artists-albums {
+  margin-left: 10;
+  position: absolute;
+  top: 15px;
+  left: 60px;
+  font: normal normal normal 15px Lato;
+  letter-spacing: 0.09px;
+  color: #ffffff;
+  opacity: 1;
+}
+
+.artist-album-playlist-pic{
+    height: 100%;
+    width: 100%;
+    display: block;
+    object-fit: cover ;
+}
+
+/* .fa .fa-user-circle-o{
+    color: white;
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 50%;
+    font-size: 50px;
+    margin-right: 5px;
+} */
 
 input::-webkit-input-placeholder {
-
-    color: #bfbfbf;
+  color: #bfbfbf;
 }
 
 input:-moz-placeholder {
-
-    color: #bfbfbf;
+  color: #bfbfbf;
 }
 
 input::-moz-placeholder {
-
-    color: #bfbfbf;
+  color: #bfbfbf;
 }
 
 input:-ms-input-placeholder {
-
-    color: #bfbfbf;
+  color: #bfbfbf;
 }
-
