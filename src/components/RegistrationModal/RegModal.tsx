@@ -1,13 +1,10 @@
-import React, { useState, useEffect, MouseEvent} from 'react'
+import React, { useState, useEffect, FormEvent, MouseEvent } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, Link } from 'react-router-dom';
-
-import { AiFillCheckSquare } from 'react-icons/ai'
 import { FcGoogle } from 'react-icons/fc'
 import { ImFacebook } from 'react-icons/im'
 import { IoMdClose } from 'react-icons/io'
 import classes from './RegModal.module.css'
-import RecaptchLogo from '../../asset/img/RecaptchaLogo.svg'
 import Loader from '../../components/Loader/Loader';
 import Message from '../../components/Message/Message'
 import { registration } from '../../actions/userActions'
@@ -42,20 +39,18 @@ const RegModal = ({ close, show }: modal) => {
     const [userName, setUserName] = useState('')
     const [gender, setGender] = useState('')
     const [dateOfBirth, setDateOfBirth] = useState(Date)
-    console.log(dateOfBirth)
-    console.log(email)
-    console.log(password)
-    console.log(gender)
-    console.log(userName)
 
     const dispatch = useDispatch()
     const userRegistration = useSelector((state: RootState) => state.userRegistration)
 
     const { loading, error, userRegInfo } = userRegistration
+    console.log('registration', error)
 
     const history = useHistory();
 
-    const signUpHandler = (e: MouseEvent<HTMLButtonElement>) => {
+    const signUpHandler = (e: FormEvent<HTMLFormElement>) => {
+        console.log('got here');
+        
         e.preventDefault();
         dispatch(registration(email, password, userName, gender, dateOfBirth));
         close();
@@ -70,6 +65,7 @@ const RegModal = ({ close, show }: modal) => {
 
     useEffect(() => {
         if (userRegInfo) {
+            close();
             history.push('/home')
         }
     }, [history, userRegInfo]);
@@ -77,25 +73,29 @@ const RegModal = ({ close, show }: modal) => {
 
     return (
         <div className={show ? [classes.ModalWrapper, classes.show].join(" ") : [classes.ModalWrapper, classes.hide].join(" ") }>
-            <p style={{ float: 'right', paddingRight: '15px', color: '#161A1A' }} onClick={() => close()}><IoMdClose /></p>
-            <div className={classes.ModalBody}>
                 {error && <Message variant='danger'>{ error }</Message>}
                 {loading && <Loader />}
+            <p className={ classes.ModalStar}style={{ float: 'right', paddingRight: '15px', color: '#ffffff' }} onClick={() => close()}><IoMdClose /></p>
+            <div className={classes.ModalBody}>
                 <h2 className={classes.ModalHeaderText}>Ready to sign up?</h2>
+                <h2 className={classes.ModalHeaderTextMedium}>Create Account</h2>
                 <div className={classes.ModalSocialMedial}>
                     <button className={classes.ModalFaceBookButton}><ImFacebook /><span>Facebook</span></button>
                     <button className={classes.ModalGoogleButton} onClick={socialLoginHandler}><FcGoogle style={{fontSize:'30px'}}/><span>Google</span></button>
                 </div>
                 <div className={classes.FormWrapper}>
-                    <form className={classes.form}>
+                    <form className={classes.form} onSubmit={signUpHandler}>
                         <div className={classes.Form}>
-                            <input className={classes.FormInput} type='email' value={email} name='email' placeholder='Enter Email' onChange={(e) => setEmail(e.target.value)}/>
+                        <label className={ classes.FormLabel }htmlFor='email'>Email</label><br/>
+                            <input className={classes.FormInput} type='email' value={email} name='email' placeholder='Enter Email' onChange={(e) => setEmail(e.target.value)} required/>
                         </div>
                         <div className={classes.Form}>
-                            <input className={classes.FormInput} type='password' value={password} name='password' placeholder='Enter Password' onChange={(e) => setPassword(e.target.value)}/>
+                            <label className={ classes.FormLabel }htmlFor='email'>Password</label><br/>
+                            <input className={classes.FormInput} type='password' value={password} name='password' placeholder='Enter Password' onChange={(e) => setPassword(e.target.value)} required/>
                         </div>
                         <div className={classes.Form}>
-                            <input className={classes.FormInput} type='text' value={userName} name='username' placeholder='Enter Username' onChange={(e) => setUserName(e.target.value)}/>
+                        <label className={ classes.FormLabel }htmlFor='email'>Username</label><br/>
+                            <input className={classes.FormInput} type='text' value={userName} name='username' placeholder='Enter Username' onChange={(e) => setUserName(e.target.value)} required/>
                         </div>
                         <div className={classes.FormSelect}>
                             <input className={classes.FormInputDate} type='date' value={dateOfBirth} name='username' placeholder='Date of birth' onChange={(e) => setDateOfBirth(e.target.value)}/>
@@ -107,20 +107,15 @@ const RegModal = ({ close, show }: modal) => {
                             </select>
 
                         </div>
-                    </form>
-                    <div className={classes.ModalFormChild}>
-                        <div className={classes.ModalFormChilds}>
-                            <p className={classes.Icon}><span></span>I'm not a robot</p>
-                            <img className={classes.ModalRecaptcha} src={RecaptchLogo} alt='recaptcha logo'></img>
+                        <div className={classes.Wrap}>
+                        <div className={classes.ModalTerms} >
+                            <h5 className={classes.ModalTermsText}>By clicking on "Sign up", you accept the </h5>
+                            <h5 className={classes.ModalTermsTextc}>Terms and Conditions to use </h5>
                         </div>
-                    </div>
-                    <div className={classes.ModalTerms} >
-                        <h5 style={{color: '#121212', fontSize:'16px', letterSpacing: '0.07px'}}>By clicking on "Sign up", you accept the </h5>
-                        <h5 style={{color: '#2D9BEF', fontSize:'14px', letterSpacing: '0.07px', marginTop: '-20px'}}>Terms and Conditions to use </h5>
-                    </div>
-                    
-                    <button className={classes.ModalSignUp} onClick={ signUpHandler}>SIGN UP</button>
-                    <h4 style={{ color: '#161A1A', textAlign: 'center', letterSpacing: '0.1px', fontSize: '12px', marginTop: '0px' }}>Already have an account? <Link to='/login' style={ { color: '#2D9BEF'}} >Log in</Link></h4>
+                            <button type='submit' className={classes.ModalSignUp}>SIGN UP</button>
+                        </div>
+                    </form>
+                    <h4 className={ classes.AlreadyHaveAccount}style={{ color: '#161A1A', textAlign: 'center', letterSpacing: '0.1px', fontSize: '14px', marginTop: '10px' }}>Already have an account? <Link to='/login' style={ { color: '#2D9BEF'}} >Log in</Link></h4>
                 </div>
             </div>
             

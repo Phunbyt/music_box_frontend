@@ -16,28 +16,32 @@ const LandingPage = () => {
     return (
         <div className={classes.Wrapper}>
             <div className={classes.Layout1}>
-                <h3 className={classes.WelcomeText}>Open the world of music. <br /> It's all here. </h3>
-                <div className={classes.ButtonWrapper}>
-                    <a href="#music-offer"><button className={classes.Button}>MUSICBOX FREE</button></a>
-                    <a href="#music-offer"><button className={classes.ButtonPremium}>MUSICBOX PREMIUM</button></a>
-                </div>
-                <p className={classes.Subscription }>1 month free trial <span style={{color:"#2DCEEF", fontStyle:'bold'}}>$7.99</span>/month after</p>
+                <div className={classes.Layout1_Content}>
+                    <h3 className={classes.WelcomeText}>Open the world of music. <br /> It's all here. </h3>
+                    <div className={classes.ButtonWrapper}>
+                        <a className={ classes.Anchor} href="#music-offer"><button className={classes.Button}>MUSICBOX FREE</button></a>
+                        <a className={ classes.Anchor} href="#music-offer"><button className={classes.ButtonPremium}>MUSICBOX PREMIUM</button></a>
+                    </div>
+                        <p className={classes.Subscription}>1 month free trial <span style={{ color: "#2DCEEF", fontStyle: 'bold' }}>$7.99</span>/month after</p>
+                 </div>
             </div>
 
             <div className={classes.Layout2}>
                 <div className={classes.Layout2_Section2}>
                     <image className={classes.Image}></image>
                     <div className={classes.Sub}>
-                    <div className={classes.Section2_Flow}>
-                        <img className={classes.Flow_Svg} src={flow} alt='flow icon' />
-                        <h2 className={classes.Flow}>FLOW</h2>
-                    </div>
-                    <p className={classes.Section2_P}>Listen to a personalized mix of tracks based on your listening history, or create your own mix of genres, artists and playlists - letting you enjoy more of the music you love.</p>
+                        
+                            <div className={classes.Section2_Flow}>
+                                <img className={classes.Flow_Svg} src={flow} alt='flow icon' />
+                                <h2 className={classes.Flow}>FLOW</h2>
+                            </div>
+                            <p className={classes.Section2_P}>Listen to a personalized mix of tracks based on your listening history, or create your own mix of genres, artists and playlists - letting you enjoy more of the music you love.</p>
+                    
                     </div>
                 </div>
             </div>
             <div className={classes.Section3_Wrapper}>
-                <img className={classes.Section3_Image} src={listen} alt='listen anytime, anywhere' />
+                {/* <img className={classes.Section3_Image} src={listen} alt='listen anytime, anywhere' /> */}
                 <div className={classes.Section3_Text}>
                     <h3 className={classes.Section3_Text1}>Listen anytime, anywhere</h3>
                     <p className={classes.Section3_Text2}>All your favorite songs and episodes are always available, even without WIFI or LTE</p>

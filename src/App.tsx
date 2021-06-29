@@ -5,7 +5,8 @@ import classes from './App.module.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import LandingPage from './screens/LandingPage/LandingPage';
-import LoginScreen from './screens/LoginScreen/LoginScreen';
+import LoginScreen from './screens/Mobile/LoginScreen/LoginScreen';
+import LandingPageMobile from './screens/Mobile/LandingPage/LandingPage';
 //import HomePage from './screens/Homapage/HomePage'
 import Modal from './components/Modal/Modal';
 import RegModal from './components/RegistrationModal/RegModal'
@@ -15,6 +16,8 @@ const App = () => {
   return (
     <Router>
       <div className={classes.App}>
+        {/* <LandingPageMobile /> */}
+        {/* <LoginScreen /> */}
         <Header />
         <main>
           <Route path='/' component={LandingPage} exact />

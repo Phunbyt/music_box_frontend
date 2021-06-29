@@ -7,8 +7,43 @@ import twitter from '../../asset/img/twitter.png'
 const Footer = () => {
     return (
         <div className={classes.Footer}>
-            <h4 style={{ color: 'white', margin: 0, paddingLeft: '40px', paddingTop: '50px', lineHeight: '0.8', fontSize: '30px'}}>Music<br />Box</h4>
-            <div className={classes.FooterWrapper}>
+            <h4 className={ classes.FooterLogo}>Music<br />Box</h4>
+            <div className={classes.FooterItem_Container}>
+                <div className={classes.FooterItem}>
+                    <h5 className={classes.ItemHeader}>MUSICBOX</h5>
+                    <ul className={classes.Items}>
+                        <li>About</li>
+                        <li>Premium</li>
+                        <li>Features</li>
+                    </ul>
+                </div>
+                <div className={classes.FooterItem}>
+                    <h5 className={classes.ItemHeader}>COMMUNITIES</h5>
+                    <ul className={classes.Items}>
+                        <li>For Artists</li>
+                        <li>Developers</li>
+                        <li>Press</li>
+                    </ul>
+                </div>
+                <div className={classes.FooterItem}>
+                    <h5 className={classes.ItemHeader}>USEFUL LINKS</h5>
+                    <ul className={classes.Items}>
+                        <li>Help</li>
+                        <li>Web Player</li>
+                        <li>Explore Channel</li>
+                        <li>Download App</li>
+                    </ul>
+                </div>
+            </div>
+            <div className={classes.FooterSocial}>
+                <div className={classes.SocialIcons}>
+                    <img className={ classes.FIcons} src={fb} alt='facebook' />
+                    <img className={ classes.FIcons} src={ig} alt='instagram' />
+                    <img className={classes.FIcons} src={twitter} alt='twitter' />
+                </div>
+                <h5 className={ classes.IconText}>English (us) </h5>
+            </div>
+            {/* <div className={classes.FooterWrapper}>
                 <div className={classes.FooterOtherWrapper}>
                     <div className={classes.FWrapperHeader}>
                         <h5 className={classes.FHeader}>MUSICBOX</h5>
@@ -41,8 +76,8 @@ const Footer = () => {
                     <img className={ classes.FIcons} src={ig} alt='instagram' />
                     <img className={classes.FIcons} src={twitter} alt='twitter' />
                 </div>
-                <h5 style={{ color: '#ffffff', fontSize: '25px', marginTop: '30px'}}>English (us) </h5>
-            </div>
+                <h5 style={{ color: '#ffffff', fontSize: '14px', marginTop: '13px'}}>English (us) </h5>
+            </div> */}
         </div>
     )
 }
