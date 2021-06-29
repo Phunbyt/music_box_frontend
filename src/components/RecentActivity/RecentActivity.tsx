@@ -62,7 +62,7 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
               <p className="details" style={{textAlign: "center", marginTop: "10px"}}>
                 Artist - {artistName}
               </p>
-              <p style={{textAlign: "center", marginTop: "-20px", color: "#99999F"}}><FaHeart className="love" />{" "} 
+              <p style={{textAlign: "center", marginTop: "-10px", color: "#99999F"}}><FaHeart className="love" />{" "} 
               {artistLikes}</p>
             </div>
           </div> 
@@ -83,9 +83,9 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
             </div>
             <div>
               <p className="details" style={{textAlign: "center", marginTop: "10px"}}>
-                Artist - {albumTitle}
+                Album - {albumTitle}
               </p>
-              <p style={{textAlign: "center", marginTop: "-20px", color: "#99999F"}}><FaHeart className="love" />{" "} 
+              <p style={{textAlign: "center", marginTop: "-10px", color: "#99999F"}}><FaHeart className="love" />{" "} 
               {albumLikes}</p>
             </div>
           </div> 
@@ -105,9 +105,9 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
             </div>
             <div>
               <p className="details" style={{textAlign: "center", marginTop: "10px"}}>
-                Artist - {playListName}
+                Playlist - {playListName}
               </p>
-              <p style={{textAlign: "center", marginTop: "-20px", color: "#99999F"}}><FaHeart className="love" />{" "} 
+              <p style={{textAlign: "center", marginTop: "-10px", color: "#99999F"}}><FaHeart className="love" />{" "} 
               {playListLikes}</p>
             </div>
           </div> 

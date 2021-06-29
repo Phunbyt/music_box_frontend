@@ -81,36 +81,45 @@
   object-fit: cover ;
 }
 
+
+
+
 .nav-bar{
   height: 80px;
   width: 100%;
   background-color: #161a1a;
   color: white;
   position: fixed;
+  align-items: center;
   top: 0px;
   display: flex;
   z-index: 100;
+  position: relative;
 }
 
-.nav-bar .left-side{
-  flex: 33%;
+.left-side{
   display: flex;
   align-items: center;
   justify-content: left;
+  width: 100%;
 }
 
-.nav-bar .left-side .link{
+.link{
   color: grey;
   text-decoration: none;
   font-size: 25px;
   max-height: 80px;
+  display: flex;
+  flex: 33%;
+  justify-content: left;
 }
 
-.left-side button{
+.list-bar{
   display: none;
+  font-size: 35px;
 }
 
-.nav-bar .right-side{
+.search-and-user-profile{
   flex: 33%;
   display: flex;
   align-items: center;
@@ -139,7 +148,7 @@
   opacity: 1;
 }
 
-.right-side .search-box{
+.search-box{
   padding-left:40px;
   outline: 0;
   height: 40px;
@@ -157,26 +166,85 @@
   color: #FFFFFF;
 }
 
+.drop-down-button{
+  margin-left: 5px;
+  position: relative;
+}
+
+.dropdown{
+  display: block;
+  width: 100px;
+  background-color: #99999F;
+  border-top: 2px solid black;
+  color: #ffffff;
+  font-size: 16px;
+  height: 40px;
+  text-align: center;
+  align-items: center;
+  border-radius: 3px;
+}
+
+
+#hidden{
+  display: flex;
+}
 
 @media only screen and (max-width: 800px){
   .link-tags{
     margin-left: 10px;
     font-size: 15px;
   }
+
+  .search-box{
+    width: 200px;
+  }
 }
 
-@media only screen and (max-width: 650px){
+@media only screen and (max-width: 780px){
   .link-tags{
+    display: none;
+  }
+
+  .left-side{
     display: none;
   }
 }
 
 @media only screen and (max-width: 650px){
-  .left-side button{
+  
+  
+}
+
+@media only screen and (max-width: 780px){
+  
+  .list-bar{
+    display: unset;
+    /* flex: 1; */
+    /* background-color: red;
+    margin-left: auto; */
+  }
+
+  .music-box-letters {
+    margin-right: 70vw;
+  }
+
+  #hidden{
+    position: absolute;
+    left: 0px;
+    top: 80px;
+    height: 230px;
+    width: 100%;
+    background-color: #161a1a;
+    color: white;
+  }
+
+  #link{
     display: flex;
-    margin-left: 20px;
+    flex-direction: column;
+    height: 100%;
   }
 }
+
 
 
 /* 
