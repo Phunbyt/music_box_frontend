@@ -1,0 +1,53 @@
+.artists-you-may-like{
+    width: 75%;
+    height: fit-content;
+    margin-left: 12.5%;
+    margin-top: 100px;
+}
+
+.artists-you-may-like-top{
+    text-align: left;
+    font: normal normal bold 24px Lato;
+    color: #FFFFFF;
+    letter-spacing: 0.24px;
+    opacity: 1;
+}
+
+.artists-you-may-like-bottom{
+    height: fit-content;
+    display: flex;
+    overflow-x: scroll;
+}
+
+.artist-you-may-like-div-container{
+    width: 225px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-right: 10px;
+}
+
+.artist-you-may-like-div{
+    text-align: center;
+    font: normal normal normal 16px Lato;
+    letter-spacing: 0.1px;
+    color: #FFFFFF;
+    opacity: 1;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    margin-right: 10px;
+    position: relative;
+    transition: .5s ease;
+} 
+
+.artist-pic{
+    height: 100%;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.artist-pic:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}
