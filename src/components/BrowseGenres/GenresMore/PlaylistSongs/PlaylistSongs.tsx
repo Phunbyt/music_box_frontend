@@ -1,6 +1,6 @@
 import React, {useContext,useEffect} from 'react';
 import {useParams} from 'react-router'
-import { GenreContext } from '../../../context/GenreContext';
+import { GenreContext } from '../../../../context/GenreContext';
 import SongInPlaylist from "./SongInPlaylist";
 import { Row,Col } from 'react-bootstrap';
 import './PlaylistSongs.css'

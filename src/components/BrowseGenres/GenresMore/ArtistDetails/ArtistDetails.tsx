@@ -1,5 +1,5 @@
 import React, {useEffect, useContext} from 'react';
-import { GenreContext } from '../../../context/GenreContext';
+import { GenreContext } from '../../../../context/GenreContext';
 import { useParams } from 'react-router';
 import { Row,Col } from 'react-bootstrap';
 import './ArtistDetails.css'
@@ -30,6 +30,7 @@ const ArtistDetails = () => {
     getArtistDetails(artistname)
    
   },[])
+  
   const gradients = [
    "linear-gradient(to right, #c6ffdd, #fbd786, #f7797d)",
    "linear-gradient(to right, #00b4db, #0083b0)",

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Col} from 'react-bootstrap'
+import like from "../../../../asset/img/like.svg";
 import './Artist.css'
 const ArtistsByGenre = ({artist}:any) => {
   return (
@@ -11,6 +12,10 @@ const ArtistsByGenre = ({artist}:any) => {
       src={artist.picture_medium}
      />
      <p className="artist-name text-center">{artist.name}</p>
+     <div className="d-flex likeArtist">
+      <img alt="icon" src={like} />
+      <p>238848</p>
+     </div>
     </a>
    </Col>
   );

@@ -5,7 +5,7 @@ body{
   font-family: 'Lato', sans-serif;
 }
 .container-fluid {
-  background: url('../../asset/img/BG\ 3.png');
+  background: url('../../../asset/img/BG\ 3.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -115,4 +115,30 @@ body{
   width: 36px;
   transition: ease-in 0.4s;
   background-image: linear-gradient(183deg, #9B2DEF 0%, #2DCEEF 100%);
+}
+
+@media screen and (max-width:768px) {
+  .topmenu {
+    display: block;
+  }
+  .tab-list{
+    justify-content: left;
+    padding:0px 10px;
+    margin-top:20px;
+  }
+  .tab-link {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 12px;
+    margin-right:40px;
+  }
+  .underline{
+    position:absolute;
+    left:30px;
+    height: 2px;
+    width: 36px;
+    transition: ease-in 0.4s;
+    background-image: linear-gradient(183deg, #9B2DEF 0%, #2DCEEF 100%);
+  }
 }

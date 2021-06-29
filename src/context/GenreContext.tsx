@@ -18,6 +18,8 @@ const GenreContextProvider = ({children}:any) => {
   const [playlistsongs, setPlaylistSongs] = useState([])
   const [artistSongs, setArtistSongs] = useState([])
   const [artistAlbums, setArtistAlbums]  = useState([])
+  const [trimmedArtists, setTrimmedArtists] = useState([])
+  const [trimmedPlaylists, setTrimmedPlaylists] = useState([])
   const getOneGenre = async (id: any) => {
    try {
     const { data } = await axios.get(
@@ -64,6 +66,7 @@ const GenreContextProvider = ({children}:any) => {
     try{
       const {data} = await axios.get(`${baseUrl}/genre/artist/${id}`)
       setArtists(data.data)
+      setTrimmedArtists(data.data.slice(0,6))
     }
     catch(error){
       console.log(error.message)
@@ -75,6 +78,7 @@ const GenreContextProvider = ({children}:any) => {
        `${baseUrl}/genre/playlist/${id}`
       );
       setPlaylists(data.data)
+      setTrimmedPlaylists(data.data.slice(0, 6));
 
     }catch(error){
       console.log(error.message)
@@ -100,6 +104,9 @@ const GenreContextProvider = ({children}:any) => {
       console.log(error.message)
     }
   }
+  const trimArray = (arr:[])=>{
+    return arr.slice(0,6)
+  }
   const values: Record<string, any> = {
     genres,
     getAllGenres,
@@ -114,7 +121,10 @@ const GenreContextProvider = ({children}:any) => {
     getOneGenre,
     getArtistDetails,
     artistSongs,
-    artistAlbums
+    artistAlbums,
+    trimArray,
+    trimmedArtists,
+    trimmedPlaylists
   };
   const login = async () => {
    

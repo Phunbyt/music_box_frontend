@@ -1,7 +1,7 @@
 import React, {useEffect, useContext} from 'react';
-import { GenreContext } from '../../context/GenreContext';
+import { GenreContext } from '../../../context/GenreContext';
 import Genre from '../Genre/Genre';
-import { Container, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import './Browse.css'
 export interface BrowseGenresProps {
   
