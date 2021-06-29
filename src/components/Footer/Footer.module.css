@@ -1,0 +1,202 @@
+.Footer {
+  width: 100vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background: #111313 0% 0% no-repeat padding-box;
+  opacity: 1;
+  position: relative;
+  bottom: 0;
+}
+
+.FooterItem_Container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 25px 10px 10px 10px;
+}
+
+.FooterItem {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+}
+
+.FooterLogo {
+  color: #ffffff;
+  margin: 0;
+  padding-left: 40px;
+  padding-top: 30px;
+  line-height: 0.8;
+  font-size: 20px;
+}
+
+.ItemHeader {
+  color: #848484;
+  font-size: 14px;
+  letter-spacing: 0.24px;
+  padding-left: 4px;
+  margin-top: -3px;
+}
+
+.Items {
+  list-style: none;
+  color: #ffffff;
+  font-size: 12px;
+  letter-spacing: 0.09px;
+  line-height: 30px;
+  margin-left: -28px;
+  margin-top: -5px;
+}
+
+.FooterSocial {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px 50px 20px;
+}
+
+.SocialIcons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.FIcons {
+  width: 40px;
+  height: 40px;
+  padding-left: 20px;
+}
+
+.IconText {
+  color: #ffffff;
+  font-size: 14px;
+  margin-top: 13px;
+  padding-right: 40px;
+}
+
+@media (min-width: 1080px) {
+  .Footer {
+    height: 250px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background: #111313 0% 0% no-repeat padding-box;
+    opacity: 1;
+    position: relative;
+    bottom: 0;
+  }
+
+  .FooterLogo {
+    margin-top: -200px;
+  }
+  .FooterItem_Container {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 25px 10px 10px 10px;
+  }
+
+  .FooterItem {
+    width: 130px;
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+  }
+  .FooterSocial {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 79px;
+  }
+
+  .FIcons {
+    width: 37px;
+    height: 37px;
+  }
+  .IconText {
+    color: #ffffff;
+    font-size: 14px;
+    margin-top: 100px;
+    text-align: right;
+  }
+
+  .FooterLogo {
+    color: #ffffff;
+    margin-top: -130px;
+    padding-left: 40px;
+    padding-top: 30px;
+    line-height: 0.8;
+    font-size: 20px;
+  }
+}
+
+/* .FooterWrapper {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.FooterOtherWrapper {
+  width: calc(100% - 30px);
+  display: flex;
+  flex-direction: column;
+}
+
+.FWrapperHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 45px;
+}
+
+.FHeader {
+  color: #848484;
+  font-size: 14px;
+  letter-spacing: 0.24px;
+  padding: 0 40px;
+}
+
+.Fbody {
+  color: #ffffff;
+  font-size: 12px;
+  letter-spacing: 0.09px;
+  padding: 0 40px;
+}
+.FLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.FLinksBody {
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 4px;
+  padding-left: 40px;
+}
+
+.FIconsWrapper {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 45px;
+  padding-left: -14px;
+  padding-bottom: 10px;
+}
+.FIcons {
+  width: 40px;
+  height: 40px;
+  padding-left: 20px;
+} */
+
+/* @media (min-width: 1080px) {
+  .Footer {
+    display: flex;
+    direction: row;
+    bottom: 0;
+    justify-content: space-evenly;
+    top: 100%
+  }
+} */
