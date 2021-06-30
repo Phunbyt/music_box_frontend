@@ -1,8 +1,15 @@
-body {
+.div-containery {
   background: #161a1a;
   color: white;
   font-family: 'lato', sans-serif;
 }
+
+.bottomButtons {
+  display: flex;
+  margin-top: 50px;
+}
+
+
 .div-container {
   padding: 0px 280px;
 }
@@ -163,3 +170,4 @@ td {
   body {
   }
 }
+

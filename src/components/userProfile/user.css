@@ -1,7 +1,11 @@
-body {
+.div-container {
   background: #161a1a;
   color: white;
   font-family: 'lato', sans-serif;
+}
+
+.bottomButtons {
+  display: flex;
 }
 
 .List-img {
@@ -47,15 +51,15 @@ td {
   margin-right: 2rem !important;
 }
 .flex-container {
-  /* display: flex;
+   display: flex;
   flex-direction: row;
   margin-top: 4rem;
   /* position: relative; */
-  /* justify-content: space-between; */ 
+  /* justify-content: space-between; 
   width: 100%;
   height: 12vh;
   /* background-color: red; */
-  margin-top: 4rem;
+  /* margin-top: 4rem; */
 }
 .image-parent{
     /* width: 30%;

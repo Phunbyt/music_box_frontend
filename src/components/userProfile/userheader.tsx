@@ -3,7 +3,7 @@
       import { Navbar, Container, Nav, NavDropdown, Form, FormControl } from 'react-bootstrap';
       interface prop {
         name?: string;
-        logOut: () => void
+        logOut?: () => void
       }
       const UserHeader = ({ name, logOut }: prop) => {
         return (

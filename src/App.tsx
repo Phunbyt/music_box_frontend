@@ -11,7 +11,6 @@ const App =() => {
           <Switch>
             <Route exact path='/user-profile' component={UserForm} />
             <Route exact path='/listening-history' component={ListeningHistory} />
-            {/* <Route exact path='/' component={LandingPage} /> */}
           </Switch>
         </Router>
       </div>

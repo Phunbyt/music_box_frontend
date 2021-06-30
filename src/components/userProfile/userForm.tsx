@@ -3,7 +3,8 @@ import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../ListeningHistory/style.css';
 import UserHeader from './userheader';
 import { useHistory } from 'react-router-dom';
-
+import ChangePassword from '../ChangePassword/ChangePassword';
+import Modal from '../ChangePassword/Modal';
 import { Col, Row } from 'react-bootstrap';
 import { Grid, Container, TextField, MenuItem } from '@material-ui/core';
 import axios from 'axios';
@@ -39,6 +40,9 @@ interface userInterface {
 
 const UserForm = () => {
   const [user, setUser] = useState({} as userInterface);
+  const [field, setField] = useState({
+    modal: false,
+  });
 
   let history = useHistory();
 
@@ -64,7 +68,7 @@ const UserForm = () => {
       );
       console.log('User profile modified');
     } catch (err) {
-      throw new Error(err.message);
+      console.log(err.message);
     }
   };
 
@@ -83,7 +87,7 @@ const UserForm = () => {
           'http://music-box-a.herokuapp.com/music/signIn',
           {
             email: 'aderemiAmos@gmail.com',
-            password: '12345678',
+            password: '1234567',
             // email: 'davidj@gmail.com',
             // password: '1234567',
           }
@@ -101,7 +105,8 @@ const UserForm = () => {
         localStorage.setItem('LastName', lName);
       } catch (err) {
         console.log('invalid email or password');
-        throw new Error(err.message);
+        // throw new Error(err.message);
+        console.log(err.message);
       }
     };
     fetchUserDetails();
@@ -110,6 +115,14 @@ const UserForm = () => {
   return (
     <>
       <UserHeader name={user.firstName} logOut={logOut} />
+      <Modal
+        show={field.modal}
+        close={() => {
+          setField({ ...field, modal: false });
+        }}
+      >
+        <ChangePassword />
+      </Modal>
       <div className='div-container'>
         <div className='flex-container'>
           <div className='image-parent'>
@@ -239,9 +252,20 @@ const UserForm = () => {
             </TextField>
           </Grid>
         </Row>
-        <button className='logout' onClick={() => logOut()}>
-          LOG OUT
-        </button>
+        <div className='bottomButtons'>
+          <button className='logout' onClick={() => logOut()}>
+            LOG OUT
+          </button>
+
+          <button
+            className='logout'
+            onClick={() => {
+              setField({ ...field, modal: true });
+            }}
+          >
+            Change Password
+          </button>
+        </div>
       </div>
       {/* </Container> */}
     </>
