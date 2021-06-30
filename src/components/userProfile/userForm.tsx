@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../ListeningHistory/style.css';
 import UserHeader from './userheader';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import ChangePassword from '../ChangePassword/ChangePassword';
 import StreamingSection from './StreamingSection';
 import Modal from '../ChangePassword/Modal';
@@ -27,16 +27,16 @@ const months: string[] = [
   'December',
 ];
 
-let token: string;
-let userId: string;
-
+const userInfo = JSON.parse(localStorage.getItem('userInfo') as string);
+const token = userInfo.token;
+const userId = userInfo.user._id;
 interface userInterface {
   firstName?: string;
   lastName?: string;
   email?: string;
   gender?: string;
-  dateOfBirth: string;
-  _id: string;
+  dateOfBirth?: string;
+  _id?: string;
 }
 
 const UserForm = () => {
@@ -44,29 +44,44 @@ const UserForm = () => {
   const [field, setField] = useState({
     modal: false,
   });
-
+  useEffect(() => {
+    const { user } = userInfo;
+    console.log(user);
+    setUser(user);
+  }, []);
   let history = useHistory();
 
   const logOut = () => {
-    localStorage.removeItem('Token');
-    localStorage.removeItem('UserId');
+    localStorage.removeItem('userInfo');
     history.push('/');
-    console.log('logged out');
   };
 
   const onBlurFunc = async () => {
     try {
-      const userToken = localStorage.getItem('Token');
       const { firstName, lastName, gender } = user;
       await axios.put(
         `http://music-box-a.herokuapp.com/music/profile/${userId}`,
         { firstName, lastName, gender },
         {
           headers: {
-            Authorization: `Bearer ${userToken}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
+      const updatedUser = await axios.get(
+        `http://music-box-a.herokuapp.com/music/profile/${userId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const userObj: Record<string, any> = {
+        firstName: updatedUser.data.firstName,
+        lastName: updatedUser.data.lastName,
+        _id: updatedUser.data._id,
+      };
+      setUser(userObj);
       console.log('User profile modified');
     } catch (err) {
       console.log(err.message);
@@ -80,38 +95,6 @@ const UserForm = () => {
       setUser({ ...user, [name]: newName });
     }
   };
-
-  useEffect(() => {
-    const fetchUserDetails = async () => {
-      try {
-        const data = await axios.post(
-          'http://music-box-a.herokuapp.com/music/signIn',
-          {
-            email: 'aderemiAmos@gmail.com',
-            password: '1234567',
-            // email: 'davidj@gmail.com',
-            // password: '1234567',
-          }
-        );
-
-        // console.log(data.data.user)
-        token = data.data.token;
-        userId = data.data.user._id;
-        const fName = data.data.user.firstName;
-        const lName = data.data.user.lastName;
-        setUser(data.data.user);
-        localStorage.setItem('Token', token);
-        localStorage.setItem('UserId', userId);
-        localStorage.setItem('FirstName', fName);
-        localStorage.setItem('LastName', lName);
-      } catch (err) {
-        console.log('invalid email or password');
-        // throw new Error(err.message);
-        console.log(err.message);
-      }
-    };
-    fetchUserDetails();
-  }, []);
 
   return (
     <>
@@ -270,6 +253,9 @@ const UserForm = () => {
           >
             Change Password
           </p>
+          <Link to='/listening-history' className='notifications'>
+            Listening History
+          </Link>
           <p className='notifications'>Add new account</p>
           <p className='notifications2'>Terms and Conditions</p>
           <p className='notifications2'>Privacy Policy</p>

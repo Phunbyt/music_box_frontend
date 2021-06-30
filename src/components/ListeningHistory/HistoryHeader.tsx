@@ -19,9 +19,9 @@ const HistoryHeader = ({ firstName, logOut }: prop) => {
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
           <Navbar.Collapse id='responsive-navbar-nav'>
             <Nav className='me-auto'>
-              <Nav.Link href='#features'>Browse</Nav.Link>
-              <Nav.Link href='#pricing'>Library</Nav.Link>
-              <Nav.Link href='#pricing'>Home</Nav.Link>
+              <Nav.Link href='/genres'>Browse</Nav.Link>
+              <Nav.Link href=''>Library</Nav.Link>
+              <Nav.Link href='/home'>Home</Nav.Link>
             </Nav>
             <Form className='d-flex'>
               <FormControl

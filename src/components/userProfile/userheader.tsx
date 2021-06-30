@@ -20,12 +20,10 @@ const UserHeader = ({ name, logOut }: prop) => {
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
           <Navbar.Collapse id='responsive-navbar-nav'>
             <Nav className='me-auto'>
-              <Nav.Link >Home</Nav.Link>
-              <Nav.Link >Browse</Nav.Link>
-              <Nav.Link >Library</Nav.Link>
-              <Nav.Link className='accountsetting'>
-                Account / Settings
-              </Nav.Link>
+              <Nav.Link href='/home'>Home</Nav.Link>
+              <Nav.Link href='/genres'>Browse</Nav.Link>
+              <Nav.Link href=''>Library</Nav.Link>
+              <Nav.Link className='accountsetting'>Account / Settings</Nav.Link>
             </Nav>
             <h6></h6>
             <Form className='d-flex'>

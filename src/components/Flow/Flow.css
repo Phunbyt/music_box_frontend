@@ -1,0 +1,43 @@
+.flow{
+    margin-top: 136px;
+    margin-left: 12.5%;
+    max-width: 75%;
+}
+
+.flow-top{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font: normal normal bold 24px Lato;
+}
+
+.flow .recently{
+    margin: 0;
+    text-align: left;
+    font: normal normal bold 24px Lato;
+    letter-spacing: 0.24px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+.flow-bottom{
+    max-width: 100%;
+    background-color: white;
+    height: 320px;
+    display: flex;
+    margin: 0 auto;
+    position: relative;
+}
+
+.flow .dots{
+    font-size: 24px;
+    color: #ffff;
+}
+
+.flow .play{
+    font-size: 40px;
+    color: #1C1C1C;
+    position: absolute;
+}

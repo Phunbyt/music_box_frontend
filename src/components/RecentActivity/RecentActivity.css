@@ -1,0 +1,58 @@
+.recently-played{
+    max-width: 75%;
+    height: 334px;
+    margin-top: 100px;
+    color: white;
+    margin-left: 12.5%;
+}
+
+.recently-played .top{
+    height: 30px;
+    width: 100%;
+    display: block;
+    font: normal normal bold 24px Lato;
+    margin-bottom: 15px;
+}
+
+.recently-played .bottom{
+    /* height: 270px; */
+}
+
+.recently-played .bottom .cards{
+    height: fit-content;
+    margin: auto 0;
+    display: flex;
+    overflow-x: scroll;
+}
+
+.recent-activity-image{
+    height: 210px;
+    width: 210px;
+    margin: auto 0;
+    object-fit: cover;
+    margin-right: 10px;
+    position: relative;
+    transition: .5s ease;
+}
+
+.recent-artist{
+    border-radius: 50%;
+}
+
+.recent-activity-real-image:hover{
+    filter: brightness(50%);
+    cursor: pointer;
+}
+
+.play{
+    position: absolute;
+    top: 150px;
+    left: 10px;
+    font-size: 50px;  
+}
+
+.play:hover{
+    font-size: 55px;
+    cursor: pointer;
+}
+
