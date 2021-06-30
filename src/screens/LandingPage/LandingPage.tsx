@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 import classes from './LandingPage.module.css'
 import flow from '../../asset/img/flow.svg'
-import listen from '../../asset/img/listen.png'
 import searchPhone from '../../asset/img/SearchPhone.png'
 import Offline from '../../asset/img/Offline.png'
 import Hq from '../../asset/img/HQ.png'
@@ -12,11 +11,14 @@ import Noads from '../../asset/img/NoADS.png'
 import UmlimitedSkips from '../../asset/img/UnlimSkips.png'
 import mark from '../../asset/img/mark.svg';
 import markwhite from '../../asset/img/markwhite.svg';
+import Header from '../../components/Header/Header'
+
 import Footer from '../../components/Footer/Footer';
 
 const LandingPage = () => {
     return (
      <div className={classes.Wrapper}>
+         <Header/>
       <div className={classes.Layout1}>
        <div className={classes.Layout1_Content}>
         <h3 className={classes.WelcomeText}>

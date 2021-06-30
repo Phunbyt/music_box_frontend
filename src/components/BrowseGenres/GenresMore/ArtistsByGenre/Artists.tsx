@@ -5,7 +5,7 @@ import './Artist.css'
 const ArtistsByGenre = ({artist}:any) => {
   return (
    <Col xl={2} lg={3} md={4} sm={6}>
-    <a href={`/artists/${artist.name}`} className="d-block playlist text-right">
+    <a href={`/artists/${artist.name}`} className="d-block artist-link text-right">
      <img
       className="artist-poster"
       alt="genre poster"

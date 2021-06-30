@@ -19,6 +19,10 @@
   align-self: center;
   color:#99999F
 }
+.playlist-link{
+
+  text-decoration: none;
+}
 
 @media screen and (max-width:1200px) {
   .playlist-name {

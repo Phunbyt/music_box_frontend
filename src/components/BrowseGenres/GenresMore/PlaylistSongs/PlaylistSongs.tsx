@@ -4,6 +4,7 @@ import { GenreContext } from '../../../../context/GenreContext';
 import SongInPlaylist from "./SongInPlaylist";
 import { Row,Col } from 'react-bootstrap';
 import './PlaylistSongs.css'
+import NavigationBar from '../../../Navbar/Navbar';
 const PlaylistSongs = () => {
   const {playlistid}:any = useParams()
   const {getOnePlaylist,playlistsongs}:any= useContext(GenreContext)
@@ -13,7 +14,9 @@ const PlaylistSongs = () => {
   },[])
 
   return (
-   <div className="container-fluid" id ="playlistsongs">
+    <>
+    <NavigationBar/>
+   <div className="container-fluid mt-4" id ="playlistsongs">
     <Row className= "text-white mb-2">
       <Col md={3} lg={3} xs ={3}>#</Col>
       <Col md={3} lg={3} xs = {3}>TITLE</Col>
@@ -31,6 +34,7 @@ const PlaylistSongs = () => {
      })}
  
    </div>
+   </>
   );
 }
 

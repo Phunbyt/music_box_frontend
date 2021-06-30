@@ -3,6 +3,7 @@ import { GenreContext } from '../../../../context/GenreContext';
 import { useParams } from 'react-router';
 import { Row,Col } from 'react-bootstrap';
 import './ArtistDetails.css'
+import NavigationBar from '../../../Navbar/Navbar';
 interface Songs{
   id: number,
   title: string,
@@ -44,8 +45,10 @@ const ArtistDetails = () => {
    "linear-gradient(to right, #348f50, #56b4d3)",
   ];
   return (
+    <>
+    <NavigationBar/>
    <div className="container-fluid">
-    <h1 className="text-white font-bold">{artistname}</h1>
+    <h1 className="text-white font-bold my-4">{artistname}</h1>
     <h2 className="text-white">Songs</h2>
     
      <Row className="text-white d-flex">
@@ -77,6 +80,7 @@ const ArtistDetails = () => {
     }): <p>{error}</p>}
     </Row>
    </div>
+   </>
   );
 }
  

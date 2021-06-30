@@ -9,7 +9,6 @@ export interface Props {
 const baseUrl = 'https://music-box-a.herokuapp.com'
 
 export const GenreContext = createContext({} as Props)
-
 const GenreContextProvider = ({children}:any) => {
   const [genres, setGenres] = useState([])
   const [searchResults, setSearch] = useState([])

@@ -3,6 +3,7 @@ import { GenreContext } from '../../../context/GenreContext';
 import Genre from '../Genre/Genre';
 import { Row } from 'react-bootstrap';
 import './Browse.css'
+import NavigationBar from '../../Navbar/Navbar';
 export interface BrowseGenresProps {
   
 }
@@ -25,14 +26,17 @@ const BrowseGenres: React.SFC<BrowseGenresProps> = () => {
   },[])
 
   return (
+    <>
+     <NavigationBar/>
    <div className="container-fluid" id="browse">
-    <h3 className="text-white mb-4">Genres</h3>
+    <h3 className="text-white my-4">Genres</h3>
     <Row>
      {genres.length ? genres.map((genre: GenresInterface) => {
       return <Genre key={genre.id} genre={genre} />;
      }):<p className = "text-white">{error}</p>}
     </Row>
    </div>
+   </>
   );
 }
  

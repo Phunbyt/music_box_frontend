@@ -5,6 +5,7 @@ import ArtistsByGenre from './ArtistsByGenre/Artists';
 import PlaylistByGenre from './PlaylistsByGenre/Playlist';
 import { Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+import NavigationBar from '../../Navbar/Navbar';
 
 
 const GenresMore= ({name}:any)=>{
@@ -93,7 +94,8 @@ const GenresMore= ({name}:any)=>{
   };
 
   return (
-
+    <>
+    <NavigationBar/>
    <div className="container-fluid">
     <div className="d-flex row topmenu">
      <h1 className="ml-3 text-white" id="genre-name">
@@ -174,6 +176,7 @@ const GenresMore= ({name}:any)=>{
      </Row>
     </div>
    </div>
+   </>
   );
 }
 

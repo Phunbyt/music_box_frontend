@@ -9,7 +9,9 @@
   margin-top:5px;
   font-size:16px;
 }
-
+.artist-link{
+  text-decoration: none;
+}
 .playlist{
   margin-bottom: 25px;
 }

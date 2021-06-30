@@ -9,7 +9,7 @@ const PlaylistByGenre= ({playlist}:any) => {
    <Col xl={2} lg={3} md={4} sm={6}>
     <Link
      to={`/genres/playlist/${playlist._id}`}
-     className="d-block genre text-left"
+     className="d-block playlist-link text-left"
     >
      <img
       className="playlist-poster"
