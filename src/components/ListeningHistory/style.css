@@ -162,7 +162,8 @@ td {
     display: inline-block; */
   /* background-color: #35edfb; */
   text-align: left;
-  font-weight: bold;
+  /* font-weight: bold; */
+  font-size: 24px;
   color: #ffffff;
 }
 
@@ -194,14 +195,14 @@ td {
   margin-top: 2rem;
   display: inline-block;
   /* margin-left: 8rem; */
-  font-size: 32px;
+  font-size: 24px;
   font-family: lato, sans-serif;
   font-weight: bold;
 }
 .premium-feature{
   margin-top: 0.5rem;
   font-family: lato, sans-serif;
-  font-weight: bold;
+  /* font-weight: bold; */
   font-size: 16px;
   /* margin-left: 8rem; */
 }
@@ -228,7 +229,7 @@ td {
  text-align: left;
  font-family: Lato, sans-serif;
  font-weight: bold;
- font-size: 34px;
+ font-size: 24px;
  opacity: 1;
 }
 .notifications{
@@ -236,7 +237,7 @@ td {
   letter-spacing: 0.1px;
   font-size: 17px;
   text-align: left;
-  font-weight: bold;
+  /* font-weight: bold; */
   margin: 1.2rem 0;
 }
 .notifications2{
@@ -244,7 +245,7 @@ td {
  letter-spacing: 0.1px;
  font-size: 17px;
  text-align: left;
- font-weight: bold;
+ /* font-weight: bold; */
  margin: 1.2rem 0;
 }
 .change-password{
