@@ -1,6 +1,6 @@
 import React, { useState, useEffect, MouseEvent, FormEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, Link} from 'react-router-dom'
+import { useHistory, Link, Redirect} from 'react-router-dom'
 
 import classes from './Modal.module.css';
 import { ImFacebook } from 'react-icons/im'
@@ -38,21 +38,19 @@ const Modal = ({ close, show }: modal) => {
     
 
     const history = useHistory();
-
-    useEffect(() => {
-        if (userInfo) {
-            close()
-            history.push('/home')
-            
-        }
-
-    }, [history, userInfo]);
    
 
-    const loginHandler = (e: FormEvent<HTMLFormElement>) => {
+    const loginHandler =  (e: FormEvent<HTMLFormElement>) => {
         console.log('loginHandler', 'got here');
         e.preventDefault();
         dispatch(login(email, password));
+        console.log('user',userInfo)
+        if(userInfo){
+            close()
+            history.push('/home')
+        }
+        
+        
     }
 
     const googleLoginHandler = (e: MouseEvent<HTMLButtonElement>) => {

@@ -10,13 +10,18 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "axios": "^0.21.1",
     "D": "^1.0.0",
     "react": "^17.0.2",
+    "react-bootstrap": "^1.6.1",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-redux": "^7.2.4",
+    "redux": "^4.1.0",
+    "redux-thunk": "^2.3.0",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
@@ -29,14 +34,13 @@
     "@types/axios": "^0.14.0",
     "@types/eslint": "^7.2.13",
     "@types/react-bootstrap": "^0.32.25",
+    "@types/react-router-dom": "^5.1.6",
     "@types/react-redux": "^7.1.16",
     "@types/react-router": "^5.1.15",
     "@types/react-router-bootstrap": "^0.24.5",
-    "@types/react-router-dom": "^5.1.7",
     "@types/redux": "^3.6.0",
     "@types/redux-devtools-extension": "^2.13.2",
     "@types/redux-thunk": "^2.1.0",
-    "axios": "^0.21.1",
     "eslint": "^7.29.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-typescript-prettier": "^4.2.0",
@@ -44,14 +48,9 @@
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
     "prettier": "^2.3.1",
-    "react-bootstrap": "^1.6.1",
-    "react-redux": "^7.2.4",
     "react-router-bootstrap": "^0.25.0",
-    "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
-    "redux-thunk": "^2.3.0",
-    "serve": "^12.0.0",
-    "typescript": "^4.3.4"
+    "serve": "^12.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -76,5 +75,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy":"https://music-box-a.herokuapp.com"
 }
