@@ -63,12 +63,12 @@ const RegModal = ({ close, show }: modal) => {
     }
     
 
-    useEffect(() => {
-        if (userRegInfo) {
-            close();
-            history.push('/home')
-        }
-    }, [history, userRegInfo]);
+    // useEffect(() => {
+    //     if (userRegInfo) {
+    //         close();
+    //         history.push('/home')
+    //     }
+    // }, [history, userRegInfo]);
 
 
     return (

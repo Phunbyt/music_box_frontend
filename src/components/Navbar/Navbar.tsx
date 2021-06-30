@@ -1,6 +1,6 @@
 import React, {ChangeEvent, FormEvent, useRef, useState, useEffect} from "react";
 import axios from "axios";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink} from "react-router-dom";
 import "./Navbar.css";
 import "font-awesome/css/font-awesome.min.css";
 
@@ -24,10 +24,14 @@ export default function NavigationBar() {
   const [display, setDisplay] = useState(false);
   const [showLinks, setShowLinks] = useState(false);
   const [visible, setVisible] = useState(false)
-  
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setInfo(e.target.value);
+  }
+
+  function logout(){
+    localStorage.removeItem('userInfo')
+
   }
 
   const fetchAll = async (e: FormEvent<HTMLFormElement>) => {
@@ -59,9 +63,9 @@ export default function NavigationBar() {
     setInfo("");
     setDisplay(false);
   }
-
-  const lastName = localStorage.getItem("lastName");
-  const firstName = localStorage.getItem("firstName");
+  const {user} = JSON.parse(localStorage.getItem('userInfo') as string)
+  const lastName = user.firstName
+  const firstName = user.lastName
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
@@ -90,7 +94,7 @@ export default function NavigationBar() {
           <div className="link" id="link">
             <NavLink to="/home" className="link-tags" activeStyle={{color: '#2dceef'}}>Home</NavLink>
             <NavLink to="/home" className="link-tags" activeStyle={{color: '#2dceef'}}>Library</NavLink>
-            <NavLink to="/home" className="link-tags" activeStyle={{color: '#2dceef'}}>Browse</NavLink>
+            <NavLink to="/genres" className="link-tags" activeStyle={{color: '#2dceef'}}>Browse</NavLink>
           </div>
 
           <div className="search-and-user-profile">
@@ -110,7 +114,7 @@ export default function NavigationBar() {
                       {allData.artist ? (
                         allData.artist.map((item: Record<string, any>) => (
                           <li key={item.id} style={{display: "inlineBlock", paddingLeft: "10px", paddingTop: "5px", position: "relative"}} className='search-list' >
-                            <Link to="/artist" style={{ display: 'flex'}}>
+                            <Link to={`/artists/${item.name}`} style={{ display: 'flex'}}>
                               <div style={{ width: "50px", height: "50px" }}>
                                   <img className="artist-album-playlist-pic" style={{borderRadius: '50%'}} src={item.picture}/>
                               </div>
@@ -199,7 +203,7 @@ export default function NavigationBar() {
               <i className="fa fa-chevron-circle-down drop-down-button" onClick={() => setVisible(!visible)} style={{}}>
                 <div style={{position: 'absolute', top: 30, left: -70, zIndex: 10000, visibility: visible ? "visible": "hidden", fontFamily: 'Lato', alignItems: 'center'}}>
                   <NavLink className="dropdown" to="/profile">Profile</NavLink>
-                  <NavLink className="dropdown" to="/landing-page">Log out</NavLink>
+                  <NavLink className="dropdown" to="/" onClick ={logout}>Log out</NavLink>
                 </div>
               </i>
             </div>

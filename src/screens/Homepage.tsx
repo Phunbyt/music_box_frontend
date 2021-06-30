@@ -54,7 +54,8 @@ export default function Homepage() {
 
     const getRecentlyPlayed = async () => {
         try {
-            const token = localStorage.getItem("Token");
+            const {user} = JSON.parse(localStorage.getItem("userInfo") as string);
+            const token = user.token
             const config = {
                 headers: {
                     "Authorization": `Bearer ${token}`
@@ -68,7 +69,7 @@ export default function Homepage() {
     }
 
     useEffect(() => {
-        callApi();
+        
         getRecentlyPlayed();
 
         return () => {
