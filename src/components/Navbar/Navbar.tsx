@@ -1,10 +1,4 @@
-import React, {
-  ChangeEvent,
-  FormEvent,
-  useRef,
-  useState,
-  useEffect,
-} from "react";
+import React, {ChangeEvent, FormEvent, useRef, useState, useEffect} from "react";
 import axios from "axios";
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
@@ -76,9 +70,9 @@ export default function NavigationBar() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
+ 
   return (
-    <div style={{maxWidth: '100vw'}}>
+    <div style={{maxWidth: '100vw'}}> 
       <nav className="nav-bar">
         <div className="music-box-letters">
           <Link to="/home" style={{color: "white"}}>
@@ -94,7 +88,7 @@ export default function NavigationBar() {
 
         <div className="left-side" id={showLinks ? "hidden" : ""}>
           <div className="link" id="link">
-            <NavLink to="/home" className="link-tags" activeStyle={{color: '#2dceef', border: '1px solid #2dceef', borderRadius: '25px'}}>Home</NavLink>
+            <NavLink to="/home" className="link-tags" activeStyle={{color: '#2dceef'}}>Home</NavLink>
             <NavLink to="/home" className="link-tags" activeStyle={{color: '#2dceef'}}>Library</NavLink>
             <NavLink to="/home" className="link-tags" activeStyle={{color: '#2dceef'}}>Browse</NavLink>
           </div>
@@ -203,7 +197,7 @@ export default function NavigationBar() {
               <i className="fa fa-user-circle-o" style={{fontSize: "30px", marginRight: '5px'}} />
               {firstName} {lastName}
               <i className="fa fa-chevron-circle-down drop-down-button" onClick={() => setVisible(!visible)} style={{}}>
-                <div style={{position: 'absolute', top: 30, left: -70, zIndex: 10000, visibility: visible ? "visible": "hidden"}}>
+                <div style={{position: 'absolute', top: 30, left: -70, zIndex: 10000, visibility: visible ? "visible": "hidden", fontFamily: 'Lato', alignItems: 'center'}}>
                   <NavLink className="dropdown" to="/profile">Profile</NavLink>
                   <NavLink className="dropdown" to="/landing-page">Log out</NavLink>
                 </div>
@@ -212,7 +206,6 @@ export default function NavigationBar() {
           </div>
         </div>
       </nav>
-
     </div>
   );
 }

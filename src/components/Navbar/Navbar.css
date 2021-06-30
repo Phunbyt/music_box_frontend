@@ -81,9 +81,6 @@
   object-fit: cover ;
 }
 
-
-
-
 .nav-bar{
   height: 80px;
   width: 100%;
@@ -94,7 +91,6 @@
   top: 0px;
   display: flex;
   z-index: 100;
-  position: relative;
 }
 
 .left-side{
@@ -120,7 +116,6 @@
 }
 
 .search-and-user-profile{
-  flex: 33%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -172,14 +167,13 @@
 }
 
 .dropdown{
-  display: block;
+  display: flex;
   width: 100px;
   background-color: #99999F;
   border-top: 2px solid black;
   color: #ffffff;
   font-size: 16px;
   height: 40px;
-  text-align: center;
   align-items: center;
   border-radius: 3px;
 }
@@ -200,48 +194,56 @@
   }
 }
 
+
 @media only screen and (max-width: 780px){
+
   .link-tags{
-    display: none;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 8px;
+  }
+
+  .search-box{
+    width: fit-content;
+    height: 33px;
+    margin-bottom: 5px;
+    border-radius: 25px ;
+  }
+
+  form{
+    margin-left: 15px;
+  }
+
+  .link{
+    display: block;
   }
 
   .left-side{
     display: none;
   }
-}
-
-@media only screen and (max-width: 650px){
-  
-  
-}
-
-@media only screen and (max-width: 780px){
   
   .list-bar{
-    display: unset;
-    /* flex: 1; */
-    /* background-color: red;
-    margin-left: auto; */
+    display: block;
+    color: white;
   }
 
   .music-box-letters {
     margin-right: 70vw;
   }
 
+  .search-and-user-profile{
+    display: block;
+  }
+
   #hidden{
     position: absolute;
     left: 0px;
     top: 80px;
-    height: 230px;
+    display: block;
+    height: 200px;
     width: 100%;
     background-color: #161a1a;
     color: white;
-  }
-
-  #link{
-    display: flex;
-    flex-direction: column;
-    height: 100%;
   }
 }
 

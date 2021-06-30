@@ -5,6 +5,8 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Genres from '../components/Genres/Genres'
 import ArtistsYouMayLike from '../components/ArtistsYouMayLike/ArtistsYouMayLike';
+import './Homepage.css';
+import image from './BG.png';
 
 
 export interface property {
@@ -77,8 +79,15 @@ export default function Homepage() {
     
     return (
         <div>
+            <div className='nav-bar'>
             <Navigationbar />
-            <Flow />
+            </div>
+            <div className='home'>
+                <h1>Home</h1>
+            </div>
+            <div className='flow'>
+                <Flow />
+            </div>
             <RecentActivity value={recentlyPlayed} />
             <Genres/>
             <ArtistsYouMayLike />
