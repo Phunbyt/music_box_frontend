@@ -4,6 +4,7 @@ import '../ListeningHistory/style.css';
 import UserHeader from './userheader';
 import { useHistory } from 'react-router-dom';
 import ChangePassword from '../ChangePassword/ChangePassword';
+import StreamingSection from './StreamingSection';
 import Modal from '../ChangePassword/Modal';
 import { Col, Row } from 'react-bootstrap';
 import { Grid, Container, TextField, MenuItem } from '@material-ui/core';
@@ -252,19 +253,41 @@ const UserForm = () => {
             </TextField>
           </Grid>
         </Row>
+        <StreamingSection />
+        <div className='account-parent'>
+          <h5 className='account'>Account</h5>
+          <div className='notifications'>
+            <p>Enable Browser Notifications</p>
+          </div>
+          <div>
+            <p className='notifications'>Language</p>
+          </div>
+          <p
+            className='notifications change-password'
+            onClick={() => {
+              setField({ ...field, modal: true });
+            }}
+          >
+            Change Password
+          </p>
+          <p className='notifications'>Add new account</p>
+          <p className='notifications2'>Terms and Conditions</p>
+          <p className='notifications2'>Privacy Policy</p>
+          <p className='notifications2'>Support</p>
+        </div>
         <div className='bottomButtons'>
           <button className='logout' onClick={() => logOut()}>
             LOG OUT
           </button>
 
-          <button
+          {/* <button
             className='logout'
             onClick={() => {
               setField({ ...field, modal: true });
             }}
           >
             Change Password
-          </button>
+          </button> */}
         </div>
       </div>
       {/* </Container> */}

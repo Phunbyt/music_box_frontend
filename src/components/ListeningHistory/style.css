@@ -1,8 +1,14 @@
+.accountsetting{
+  margin-left: 300px;
+  color: white !important
+}
+
 .div-containery {
   background: #161a1a;
   color: white;
   font-family: 'lato', sans-serif;
 }
+
 
 .bottomButtons {
   display: flex;
@@ -159,15 +165,157 @@ td {
   font-weight: bold;
   color: #ffffff;
 }
-/* On screens that are 992px or less, set the background color to olive */
-@media screen and (max-width: 992px) {
-  body {
-  }
+
+
+.horizon{
+  margin: 1rem auto;
+  color: #fff;
+  background-color: #fff;
+  /* width: 79%; */
+  text-align: center;
+  border: 1px solid white;
+  opacity: 0.3;
+}
+.social-wrapper{
+ margin-top: 50px;
+ /* width: 77%; */
 }
 
-/* On screens that are 600px or less, set the background color to olive */
-@media screen and (max-width: 600px) {
-  body {
-  }
+/* .streaming-wrapper{
+  width: 0px;
+} */
+.social-wrapper-child1{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1.3rem auto;
 }
+.streaming{
+  margin-top: 2rem;
+  display: inline-block;
+  /* margin-left: 8rem; */
+  font-size: 32px;
+  font-family: lato, sans-serif;
+  font-weight: bold;
+}
+.premium-feature{
+  margin-top: 0.5rem;
+  font-family: lato, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  /* margin-left: 8rem; */
+}
+.radio-paren{
+ font-family: lato, sans-serif;
+ /* margin-left: 8rem; */
+}
+
+.buttonText{
+ color:#fff;
+ display: inline-block;
+ margin-left: 0.8rem;
+ opacity: 0.3;
+ font-size: 16px;
+}
+.horizon2{
+  margin-bottom: 3rem
+}
+.account-parent{
+ margin: 0 auto;
+ /* width: 77%; */
+}
+.account{
+ text-align: left;
+ font-family: Lato, sans-serif;
+ font-weight: bold;
+ font-size: 34px;
+ opacity: 1;
+}
+.notifications{
+  opacity: 1;
+  letter-spacing: 0.1px;
+  font-size: 17px;
+  text-align: left;
+  font-weight: bold;
+  margin: 1.2rem 0;
+}
+.notifications2{
+ opacity: 0.4;
+ letter-spacing: 0.1px;
+ font-size: 17px;
+ text-align: left;
+ font-weight: bold;
+ margin: 1.2rem 0;
+}
+.change-password{
+ cursor: pointer;
+}
+.change-password:hover{
+ opacity: 0.4;
+ color: #2DCEEF;
+}
+  /* On screens that are 992px or less, set the background color to olive */
+   @media screen and (max-width: 992px) {
+       
+     }
+     
+     /* On screens that are 600px or less, set the background color to olive */
+     @media screen and (max-width: 600px) {
+       .par{
+         height: 100vh;
+         width: 100%
+       }
+       .tables{
+         
+       }
+       .icony{
+         display: none;
+       }
+       .premium {
+         position: relative;
+         top: 130px;
+         margin-left: 200px !important; 
+         border:1px solid red;
+         text-align: center;
+         
+       }
+       .container td{
+         font-size: 12px;
+       }
+       .space-left{
+         display: none;
+       }
+       .user1{
+         /* color: green; */
+         position: absolute;
+         top: -45px;
+         font-size: 1.1rem;
+         font-weight: bold;
+         left: 100px;
+       }
+       .image-parent{
+         margin-left: 100px;
+         position: absolute;
+       }
+       .free-account{
+         width: 150px;
+         top: 120px;
+         left: 85px;
+         position: absolute;
+         
+       }
+       .contact{
+         position: relative;
+         left: 35px;
+         top: 95px;
+         font-size: 20px;
+       }
+     }
+
+
+
+
+
+
+
 
