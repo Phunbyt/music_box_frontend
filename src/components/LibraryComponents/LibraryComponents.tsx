@@ -3,7 +3,7 @@ import LibraryPlaylists from '../../screens/Library/LibraryPlaylists/LibraryPlay
 import LibraryAlbums from '../../screens/Library/LibraryAlbums/LibraryAlbums';
 import LibraryArtists from '../../screens/Library/LibraryArtists/LibraryArtists';
 import LibraryNavBar from '../../screens/Library/LibraryNavBar/LibraryNavBar';
-
+import SearchNoResultComp from "../NoResult/SearchNoResultComp";
 
 
 export default function LibraryComponents() {
@@ -16,7 +16,7 @@ export default function LibraryComponents() {
         <Route path="/playlists" exact component={LibraryPlaylists} />
         <Route path="/albums" exact component={LibraryAlbums} />
         <Route path="/artists" exact component={LibraryArtists} />
-
+        <Route path="/noResult" exact component={SearchNoResultComp} />
         {/* </Switch> */}
       </Router>
     </>

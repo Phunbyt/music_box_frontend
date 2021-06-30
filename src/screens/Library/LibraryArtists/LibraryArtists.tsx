@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./LibraryArtists.css";
 import axios from "axios";
-// import { FaPlus } from "react-icons/fa";
-// import Modal from "../../../components/LibraryComponents/CreatePlaylistModal/CreatePlaylistModal";
-// import Toast from "../../../components/LibraryComponents/CreatePlaylistModal/toast";
+import ClipLoader from "react-spinners/ClipLoader";
 import LibraryDropdown from "../../../components/LibraryComponents/LibraryDropdown/LibraryDropdown";
 
 let initialState: any[];
 
 export default function LibraryPlaylists() {
+  const [loading, setLoading] = useState(false);
   const [playlist, setPlaylist] = useState([] as any);
 
   let token: string;
@@ -30,6 +29,7 @@ export default function LibraryPlaylists() {
 
   const fetchAll = async () => {
     try {
+      setLoading(true);
       const token = localStorage.getItem("Token");
       const userId = localStorage.getItem("UserId");
       const config = {
@@ -42,7 +42,6 @@ export default function LibraryPlaylists() {
         config
       );
 
-        console.log(data)
       const myLikes: Record<string, any>[] = [];
 
       for (let i = 0; i < data.length; i++) {
@@ -54,6 +53,7 @@ export default function LibraryPlaylists() {
       }
       initialState = [...myLikes].reverse();
       setPlaylist([...initialState]);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -84,6 +84,15 @@ export default function LibraryPlaylists() {
   };
   return (
     <>
+    {
+      loading ?
+
+  <div className="App">
+    <ClipLoader size={50} color={"#DEDFDF"} loading={loading} />
+  </div>
+
+      :
+
       <div>
         <div className="playlistHeader">
           <p className="playlistName">My Liked Artists</p>
@@ -100,7 +109,7 @@ export default function LibraryPlaylists() {
                 color: "black",
               }}
             >
-              The Album is empty
+              The Artist Library is empty
             </div>
           ) : (
             playlist.map((item: Record<string, any>) => (
@@ -121,6 +130,7 @@ export default function LibraryPlaylists() {
           )}
         </div>
       </div>
+    }
     </>
   );
 }

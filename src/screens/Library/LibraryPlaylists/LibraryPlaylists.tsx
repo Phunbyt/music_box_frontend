@@ -3,14 +3,18 @@ import "./LibraryPlaylists.css";
 import axios from "axios";
 import imgPics from "../../../asset/img/Morning Run.png";
 import { FaPlus } from "react-icons/fa";
-import Modal from "../../../components/LibraryComponents/CreatePlaylistModal/CreatePlaylistModal";
+import ClipLoader from "react-spinners/ClipLoader";
+import CreatePlaylistModal from "../../../components/LibraryComponents/CreatePlaylistModal/CreatePlaylistModal";
 import Toast from "../../../components/LibraryComponents/CreatePlaylistModal/toast";
 import LibraryDropdown from "../../../components/LibraryComponents/LibraryDropdown/LibraryDropdown";
 
 let initialState: any[];
 
+
 export default function LibraryPlaylists() {
+  const [loading, setLoading] = useState(false);
   const [playlist, setPlaylist] = useState([] as any[]);
+  const [getGenres, setGetGenres] = useState([] as any[]);
 
   const [field, setField] = useState({
     modal: false,
@@ -29,18 +33,21 @@ export default function LibraryPlaylists() {
   }
 
   const playlistRef: any = useRef();
+  const genreRef: any = useRef()
 
   const createPlaylist = (e: any) => {
     e.preventDefault();
     const category: string = playlistRef.current.value;
+    const genres: string = genreRef.current.value;
 
     const data: Info = {
       name: nameInfo,
       category: category,
-      genre: genreInfo,
+      genre: genres,
       songs: [],
     };
-
+    console.log(data);
+    
     const token = localStorage.getItem("Token");
     const config = {
       headers: {
@@ -57,6 +64,7 @@ export default function LibraryPlaylists() {
       modal: false,
       toast: "Your Playlist was created successfully.",
     });
+    fetchAll()
     setTimeout(
       () =>
         setField({
@@ -69,6 +77,7 @@ export default function LibraryPlaylists() {
     setNameInfo("");
     setCategoryInfo("");
     setGenreInfo("");
+    
   };
 
 
@@ -91,6 +100,7 @@ export default function LibraryPlaylists() {
 
   const fetchAll = async () => {
     try {
+      setLoading(true);
       const token = localStorage.getItem("Token");
       const config = {
         headers: {
@@ -103,6 +113,11 @@ export default function LibraryPlaylists() {
       );
       initialState = [...data].reverse();
       setPlaylist([...initialState]);
+
+      const info = await axios.get(`https://music-box-a.herokuapp.com/music/genres`, config);
+      setGetGenres([...info.data.data])
+      
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -134,7 +149,7 @@ export default function LibraryPlaylists() {
   };
   return (
     <>
-      <Modal
+      <CreatePlaylistModal
         show={field.modal}
         close={() => {
           setField({ ...field, modal: false });
@@ -161,13 +176,16 @@ export default function LibraryPlaylists() {
                 <span>
                   <label>Genres</label>
                   <br />
-                  <input
-                    type="text"
-                    className="genreInput"
-                    required
-                    value={genreInfo}
+                  <select
+                    className="genreCategory" 
                     onChange={(e) => setGenreInfo(e.target.value)}
-                  />
+                    value={genreInfo}
+                    ref={genreRef}
+                  >
+                    {getGenres.map((item: Record<string, any>) => (
+                      <option key={item._id} value={item.name}>{item.name}</option>
+                    ))}
+                  </select>
                 </span>
                 <span>
                   <label>Category</label>
@@ -200,40 +218,47 @@ export default function LibraryPlaylists() {
             </div>
           </form>
         }
-      </Modal>
+      </CreatePlaylistModal>
       <Toast toast={field.toast} close={null} />
-      <div>
-        <div className="playlistHeader">
-          <p className="playlistName">My playlists</p>
 
-          <LibraryDropdown filter={filter} />
+      {loading ? (
+        <div className="App">
+          <ClipLoader size={50} color={"#DEDFDF"} loading={loading} />
         </div>
-        <div className="main">
-          <div className="playlistContainer">
-            <div
-              className="iconContainer"
-              onClick={() => {
-                setField({ ...field, modal: true });
-              }}
-            >
-              <div className="addIcon">
-                <FaPlus className="icon" />
-              </div>
-              <div>Create Playlist</div>
-            </div>
+      ) : (
+        <div>
+          <div className="playlistHeader">
+            <p className="playlistName">My playlists</p>
+
+            <LibraryDropdown filter={filter} />
           </div>
-          {playlist &&
-            playlist.map((item: Record<string, any>) => (
-              <div className="playlist" key={item._id}>
-                <img src={imgPics} alt="my pics" className="pContainer" />
-                <span>{item.name}</span>
-                <span style={{ color: "gray" }}>
-                  {item.songs.length} {noOfSong(item.songs.length)}
-                </span>
+          <div className="main">
+            <div className="playlistContainer">
+              <div
+                className="iconContainer"
+                onClick={() => {
+                  setField({ ...field, modal: true });
+                }}
+              >
+                <div className="addIcon">
+                  <FaPlus className="icon" />
+                </div>
+                <div>Create Playlist</div>
               </div>
-            ))}
+            </div>
+            {playlist &&
+              playlist.map((item: Record<string, any>) => (
+                <div className="playlist" key={item._id}>
+                  <img src={imgPics} alt="my pics" className="pContainer" />
+                  <span>{item.name}</span>
+                  <span style={{ color: "gray" }}>
+                    {item.songs.length} {noOfSong(item.songs.length)}
+                  </span>
+                </div>
+              ))}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

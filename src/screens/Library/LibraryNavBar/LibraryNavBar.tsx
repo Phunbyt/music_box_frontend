@@ -33,7 +33,7 @@ export default function LibraryNavBar() {
                 <Nav.Link href="playlists">Playlists</Nav.Link>
                 <Nav.Link href="albums">Albums</Nav.Link>
                 <Nav.Link href="artists">Artists</Nav.Link>
-                <Nav.Link href="listeningHistory">Listening History</Nav.Link>
+                <Nav.Link href="noResult">Listening History</Nav.Link>
               </div>
             </Nav>
             <Form className="d-flex">

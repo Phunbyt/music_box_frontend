@@ -7,6 +7,7 @@ export default function CreatePlaylistModal({ children, show, close }: Record<st
     return (
       <>
         <div className="Modal">
+        <div className="overlay"  onClick={close}/>
           <div className="modalContent">
                     <FaTimes className="faTimes" onClick={close} />
                     {children}

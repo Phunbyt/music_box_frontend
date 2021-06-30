@@ -1,4 +1,4 @@
-.Modal {
+.noResultModal {
     color: white;
     height: 100vh;
     width: 100vw;
@@ -11,7 +11,7 @@
     justify-content: center;
 }
 
-.overlay {
+.noResultOverlay {
     height: 100vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.75);
@@ -21,7 +21,7 @@
     z-index: 2
 }
 
-.modalContent {
+.noResultModalContent {
     position: relative;
     height: 270px;
     width: 280px;
@@ -30,7 +30,7 @@
     z-index: 10000
 }
 
-.faTimes {
+.noResultFaTimes {
     position: absolute;
     right: 15px;
     top: 15px;
@@ -38,14 +38,14 @@
 }
 
 @media screen and (min-width: 510px) {
-    .modalContent {
+    .noResultModalContent {
         height: 400px;
         width: 420px;
     }
 }
 
 @media screen and (min-width: 1240px) {
-    .modalContent {
+    .noResultModalContent {
         height: 340px;
         width: 460px;
     }

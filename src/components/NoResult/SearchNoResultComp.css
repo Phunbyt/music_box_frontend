@@ -1,0 +1,9 @@
+.clickBtn {
+    color: white;
+    width: 100px;
+    height: 40px;
+    background: transparent linear-gradient(273deg, #9B2DEF 0%, #2D9BEF 58%, #35EDFB 100%) 0% 0% no-repeat padding-box;
+    border-radius: 40px;
+    margin: auto;
+    cursor: pointer;
+}
