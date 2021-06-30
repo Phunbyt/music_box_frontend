@@ -18,7 +18,7 @@ export interface GenresInterface {
 }
 
 const BrowseGenres: React.SFC<BrowseGenresProps> = () => {
-  const {genres,getAllGenres}:any = useContext(GenreContext)
+  const {genres,getAllGenres,error}:any = useContext(GenreContext)
   
   useEffect(()=>{
     getAllGenres()
@@ -28,9 +28,9 @@ const BrowseGenres: React.SFC<BrowseGenresProps> = () => {
    <div className="container-fluid" id="browse">
     <h3 className="text-white mb-4">Genres</h3>
     <Row>
-     {genres.map((genre: GenresInterface) => {
+     {genres.length ? genres.map((genre: GenresInterface) => {
       return <Genre key={genre.id} genre={genre} />;
-     })}
+     }):<p className = "text-white">{error}</p>}
     </Row>
    </div>
   );

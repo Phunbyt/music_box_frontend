@@ -20,6 +20,7 @@ const GenreContextProvider = ({children}:any) => {
   const [artistAlbums, setArtistAlbums]  = useState([])
   const [trimmedArtists, setTrimmedArtists] = useState([])
   const [trimmedPlaylists, setTrimmedPlaylists] = useState([])
+  const [error, setError] = useState('')
   const getOneGenre = async (id: any) => {
    try {
     const { data } = await axios.get(
@@ -27,7 +28,7 @@ const GenreContextProvider = ({children}:any) => {
     );
     return data.data[0].name
    } catch (error) {
-    console.log(error.message);
+    setError('An error occurred')
    }
   };
 
@@ -45,9 +46,8 @@ const GenreContextProvider = ({children}:any) => {
       const res = await axios.request(options);
 
       setSearch(res.data.data);
-      console.log(searchResults)
     } catch (error) {
-      console.log(error.message)
+      setError('An error occurred')
     }
   };
 
@@ -58,7 +58,7 @@ const GenreContextProvider = ({children}:any) => {
       );
       setGenres(res.data.data)
     }catch(error){
-      console.log(error.message)
+      setError("An error occurred");
     }
   }
   
@@ -69,7 +69,7 @@ const GenreContextProvider = ({children}:any) => {
       setTrimmedArtists(data.data.slice(0,6))
     }
     catch(error){
-      console.log(error.message)
+      setError("An error occurred");
     }
   }
   const getPlaylistRelatedGenres = async (id:number)=>{
@@ -81,7 +81,7 @@ const GenreContextProvider = ({children}:any) => {
       setTrimmedPlaylists(data.data.slice(0, 6));
 
     }catch(error){
-      console.log(error.message)
+      setError("An error occurred");
     }
   }
 
@@ -89,9 +89,8 @@ const GenreContextProvider = ({children}:any) => {
     try {
       const res = await axios.get(`${baseUrl}/playlist/get/${id}`);
       setPlaylistSongs(res.data.data.songs)
-      console.log(res.data.data.songs)
     } catch (error) {
-      console.log(error.message)
+      setError("An error occurred");
     }
   }
 
@@ -101,7 +100,7 @@ const GenreContextProvider = ({children}:any) => {
       setArtistAlbums(res.data.albums)
       setArtistSongs(res.data.songs)
     } catch (error) {
-      console.log(error.message)
+      setError("An error occurred");
     }
   }
   const trimArray = (arr:[])=>{
@@ -124,19 +123,20 @@ const GenreContextProvider = ({children}:any) => {
     artistAlbums,
     trimArray,
     trimmedArtists,
-    trimmedPlaylists
+    trimmedPlaylists,
+    error
   };
-  const login = async () => {
+  // const login = async () => {
    
-    const {data} = await axios.post(
-     `${baseUrl}/music/signIn`,
-     { email: "akinloludavid@mail.com", password: "password2929" }
-    );
-    const token =data.token
-    localStorage.setItem('token', token)
-  }
+  //   const {data} = await axios.post(
+  //    `${baseUrl}/music/signIn`,
+  //    { email: "akinloludavid@mail.com", password: "password2929" }
+  //   );
+  //   const token =data.token
+  //   localStorage.setItem('token', token)
+  // }
   useEffect(()=>{
-    login()
+    console.log(error)
     
   },[])
 

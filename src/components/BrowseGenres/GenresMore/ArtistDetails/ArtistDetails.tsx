@@ -24,7 +24,7 @@ interface Albums {
  type: string;
 }
 const ArtistDetails = () => {
-  const {getArtistDetails, artistSongs, artistAlbums}:any= useContext(GenreContext)
+  const {getArtistDetails, artistSongs, artistAlbums, error}:any= useContext(GenreContext)
   const {artistname}:any = useParams()
   useEffect(()=>{
     getArtistDetails(artistname)
@@ -49,7 +49,7 @@ const ArtistDetails = () => {
     <h2 className="text-white">Songs</h2>
     
      <Row className="text-white d-flex">
-      {artistSongs.map((song: Songs, i:number) => {
+      {artistSongs.length ? artistSongs.map((song: Songs, i:number) => {
        return (
         <Col key={song.id} xl={2} lg={3} md={4} sm={6}>
          <div className=" song-bg" style = {{background:gradients[Math.floor(Math.random()*i)]}}>
@@ -58,14 +58,14 @@ const ArtistDetails = () => {
          <p className = "song-title">{song.title}</p>
         </Col>
        );
-      })}
+      }):<p className="text-white">{error}</p>}
      </Row>
 
 
     <h2 className="text-white mt-5">Albums</h2>
 
     <Row className = "text-white">
-    {artistAlbums.map((album: Albums,i:number) => {
+    {artistAlbums ? artistAlbums.map((album: Albums,i:number) => {
      return (
       <Col key={album.id} xl={2} lg={3} md={4} sm={6}>
          <div className=" song-bg" style = {{background:gradients[Math.floor(Math.random()*i)]}}>
@@ -74,7 +74,7 @@ const ArtistDetails = () => {
          <p className = "song-title">{album.title}</p>
         </Col>
        );
-    })}
+    }): <p>{error}</p>}
     </Row>
    </div>
   );

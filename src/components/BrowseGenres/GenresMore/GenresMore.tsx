@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom';
 
 const GenresMore= ({name}:any)=>{
   const {genreid}:any = useParams()
-  const { getPlaylistRelatedGenres, getOneGenre, trimmedArtists, trimmedPlaylists, playlists, getArtistRelatedGenres, artists }: any =
+  const { getPlaylistRelatedGenres, getOneGenre, error, trimmedArtists, trimmedPlaylists, playlists, getArtistRelatedGenres, artists }: any =
    useContext(GenreContext);
   const [lessartists, setLessArtists]= useState([...trimmedArtists])
   const [lessplaylists, setLessPlaylists] = useState([...trimmedPlaylists]);
@@ -93,10 +93,11 @@ const GenresMore= ({name}:any)=>{
   };
 
   return (
+
    <div className="container-fluid">
     <div className="d-flex row topmenu">
      <h1 className="ml-3 text-white" id="genre-name">
-      {genreName.toUpperCase()}
+      {genreName ? genreName.toUpperCase() : <p>{error}</p>}
      </h1>
      <div className="d-flex tab-list col-lg-4 col-md-6">
       <div className="justify-content-center">
@@ -141,12 +142,12 @@ const GenresMore= ({name}:any)=>{
      </div>
 
      <Row id="playlist" className="d-flex">
-      {lessplaylists ? (
+      {lessplaylists.length ? (
        lessplaylists.map((playlist: any) => {
         return <PlaylistByGenre key={playlist._id} playlist={playlist} />;
        })
       ) : (
-       <p className="text-white">No results</p>
+       <p className="text-white">{error}</p>
       )}
      </Row>
     </div>
@@ -163,12 +164,12 @@ const GenresMore= ({name}:any)=>{
      </div>
 
      <Row id="artist" className="d-flex">
-      {lessartists ? (
+      {lessartists.length ? (
        lessartists.map((artist: any) => {
         return <ArtistsByGenre key={Math.random().toString()} artist={artist} />;
        })
       ) : (
-       <p className="text-white">No results</p>
+       <p className="text-white">{error}</p>
       )}
      </Row>
     </div>

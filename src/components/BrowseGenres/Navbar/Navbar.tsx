@@ -21,7 +21,7 @@ const NavigationBar= () => {
        </Nav.Link>
       </Nav>
       <Form inline>
-       <FormControl type="text" placeholder="Search" className="mr-sm-2 searchbar" />
+        <FormControl type="text" placeholder="Search" className="mr-sm-2 searchbar" />
       </Form>
      </Navbar.Collapse>
    </Navbar>

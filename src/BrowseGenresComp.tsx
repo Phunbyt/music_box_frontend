@@ -1,16 +1,12 @@
 import React from 'react';
-import './App.css';
 import {Switch, Route} from 'react-router-dom'
 import BrowseGenres from './components/BrowseGenres/Browse/Browse';
 import GenresMore from './components/BrowseGenres/GenresMore/GenresMore';
 import PlaylistSongs from './components/BrowseGenres/GenresMore/PlaylistSongs/PlaylistSongs'
-import GenreContextProvider from './context/GenreContext';
 import NavigationBar from './components/BrowseGenres/Navbar/Navbar';
 import ArtistDetails from './components/BrowseGenres/GenresMore/ArtistDetails/ArtistDetails';
 const BrowseGenresComp =() => {
   return (
-   <GenreContextProvider>
-    <NavigationBar />
     <div>
      <Switch>
       <Route exact path="/genres" component={BrowseGenres} />
@@ -25,7 +21,7 @@ const BrowseGenresComp =() => {
       </Route>
      </Switch>
     </div>
-   </GenreContextProvider>
+  
   );
 }
 
