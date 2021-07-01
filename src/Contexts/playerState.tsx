@@ -71,6 +71,7 @@ const PlayerState = ({
   const handleClick = (arr: Record<string, any>[], i: number) => {
     setSong(arr);
     SetCurrent(i);
+    console.log(arr, i)
   };
 
   const handleAddSong = async (id: number) => {

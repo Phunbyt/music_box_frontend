@@ -5,11 +5,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState, useContext } from 'react';
-import axios from '../../utils/axiosInstance';
-import PlayerContext from "../../Contexts/playerContext";
+import playerContext from '../../Contexts/playerContext';
+import axios from 'axios';
+
 
 const UserPlaylist = () => {
-  const { handleAddSong } = useContext(PlayerContext);
+  const { handleAddSong } = useContext(playerContext);
   const userId = localStorage.getItem('UserId');
   const [userPlaylist, setUserPlaylist] = useState([] as Record<string, any>[]);
 

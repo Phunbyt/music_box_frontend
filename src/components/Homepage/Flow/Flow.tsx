@@ -14,13 +14,11 @@ export default function Flow() {
   const { handleClick } = useContext(playerContext)
   const [songs, setSongs] = useState([] as Record<string, any>[])
   useEffect(() => {
-axios
-  .get("https://music-box-a.herokuapp.com/listeninghistory")
-  .then((res) => {
-    console.log(res, "ressss")
-    setSongs(res.data);
-    console.log(res.data)
-  });
+axios.get("https://music-box-a.herokuapp.com/listeninghistory").then((res) => {
+  console.log(res, "resssssssssssssssss");
+  setSongs(res.data);
+  console.log(res.data);
+});
   },[])
   return (
     <div className="flow">
