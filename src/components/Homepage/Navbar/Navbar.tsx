@@ -96,13 +96,13 @@ export default function NavigationBar() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto active">
-            <NavLink className="link-to-routes" to="/browse">
+            <NavLink activeClassName="selected-links" className="link-to-routes" to="/browse">
               Browse
             </NavLink>
-            <NavLink className="link-to-routes" to="/playlists">
+            <NavLink activeClassName="selected-links" className="link-to-routes" to="/playlists">
               Library
             </NavLink>
-            <NavLink className="link-to-routes" to="/home">
+            <NavLink activeClassName="selected-links" className="link-to-routes" to="/home">
               Home
             </NavLink>
           </Nav>
@@ -111,7 +111,6 @@ export default function NavigationBar() {
             <NavLink className="link-to-routes" to="/playlists">Playlists</NavLink>
             <NavLink className="link-to-routes" to="/albums">Albums</NavLink>
             <NavLink className="link-to-routes" to="/artists">Artists</NavLink>
-            {/* <NavLink to="/noResult">Listening History</NavLink> */}
           </div>}
 
           <div>

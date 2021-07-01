@@ -182,6 +182,10 @@ input:-ms-input-placeholder {
   opacity: 1;
 }
 
+.selected-links{
+  color: #2DCEEF;
+}
+
 .noResultModalContent {
   position: relative;
   /* height: 270px;
