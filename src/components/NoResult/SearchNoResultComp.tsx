@@ -8,7 +8,11 @@ export default function SearchNoResultComp() {
         <>
             <NoResult show={noResult.modal} close={() => {setNoResult({...noResult, modal: false})}}>
                 {
-
+                    <div className="noResultMain">
+                        <span className="firstText">No Results</span><br />
+                        <span className="secondText">MusicFinder didn't quite catch that</span><br />
+                        <button className="tryAgain">TRY AGAIN</button>
+                    </div>
                 }
             </NoResult>
             <div>

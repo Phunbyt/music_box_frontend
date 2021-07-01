@@ -178,6 +178,7 @@
     height: 40px;
     background: transparent linear-gradient(273deg, #9B2DEF 0%, #2D9BEF 58%, #35EDFB 100%) 0% 0% no-repeat padding-box;
     border-radius: 40px;
+    border: hidden;
 }
 
 @media screen and (min-width: 510px) {

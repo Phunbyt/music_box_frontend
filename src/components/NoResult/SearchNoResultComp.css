@@ -6,4 +6,43 @@
     border-radius: 40px;
     margin: auto;
     cursor: pointer;
+    border: hidden;
 }
+
+.noResultMain {
+    margin: 30px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.firstText {
+    text-align: center;
+    font: normal normal 900 50px/60px Lato;
+    letter-spacing: 0.5px;
+    color: #2DCEEF;
+}
+
+.secondText {
+    font: normal normal normal 18px/22px Lato;
+    text-align: center;
+    letter-spacing: 0.11px;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.tryAgain {
+    margin-top: 20px;
+    background: transparent linear-gradient(269deg, #9B2DEF 0%, #2D9BEF 61%, #35EDFB 100%);
+    border-radius: 40px;
+    width: 262px;
+    height: 44px;
+    border: hidden;
+    color: white;
+    font-weight: bold;
+}
+
+@media screen and (min-width: 510px) {}
+
+@media screen and (min-width: 1240px) {}
