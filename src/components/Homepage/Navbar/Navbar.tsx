@@ -6,7 +6,7 @@ import React, {
   useEffect
 } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Navbar, Container, Nav, NavDropdown, Form } from "react-bootstrap";
 import "./Navbar.css";
 import 'font-awesome/css/font-awesome.min.css';
@@ -28,12 +28,6 @@ export default function NavigationBar() {
   const [allData, setAllData] = useState({} as property);
   const [info, setInfo] = useState("");
   const [display, setDisplay] = useState(false);
-  const [artistLimit, setArtistLimit] = useState(3);
-  const [albumLimit, setAlbumLimit] = useState(3);
-  const [artistList, setArtistList] = useState(230);
-  const [albumList, setAlbumList] = useState(230);
-  const [playlistLimit, setPlaylistList] = useState(250);
-  const [allList, setAllList] = useState(600)
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setInfo(e.target.value);
@@ -56,8 +50,6 @@ export default function NavigationBar() {
       );
       setAllData(data);
       setDisplay(true);
-      setArtistLimit(3);
-      setAlbumLimit(3);
     } catch (error) {
       console.log(error);
     }
@@ -69,7 +61,6 @@ export default function NavigationBar() {
     setAllData({});
     setInfo("");
     setDisplay(false);
-    setAllList(600);
   }
 
   const lastName = localStorage.getItem("lastName");
@@ -87,13 +78,13 @@ export default function NavigationBar() {
   
     <Navbar collapseOnSelect expand="lg" variant="dark" style={{position: 'fixed', top: 0, width: '100%', backgroundColor: '#161a1a', zIndex: 99}}>  
       <Container>
-        <Navbar.Brand href="/home">Music-Box</Navbar.Brand>
+        <div></div>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto active">
-            <Nav.Link href="/Browse">Browse</Nav.Link>
-            <Nav.Link href="/Library">Library</Nav.Link>
-            <Nav.Link href="/Home">Home</Nav.Link>
+            <NavLink className="link-to-routes" to="/Browse">Browse</NavLink>
+            <NavLink className="link-to-routes" to="/Library">Library</NavLink>
+            <NavLink className="link-to-routes" to="/Home">Home</NavLink>
           </Nav>
           <div>
             <Form
@@ -131,18 +122,9 @@ export default function NavigationBar() {
                   }}
                 />
               </i>
-              <div ref={container} style={{
-                    zIndex: 99999,
-                    color: "white",
-                    position: "absolute",
-                    top: "50px",
-                    height: allList,
-                    background: "#3A3A3D 0% 0% no-repeat padding-box",
-                    visibility: display ? "visible": "hidden",
-                    borderRadius: "3%",
-                  }}>
+              <div ref={container} className="ref-container-style" style={{                          visibility: display ? "visible": "hidden"}}>
                 {allData && allData.artist ? ( 
-                  allData.artist.length > 0 && <ul id="myUL" style={{height: artistList, overflowY: "scroll"}}>
+                  allData.artist.length > 0 && <ul id="myUL" style={{height: 250, overflowY: "scroll"}}>
                     <p style={{visibility: display ? "visible": "hidden", paddingLeft: 10, paddingTop: 10, font: 'normal normal bold 18px Lato', letterSpacing: 0.11, color: '#FFFFFF', opacity: 1}}>Artists<i className="italic" style={{position: "absolute", left: "220px"}}><Link style={{textDecoration: 'none', color: '#D5D5D5'}} to={{pathname: "/artistdetails", state: {artistDetails: allData.artist, info: info}}}>view All</Link></i></p>
                     {allData.artist ? (
                       allData.artist.map((item: Record<string, any>) => (
@@ -154,13 +136,13 @@ export default function NavigationBar() {
                           <span className="names-of-artists-albums">{item.name}</span>
                           </Link>
                         </li>
-                      )).slice(0, artistLimit)
+                      )).slice(0, 3)
                     ): (<></>)}
                   </ul>
                 ) : <></> 
                 }
                 {allData && allData.album ? ( 
-                 allData.album.length > 0 && <ul id="myUL" style={{height: albumList, overflowY: "scroll", paddingTop: 20}}>
+                 allData.album.length > 0 && <ul id="myUL" style={{height: 250, overflowY: "scroll", paddingTop: 20}}>
                     <p style={{visibility: display ? "visible": "hidden", paddingLeft: 10, paddingTop: 10, font: 'normal normal bold 18px Lato', letterSpacing: 0.11, color: '#FFFFFF', opacity: 1}}>Albums<i className="italic" style={{position: "absolute", left: "220px"}}> 
                      <Link style={{textDecoration: 'none', color: '#D5D5D5'}} to={{pathname: "/albumdetails", state: {albumDetails: allData.album, info: info}}}>view All</Link>
                     </i></p>
@@ -188,13 +170,13 @@ export default function NavigationBar() {
                           }}>{item.artistName}</span>
                           </Link>
                         </li>
-                      )).slice(0, albumLimit)
+                      )).slice(0, 3)
                     ): (<></>)}
                   </ul>
                 ) : <></>
                 }
                 {allData && allData.playlist ? ( 
-                 allData.playlist.length > 0 && <ul id="myUL" style={{height: albumList, overflowY: "scroll", paddingTop: 20}}>
+                 allData.playlist.length > 0 && <ul id="myUL" style={{height: 250, overflowY: "scroll", paddingTop: 20}}>
                     <p style={{visibility: display ? "visible": "hidden", paddingLeft: 10, paddingTop: 10, font: 'normal normal bold 18px Lato', letterSpacing: 0.11, color: '#FFFFFF', opacity: 1}}>Playlists<i className="italic" style={{position: "absolute", left: "220px"}}>view more</i></p>
                     {allData.playlist ? (
                       allData.playlist.map((item: Record<string, any>) => (
@@ -221,7 +203,7 @@ export default function NavigationBar() {
                           >{item.name}</span>
                           </Link>
                         </li>
-                      )).slice(0, playlistLimit)
+                      )).slice(0, 3)
                     ): (<></>)}
                   </ul>
                 ) : <></>
@@ -241,10 +223,9 @@ export default function NavigationBar() {
             }
             id="collasible-nav-dropdown"
           >
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Profile</NavDropdown.Item>
+            <NavDropdown.Item to="/">Profile</NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">Log out</NavDropdown.Item>
+            <NavDropdown.Item to="/">Log out</NavDropdown.Item>
           </NavDropdown>
         </Navbar.Collapse>
       </Container>
