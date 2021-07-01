@@ -15,13 +15,14 @@ body {
   --unnamed-color-ffffff: #ffffff;
 }
 
-.controls-wrapper {
+.controls_wrapper {
   position: fixed;
   bottom: 0;
   height: 95px;
   width: 100%;
   display: flex;
   justify-content: center;
+  Z-index: 5;
 
 }
 .controls {
@@ -34,7 +35,7 @@ body {
   color: #ffffff;
 }
 
-.audio-hero {
+.audio_hero {
   display: flex;
 }
 
@@ -60,16 +61,16 @@ body {
   max-width: 75%;
 }
 
-.fav-bttn,
-.shuffle-bttn,
+.fav_bttn,
+.shuffle_bttn,
 .prev,
 input,
 .currentTime,
 .totalTime,
-.playlist-bttn,
+.playlist_bttn,
 .volum,
 .progress,
-.repeat-bttn {
+.repeat_bttn {
   display: none !important;
 }
 .middle {
@@ -134,9 +135,9 @@ input,
 
 @media screen and (min-width: 480px) {
   .fav-bttn,
-  .shuffle-bttn,
+  .shuffle_bttn,
   .prev,
-  .repeat-bttn {
+  .repeat_bttn {
     display: inline !important;
   }
   .controllers {
@@ -145,17 +146,17 @@ input,
   .prev,
   .play,
   .next,
-  .repeat-bttn {
+  .repeat_bttn {
     margin-left: 1.5em;
   }
 }
 
 @media screen and (min-width: 700px) {
-  .playlist-bttn {
+  .playlist_bttn {
     display: inline !important;
   }
 
-  .playlist-bttn {
+  .playlist_bttn {
     margin-left: 1.2em;
   }
   .queued_songs_div{
@@ -215,7 +216,7 @@ input,
     justify-self: flex-end;
   }
 
-  .playlist-display {
+  .playlist_display {
     background-color: #fff;
     position: fixed;
     width: 30%;
@@ -227,7 +228,7 @@ input,
     padding: 2em;
   }
 
-  .playlist-display > p {
+  .playlist_display > p {
     color: black;
   }
 }
@@ -259,7 +260,7 @@ input,
     justify-content: space-around;
     flex-direction: row-reverse;
   }
-  .audio-hero {
+  .audio_hero {
     flex: 1;
   }
 

@@ -126,7 +126,7 @@ function Controls() {
 
       <div className={classes.controls_wrapper}>
         <div className={classes.controls}>
-          <div className="audio-hero">
+          <div className={classes.audio_hero}>
             <audio
               onTimeUpdate={(e: React.BaseSyntheticEvent) =>
                 setCurrentTime(Number(e.currentTarget.currentTime))
@@ -140,58 +140,78 @@ function Controls() {
               loop={repeat}
               src={songs[currentSong]?.preview}
             />
-            <div className="start">
-              <div className="img">
-                <img src={songs[currentSong]?.album.cover} alt="" />
+            <div className={`${classes.start}`}>
+              <div className={`${classes.img}`}>
+                <img src={songs[currentSong]?.listenPic} alt="" />
               </div>
-              <div className="songtext">
-                <p className="title">{songs[currentSong]?.title}</p>
-                <p className="artistname">{songs[currentSong]?.artist.name}</p>
+              <div className={classes.songtext}>
+                <p className={classes.title}>{songs[currentSong]?.title}</p>
+                <p className={`${classes.artistname}`}>
+                  {songs[currentSong]?.trackArtist}
+                </p>
               </div>
               <div>
-                <FavoriteBorderIcon className="bttn fav-bttn" />
+                <FavoriteBorderIcon
+                  className={`${classes.bttn} ${classes.fav_bttn}`}
+                />
               </div>
               {playlistView && <UserPlaylist />}
               <div onClick={togglePlaylist}>
-                <AddIcon className="bttn" />
+                <AddIcon className={`${classes.bttn}`} />
               </div>
             </div>
           </div>
-          <div className="middle">
-            <div className="controllers">
-              <div onClick={toggleRandom} className="shuffle-bttn">
+          <div className={`${classes.middle}`}>
+            <div className={`${classes.controllers}`}>
+              <div onClick={toggleRandom} className={`${classes.shuffle_bttn}`}>
                 <ShuffleIcon
-                  className={random ? "bttn__green margin" : "bttn margin"}
+                  className={
+                    random
+                      ? `${classes.bttn__green} ${classes.margin}`
+                      : `${classes.bttn} ${classes.margin}`
+                  }
                 />
               </div>
-              <div className="prev" onClick={prevSong}>
-                <SkipPreviousIcon className="bttn margin" />
+              <div className={`${classes.prev}`} onClick={prevSong}>
+                <SkipPreviousIcon
+                  className={`${classes.bttn} ${classes.margin}`}
+                />
               </div>
               <div
-                className="play"
+                className={classes.play}
                 onClick={() => {
                   togglePlaying();
                   toggleAudio();
                 }}
               >
                 {!playing ? (
-                  <PlayCircleOutlineIcon className="bttn margin" />
+                  <PlayCircleOutlineIcon
+                    className={`${classes.bttn} ${classes.margin}`}
+                  />
                 ) : (
-                  <PauseCircleOutlineIcon className="bttn margin" />
+                  <PauseCircleOutlineIcon
+                    className={`${classes.bttn} ${classes.margin}`}
+                  />
                 )}
               </div>
 
-              <div className="next" onClick={nextSong}>
-                <SkipNextIcon className="bttn margin" />
+              <div className={`${classes.next}`} onClick={nextSong}>
+                <SkipNextIcon className={`${classes.bttn} ${classes.margin}`} />
               </div>
-              <div onClick={toggleRepeat} className="repeat-bttn">
-                <RepeatIcon className={repeat ? "bttn__green" : "bttn"} />
+              <div onClick={toggleRepeat} className={`${classes.repeat_bttn}`}>
+                <RepeatIcon
+                  className={
+                    repeat ? `${classes.bttn__green}` : `${classes.bttn}`
+                  }
+                />
               </div>
             </div>
-            <div className="progressbar">
-              <div className="currentTime">{fmtMSS(currentTime)}</div>
+            <div className={`${classes.progressbar}`}>
+              <div className={`${classes.currentTime}`}>
+                {fmtMSS(currentTime)}
+              </div>
               <input
-                className="playerInput"
+                className={`${classes.playerInput}`}
                 onChange={handleProgress}
                 value={dur ? (currentTime * 100) / dur : 0}
                 type="range"
@@ -199,13 +219,13 @@ function Controls() {
                 id="prgbar"
                 style={{ background: trackStyling, width: "100%" }}
               />
-              <div className="totalTime">{fmtMSS(dur)}</div>
+              <div className={`${classes.totalTime}`}>{fmtMSS(dur)}</div>
             </div>
           </div>
-          <div className="end">
-            <div className="volum">
-              <div className="icons">{volumeIcon}</div>
-              <div className="icons">
+          <div className={`${classes.end}`}>
+            <div className={`${classes.volum}`}>
+              <div className={`${classes.icons}`}>{volumeIcon}</div>
+              <div className={`${classes.icons}`}>
                 <input
                   value={Math.round(statevolum * 100)}
                   type="range"
@@ -216,8 +236,8 @@ function Controls() {
               </div>
             </div>
 
-            <div className="playlist-bttn" onClick={toggleModal}>
-              <PlaylistPlayIcon className="bttn" />
+            <div className={`${classes.playlist_bttn}`} onClick={toggleModal}>
+              <PlaylistPlayIcon className={`${classes.bttn}`} />
             </div>
           </div>
         </div>
