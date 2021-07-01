@@ -11,6 +11,7 @@ import LibraryDropdown from "../../../components/LibraryComponents/LibraryDropdo
 let initialState: any[];
 
 
+
 export default function LibraryPlaylists() {
   const [loading, setLoading] = useState(false);
   const [playlist, setPlaylist] = useState([] as any[]);
@@ -35,6 +36,8 @@ export default function LibraryPlaylists() {
   const playlistRef: any = useRef();
   const genreRef: any = useRef()
 
+
+
   const createPlaylist = (e: any) => {
     e.preventDefault();
     const category: string = playlistRef.current.value;
@@ -46,7 +49,6 @@ export default function LibraryPlaylists() {
       genre: genres,
       songs: [],
     };
-    console.log(data);
     
     const token = localStorage.getItem("Token");
     const config = {
@@ -116,7 +118,6 @@ export default function LibraryPlaylists() {
 
       const info = await axios.get(`https://music-box-a.herokuapp.com/music/genres`, config);
       setGetGenres([...info.data.data])
-      
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -249,7 +250,11 @@ export default function LibraryPlaylists() {
             {playlist &&
               playlist.map((item: Record<string, any>) => (
                 <div className="playlist" key={item._id}>
-                  <img src={imgPics} alt="my pics" className="pContainer" />
+                  {getGenres.map((element: Record<string, any>) => {
+                    if (item.genre === element.name){
+                      return  <img src={element.picture_big ? element.picture_big : imgPics} alt="my pics" className="pContainer" key={element._id} />
+                    }
+                  })}
                   <span>{item.name}</span>
                   <span style={{ color: "gray" }}>
                     {item.songs.length} {noOfSong(item.songs.length)}
