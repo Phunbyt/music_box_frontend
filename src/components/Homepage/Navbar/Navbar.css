@@ -164,6 +164,23 @@ input:-ms-input-placeholder {
   color: #FFFFFF;
   opacity: 1;
 }
+.search-box-input{
+  padding-left: 40px;
+  outline: 0;
+  height: 40px;
+  width: 300px;
+  background-color: #898B91;
+  font: normal normal normal 18px Lato;
+}
+
+.artist-list-name{
+  padding-left: 10px;
+  padding-top: 10px;
+  font: normal normal bold 18px Lato;
+  letter-spacing: 0.11px;
+  color: #FFFFFF;
+  opacity: 1;
+}
 
 .noResultModalContent {
   position: relative;

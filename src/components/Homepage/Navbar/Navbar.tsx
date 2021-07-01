@@ -108,33 +108,25 @@ export default function NavigationBar() {
           </Nav>
 
           {location.pathname && (location.pathname === '/playlists' || location.pathname === '/albums' || location.pathname === '/artists') && <div className="path">
-            <NavLink to="/playlists">Playlists</NavLink>
-            <NavLink to="/albums">Albums</NavLink>
-            <NavLink to="/artists">Artists</NavLink>
+            <NavLink className="link-to-routes" to="/playlists">Playlists</NavLink>
+            <NavLink className="link-to-routes" to="/albums">Albums</NavLink>
+            <NavLink className="link-to-routes" to="/artists">Artists</NavLink>
             {/* <NavLink to="/noResult">Listening History</NavLink> */}
           </div>}
 
           <div>
             <Form
               className="d-flex"
-              style={{ position: "relative" }}
+              style={{ position: "relative", marginLeft: '10px' }}
               onSubmit={(e: FormEvent<HTMLFormElement>) => {
                 fetchAll(e);
               }}
             >
               <input
-                style={{
-                  paddingLeft: "40px",
-                  outline: "0",
-                  height: "40px",
-                  width: "300px",
-                  backgroundColor: "#898B91",
-                  font: "normal normal normal 18px/52px Lato",
-                }}
                 id="search"
                 type="search"
                 placeholder="Search"
-                className="mr-2 rounded-pill"
+                className="mr-2 rounded-pill search-box-input"
                 aria-label="Search"
                 onChange={handleChange}
                 value={info}
@@ -159,17 +151,8 @@ export default function NavigationBar() {
                 {allData && allData.artist ? (
                   allData.artist.length > 0 && (
                     <ul id="myUL" style={{ height: 250, overflowY: "scroll" }}>
-                      <p
-                        style={{
-                          visibility: display ? "visible" : "hidden",
-                          paddingLeft: 10,
-                          paddingTop: 10,
-                          font: "normal normal bold 18px Lato",
-                          letterSpacing: 0.11,
-                          color: "#FFFFFF",
-                          opacity: 1,
-                        }}
-                      >
+                      <p className="artist-list-name"
+                        style={{ visibility: display ? "visible" : "hidden"}}>
                         Artists
                         <i
                           className="italic"
@@ -183,8 +166,7 @@ export default function NavigationBar() {
                                 artistDetails: allData.artist,
                                 info: info,
                               },
-                            }}
-                          >
+                            }}>
                             view All
                           </Link>
                         </i>
@@ -204,7 +186,7 @@ export default function NavigationBar() {
                               <Link to="/artist" style={{ display: "flex" }}>
                                 <div style={{ width: "50px", height: "50px" }}>
                                   <img className="artist-album-playlist-pic"
-                                    src={item.picture}
+                                    src={item.picture} alt="pic"
                                   />
                                 </div>
                                 <span className="names-of-artists-albums">
@@ -232,17 +214,8 @@ export default function NavigationBar() {
                         paddingTop: 20,
                       }}
                     >
-                      <p
-                        style={{
-                          visibility: display ? "visible" : "hidden",
-                          paddingLeft: 10,
-                          paddingTop: 10,
-                          font: "normal normal bold 18px Lato",
-                          letterSpacing: 0.11,
-                          color: "#FFFFFF",
-                          opacity: 1,
-                        }}
-                      >
+                      <p className="artist-list-name"
+                        style={{visibility: display ? "visible" : "hidden"}}>
                         Albums
                         <i
                           className="italic"
