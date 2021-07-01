@@ -125,7 +125,7 @@ export default function LibraryPlaylists() {
   };
 
   useEffect(() => {
-    callApi();
+    // callApi();
     fetchAll();
   }, []);
   const noOfSong = (item: number) => {

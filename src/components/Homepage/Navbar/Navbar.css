@@ -1,0 +1,87 @@
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  overflow: scroll;
+  width: 300px;
+}
+
+#myUl li {
+  padding-top: 2px;
+}
+#search {
+  color: white !important;
+}
+
+.view {
+  font-family: Lato;
+}
+
+.italic {
+  font: normal normal normal 14px Lato;
+  letter-spacing: 0.08px;
+  color: #d5d5d5;
+  opacity: 1;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.italic:hover {
+  cursor: pointer !important;
+  color: #fff !important;
+}
+
+.names-of-artists-albums {
+  margin-left: 10px;
+  position: absolute;
+  top: 15px;
+  left: 60px;
+  font: normal normal normal 15px Lato;
+  letter-spacing: 0.09px;
+  color: #ffffff;
+  opacity: 1;
+
+}
+
+.link-to-routes{
+  color: #99999F;
+  text-align: center;
+  font: normal normal bold 20px Lato;
+  letter-spacing: 0.12px;
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+.ref-container-style{
+  z-index: 99999;
+  color: white;
+  position: absolute;
+  top: 50px;
+  height: 550px;
+  background: #3A3A3D 0% 0% no-repeat padding-box;
+  border-radius: 1%;
+}
+
+.artist-album-playlist-pic{
+    height: 100%;
+    width: 100%;
+    display: block;
+    object-fit: cover ;
+}
+
+
+input::-webkit-input-placeholder {
+  color: #bfbfbf;
+}
+
+input:-moz-placeholder {
+  color: #bfbfbf;
+}
+
+input::-moz-placeholder {
+  color: #bfbfbf;
+}
+
+input:-ms-input-placeholder {
+  color: #bfbfbf;
+}
