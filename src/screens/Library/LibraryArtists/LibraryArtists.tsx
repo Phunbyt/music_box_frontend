@@ -3,6 +3,7 @@ import "./LibraryArtists.css";
 import axios from "axios";
 import ClipLoader from "react-spinners/ClipLoader";
 import LibraryDropdown from "../../../components/LibraryComponents/LibraryDropdown/LibraryDropdown";
+import NavigationBar from "../../../components/Homepage/Navbar/Navbar";
 
 let initialState: any[];
 
@@ -94,6 +95,7 @@ export default function LibraryPlaylists() {
       :
 
       <div>
+        <NavigationBar />
         <div className="playlistHeader">
           <p className="playlistName">My Liked Artists</p>
           <LibraryDropdown filter={filter} />

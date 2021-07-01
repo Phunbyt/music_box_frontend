@@ -19,7 +19,6 @@ const ArtistsYouMayLike: React.FC<ArtistsYouMayLikeProps> = () => {
                 },
             };
             const { data } = await axios.get("https://music-box-a.herokuapp.com/artist/mostPlayedArtists", config);
-            console.log(data.data);
             setArtistYouMayLike(data.data);
         }catch(error){
             console.log(error)
@@ -27,8 +26,7 @@ const ArtistsYouMayLike: React.FC<ArtistsYouMayLikeProps> = () => {
     }
     useEffect(()=>{
         getArtists();
-        return () => console.log("Clearing the code")
-    })
+    }, [])
 
     return ( 
     <div className="artists-you-may-like">

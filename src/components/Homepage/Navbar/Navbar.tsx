@@ -6,10 +6,12 @@ import React, {
   useEffect,
 } from "react";
 import axios from "axios";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { Navbar, Container, Nav, NavDropdown, Form } from "react-bootstrap";
+// import NoResult from '../../NoResult/NoResult'
 import "./Navbar.css";
 import "font-awesome/css/font-awesome.min.css";
+import { FaTimes } from 'react-icons/fa';
 
 interface property {
   artist?: Record<string, any>[];
@@ -28,6 +30,8 @@ export default function NavigationBar() {
   const [allData, setAllData] = useState({} as property);
   const [info, setInfo] = useState("");
   const [display, setDisplay] = useState(false);
+  const location = useLocation();
+  // const [noResult, setNoResult] = useState({modal: true})
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setInfo(e.target.value);
@@ -95,7 +99,7 @@ export default function NavigationBar() {
             <NavLink className="link-to-routes" to="/browse">
               Browse
             </NavLink>
-            <NavLink className="link-to-routes" to="/library">
+            <NavLink className="link-to-routes" to="/playlists">
               Library
             </NavLink>
             <NavLink className="link-to-routes" to="/home">
@@ -103,12 +107,12 @@ export default function NavigationBar() {
             </NavLink>
           </Nav>
 
-          <div className="path">
+          {location.pathname && (location.pathname === '/playlists' || location.pathname === '/albums' || location.pathname === '/artists') && <div className="path">
             <NavLink to="/playlists">Playlists</NavLink>
             <NavLink to="/albums">Albums</NavLink>
             <NavLink to="/artists">Artists</NavLink>
-            <NavLink to="/noResult">Listening History</NavLink>
-          </div>
+            {/* <NavLink to="/noResult">Listening History</NavLink> */}
+          </div>}
 
           <div>
             <Form
@@ -199,8 +203,7 @@ export default function NavigationBar() {
                             >
                               <Link to="/artist" style={{ display: "flex" }}>
                                 <div style={{ width: "50px", height: "50px" }}>
-                                  <img
-                                    className="artist-album-playlist-pic"
+                                  <img className="artist-album-playlist-pic"
                                     src={item.picture}
                                   />
                                 </div>
@@ -365,18 +368,7 @@ export default function NavigationBar() {
                                     src={item.cover}
                                   />
                                 </div>
-                                <span
-                                  style={{
-                                    marginLeft: 10,
-                                    position: "absolute",
-                                    top: 15,
-                                    left: 60,
-                                    font: "normal normal normal 15px Lato",
-                                    letterSpacing: "0.09px",
-                                    color: "#FFFFFF",
-                                    opacity: 1,
-                                  }}
-                                >
+                                <span className="album-artist-name-style">
                                   {item.name}
                                 </span>
                               </Link>

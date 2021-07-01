@@ -7,6 +7,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import CreatePlaylistModal from "../../../components/LibraryComponents/CreatePlaylistModal/CreatePlaylistModal";
 import Toast from "../../../components/LibraryComponents/CreatePlaylistModal/toast";
 import LibraryDropdown from "../../../components/LibraryComponents/LibraryDropdown/LibraryDropdown";
+import NavigationBar from "../../../components/Homepage/Navbar/Navbar";
 
 let initialState: any[];
 
@@ -150,6 +151,7 @@ export default function LibraryPlaylists() {
   };
   return (
     <>
+    <NavigationBar />
       <CreatePlaylistModal
         show={field.modal}
         close={() => {
