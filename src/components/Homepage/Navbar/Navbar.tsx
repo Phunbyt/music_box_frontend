@@ -213,11 +213,11 @@ export default function NavigationBar() {
                           </Link>
                         </li>
                       )).slice(0, 3)
-                    ): (<></>)}
+                    ): (<><h1></h1></>)} 
                   </ul>
                 ) : <></>
                 }
-
+              {allData && allData.artist && allData.album && allData.artist.length === 0 && allData.album.length === 0 && <div style={{width: 500, background: 'yellow'}}>Try again</div>}
               </div>
             </Form>
           </div>
