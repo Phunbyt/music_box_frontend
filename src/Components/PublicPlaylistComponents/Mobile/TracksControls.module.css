@@ -1,0 +1,26 @@
+.tracksControls{
+    margin-top: 28px;
+    display: flex;
+    justify-content: space-between; 
+}
+
+.search{
+    background: transparent;
+    border-style: none;
+    border-bottom: groove;
+    color: #FFFFFF
+}
+
+.search:focus{
+    outline: none;
+}
+
+.collapse{
+    background: transparent;
+    color: #FFFFFF;
+    border-style: none;
+}
+
+.collapse:focus{
+    outline: none;
+}

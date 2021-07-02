@@ -1,0 +1,28 @@
+.artistTracksTableHeader{
+    display: grid;
+    grid-template-columns: 0.9fr 0.9fr 4.7fr 4.72fr 5.9fr 0.9fr 0.9fr 0.9fr 0.9fr;
+    grid-gap: 10px;
+    margin-top: 31.9px;
+    text-align: left;
+    font: normal normal bold 14px/32px Lato;
+    letter-spacing: 0.08px;
+    color: #99999F;
+    opacity: 1;
+    height: 56px;
+  }
+
+  .headerNum{
+    grid-column: 1/2;
+  }
+  .headerTitle{
+    grid-column: 3/4;
+  }
+  .headerArtist{
+    grid-column: 4/5;
+  }
+  .headerAlbum{
+    grid-column: 5/6;
+  }
+  .headerTime{
+    grid-column: 6/7;
+  }

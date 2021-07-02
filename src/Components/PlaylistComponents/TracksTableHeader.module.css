@@ -1,0 +1,32 @@
+.tracksTableHeader {
+    display: grid;
+    grid-template-columns: 0.8fr 0.8fr 4.2fr 5.92fr 6.1fr 0.8fr 0.8fr;
+    grid-gap: 10px;
+    margin-top: 31.9px;
+    text-align: left;
+    font: normal normal bold 14px/32px Lato;
+    letter-spacing: 0.08px;
+    color: #99999F;
+    opacity: 1;
+    height: 56px;
+}
+
+.tracksTableNum{
+    grid-column: 1/2;
+}
+
+.tracksTableTitle{
+    grid-column: 3/4;
+}
+
+.tracksTableArtist{
+    grid-column: 4/5;
+}
+
+.tracksTableAlbum{
+    grid-column: 5/6;
+}
+
+.tracksTableTime {
+    grid-column: 6/7;
+}

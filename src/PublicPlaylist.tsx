@@ -1,0 +1,105 @@
+
+import axios, { AxiosRequestConfig } from 'axios'
+import { useState, useEffect } from 'react'
+import PublicPlaylistTop from './Components/PublicPlaylistComponents/PublicPlaylistTop'
+import TracksTableControls from './Components/PublicPlaylistComponents/TracksControls'
+import TracksTableHeader from './Components/PublicPlaylistComponents/TracksTableHeader'
+import TracksTableBody from './Components/PublicPlaylistComponents/TracksTableBody'
+import FeaturedArtistTop from './Components/PublicPlaylistComponents/FeaturedArtistTop'
+import FeaturedArtist from './Components/PublicPlaylistComponents/FeaturedArtist'
+import Mobile from './Components/PublicPlaylistComponents/Mobile/Mobile'
+import styles from './PublicPlaylist.module.css'
+
+
+const PublicPlaylist = () => {
+    const [playlistName, setPlaylistName] = useState("");
+    const [playlistFollowers, setPlaylistFollowers] = useState("");
+    const [playlistDuratioAndSongsNum, setPlaylistDurationAndSongsNum] = useState('');
+    const [playlistDescription, setPlaylistDescription] = useState('');
+    const [playlistSongs, setPlaylistSongs] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [displayTable, setDisplayTable] = useState('block')
+    const callApi = async () => {
+        try {
+          const { data } = await axios.post('https://music-box-a.herokuapp.com/music/signIn', {
+            email:  "madarauchiha@gmail.com",
+            password: "12345678",
+          });
+          const token = data.token;
+          localStorage.setItem('token', token);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      const userPlaylist = async () => {
+        const tokenValue = localStorage.getItem('token');
+        const config:AxiosRequestConfig = {
+          headers: {
+            Authorization: `Bearer ${tokenValue}`,
+          },
+        };
+        try {
+          const playlist = await axios.get(
+            `http://localhost:9080/playlist/get/60d91955f83599393b9846e3`,
+            config
+          );
+          
+          console.log(playlist.data.data)
+          const playlistDetails = playlist.data.data
+          setPlaylistName(playlistDetails.name)
+          setPlaylistDescription(playlistDetails.genre)
+          setPlaylistFollowers(`${playlistDetails.likesCount} FOLLOWERS`)
+          const numberOfSongs = playlistDetails.songs.length
+          let songsMinutes = 0;
+          playlistDetails.songs.forEach((song: Record<string, any>) => {
+            let songsDuration = String(song.duration);
+            songsMinutes += Number(songsDuration[0])
+            songsMinutes += Math.floor(Number(songsDuration.slice(1))/60)
+          })
+          const playlistDuration = (`${Math.floor(songsMinutes/60)}hrs ${songsMinutes % 60} minutes`)
+          setPlaylistDurationAndSongsNum(`${numberOfSongs} songs, ${playlistDuration}`)
+          setPlaylistSongs(playlistDetails.songs)
+          setLoading(false)
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      
+      useEffect(() => {
+          callApi();
+          userPlaylist();
+      }, []);
+
+      const collapseTableHandler = () => {
+        if (displayTable === 'block') {
+          setDisplayTable('none')
+        }
+        if (displayTable === 'none') {
+          setDisplayTable('block')
+        }
+      }
+    return (
+        <div className={styles.publicPlaylist}>
+          <div className={styles.web}>
+            <PublicPlaylistTop name={playlistName} description={playlistDescription} songsAndDuration={playlistDuratioAndSongsNum} followers={playlistFollowers} />
+            <TracksTableControls toggleDisplay={collapseTableHandler} />
+            <div style={{display: `${displayTable}`}}>
+            <TracksTableHeader />
+            {!loading ? (
+                playlistSongs.map((song: Record<string, any>, index) => (
+                    <TracksTableBody num={index+1} title={song.title} image={song.img} artist={song.artist} album={song.album} time={`${String(song.duration)[0]}:${String(song.duration).slice(1)}`} key={`${song.title} ${song.artist}`} />
+                ))
+            ): null}
+            </div>
+            <FeaturedArtistTop />
+            {!loading ?
+                <FeaturedArtist songs={playlistSongs} />
+            :null
+            }
+          </div>
+            <Mobile name={playlistName} description={playlistDescription} songsAndDuration={playlistDuratioAndSongsNum} followers={playlistFollowers} tracks={playlistSongs} status={loading} />
+        </div>
+    )
+}
+
+export default PublicPlaylist

@@ -1,0 +1,17 @@
+.albumSideTop{
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    color: #FFFFFF
+}
+
+.tracklistCollapse{
+    background: transparent;
+    border-style: none;
+    color: #FFFFFF;
+    border-style: none;
+}
+
+.tracklist-collapse:focus {
+    outline: none;
+}

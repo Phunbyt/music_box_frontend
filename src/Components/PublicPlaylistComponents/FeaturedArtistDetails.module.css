@@ -1,0 +1,30 @@
+.featuredArtistContainer{
+    text-align: center;
+    margin-right: 26px;
+}
+
+.featuredArtistImageContainer{
+    height: 225px;
+    width: 225px;
+    border-radius: 50%;
+}
+
+.featuredArtistImage{
+    height: 225px;
+    width: 225px;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+@media (max-width: 769px){
+    .featuredArtistImageContainer{
+        width: 151px;
+        height: 151px;
+    }
+  
+      .featuredArtistImage{
+        width: 100%;
+        height: 100%;
+    }
+}

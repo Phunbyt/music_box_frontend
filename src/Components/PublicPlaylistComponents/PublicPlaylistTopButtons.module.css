@@ -1,0 +1,59 @@
+.topButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.topButtonsContainer{
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  color: #FFFFFF;
+}
+
+
+.topButton1 {
+  background: transparent linear-gradient(269deg, #9B2DEF 0%, #2D9BEF 61%, #35EDFB 100%) 0% 0% no-repeat padding-box;
+  border-radius: 40px;
+  opacity: 1;
+  color: #FFFFFF;
+  margin-right: 10px;
+  width: 168px;
+  height: 40px;
+  text-align: center;
+  border-style: none;
+}
+
+.topButton2 {
+  border: 2px solid #FFFFFF;
+  border-radius: 20px;
+  color: #FFFFFF;
+  background: transparent;
+  margin-right: 10px;
+  opacity: 1;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.topButton3 {
+  border: 2px solid #FFFFFF;
+  border-radius: 20px;
+  opacity: 1;
+  background: transparent;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #FFFFFF
+}
+
+.topBottomtext{
+  position: relative;
+  bottom: 0;
+  color: #99999F;;
+  align-self: flex-end;
+  margin-bottom: 0px;
+  border-style: solid;
+}

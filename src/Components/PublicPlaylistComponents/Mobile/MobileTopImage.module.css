@@ -1,0 +1,14 @@
+.topImageContainer{
+    margin-top: 10px;
+    width: 174px;
+    height: 174px;
+}
+
+.mobileImage{
+    width: 174px;
+    height: 174px;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    opacity: 1;
+}

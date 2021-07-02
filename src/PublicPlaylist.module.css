@@ -1,0 +1,24 @@
+.publicPlaylist {
+    min-height: 100vh;
+    background-image: url('./assets/images/Artist.png');
+    opacity: 1;
+    height: 100%;
+    margin: 0;
+    padding: 0 20vh;
+    padding-top: 130px;
+    padding-bottom: 130px;
+  }
+  
+  @media (max-width: 1000px) {
+    .publicPlaylist  {
+      padding: 0 8vh;
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+  }
+
+  @media (max-width: 769px) {
+    .web {
+      display: none;
+    }
+  }

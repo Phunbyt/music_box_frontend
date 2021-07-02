@@ -1,0 +1,52 @@
+.tracksTable{
+    margin-top: 33px;
+    display: grid;
+    grid-template-columns: 1fr 15fr 1fr 1fr;
+    column-gap: 10px;
+    color: #FFFFFF;
+}
+
+.tracksImageContainer{
+    grid-column: 1/2;
+    width: 45px;
+    height: 45px;
+    background: transparent 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    opacity: 1;
+    align-self: center;
+}
+
+.tracksImage{
+    height: 100%;
+    width: 100%;
+}
+
+.tracksDetailsContainer{
+    grid-column: 2/3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+.tracksLike{
+    grid-column: 3/4;
+    color: #FFFFFF;
+    background: transparent;
+    border-style: none;
+}
+
+.tracksLike:focus{
+    outline: none;
+}
+
+.tracksMenu{
+    grid-column: 4/5;
+    color: #FFFFFF;
+    background: transparent;
+    border-style: none;
+}
+
+.tracksMenu:focus{
+    outline: none;
+}

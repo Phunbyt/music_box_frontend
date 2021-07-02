@@ -1,0 +1,32 @@
+.tracksTable{
+    margin-top: 33px;
+    display: grid;
+    grid-template-columns: 1fr 16fr 1fr;
+    column-gap: 10px;
+    color: #FFFFFF;
+}
+
+.tracksImageContainer{
+    grid-column: 1/2;
+    opacity: 1;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.tracksDetailsContainer{
+    grid-column: 2/3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+.tracksMenu{
+    grid-column: 3/4;
+    color: #FFFFFF;
+    background: transparent;
+    border-style: none;
+}
+
+.tracksMenu:focus{
+    outline: none;
+}
