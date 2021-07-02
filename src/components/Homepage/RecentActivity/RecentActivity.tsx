@@ -1,5 +1,6 @@
 import React from "react";
-import { FaHeart, FaChevronRight, FaChevronLeft } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
+import axios from 'axios'
 import { recentPlay } from "../Homepage";
 import "./RecentActivity.css";
 import 'font-awesome/css/font-awesome.min.css';
@@ -8,6 +9,20 @@ export interface RecentActivityProps {
   value: recentPlay;
 }
 
+const likeArtist = async (info:string) => {
+  try {
+    const token = localStorage.getItem("Token");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const {data} = await axios.put(`https://music-box-a.herokuapp.com/artist/like/${info}`,'',config)
+    console.log(data);
+  } catch (error) {
+    console.log(error)
+  }
+}
 const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
   let albumPic = "";
   let albumTitle = "";
@@ -18,6 +33,7 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
   let artistLikes;
   let playListName = "";
   let playListLikes;
+  let artistUniqueId = ""
 
   if (
     value &&
@@ -30,6 +46,7 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
     albumTitle = value.albums[0].album.title;
     albumLikes = value.albums[0].album.likeCount;
     artistPic = value.artist[0].artist.pictureMedium;
+    artistUniqueId = value.artist[0].artist._id;
     artistName = value.artist[0].artist.artistName;
     artistLikes = value.artist[0].artist.likeCount;
     playListName = value.playlist[0].playlist.name;
@@ -45,23 +62,17 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
         <div className="cards">
           <div className="pic-text">
             <div className="recent-activity-image">
-              <img 
+              <img alt="pic"
                 className="recent-activity-real-image"
                 src={artistPic}
-                style={{
-                  height: "100%",
-                  width: "100%",
-                  display: "block",
-                  objectFit: "cover",
-                  borderRadius: '50%'
-                 }} />
+                 />
               <div><i className="fa fa-play-circle play" style={{left: '80px'}}></i></div>
             </div>
             <div>
               <p className="details" style={{textAlign: "center", marginTop: "10px"}}>
                 Artist - {artistName}
               </p>
-              <p style={{textAlign: "center", marginTop: "-20px", color: "#99999F"}}><FaHeart className="love" />{" "} 
+              <p style={{textAlign: "center", marginTop: "-20px", color: "#99999F"}}><FaHeart className="love" onClick={() => likeArtist(artistUniqueId)} />{" "} 
               {artistLikes}</p>
             </div>
           </div> 
@@ -69,7 +80,7 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
 
           <div className="pic-text">
             <div className="recent-activity-image">
-              <img 
+              <img alt="pic"
                 className="recent-activity-real-image"
                 src={albumPic}
                 style={{
@@ -82,7 +93,7 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
             </div>
             <div>
               <p className="details" style={{textAlign: "center", marginTop: "10px"}}>
-                Artist - {albumTitle}
+                Album - {albumTitle}
               </p>
               <p style={{textAlign: "center", marginTop: "-20px", color: "#99999F"}}><FaHeart className="love" />{" "} 
               {albumLikes}</p>
@@ -91,7 +102,7 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
 
           <div className="pic-text">
             <div className="recent-activity-image">
-              <img 
+              <img alt="pic"
                 className="recent-activity-real-image"
                 src={playlistPic}
                 style={{
@@ -104,10 +115,10 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
             </div>
             <div>
               <p className="details" style={{textAlign: "center", marginTop: "10px"}}>
-                Artist - {playListName}
+                Playlist - {playListName}
               </p>
               <p style={{textAlign: "center", marginTop: "-20px", color: "#99999F"}}><FaHeart className="love" />{" "} 
-              {playListLikes}</p>
+              {playListLikes}</p> 
             </div>
           </div> 
         </div>

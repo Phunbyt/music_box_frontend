@@ -82,7 +82,7 @@ export default function NavigationBar() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto active">
-            <Nav.Link href="/Browse">Browse</Nav.Link>
+            <Nav.Link href="/genres">Browse</Nav.Link>
             <Nav.Link href="/Library">Library</Nav.Link>
             <Nav.Link href="/Home">Home</Nav.Link>
           </Nav>
@@ -138,7 +138,7 @@ export default function NavigationBar() {
                     {allData.artist ? (
                       allData.artist.map((item: Record<string, any>) => (
                         <li key={item.id} style={{display: "inlineBlock", paddingLeft: "10px", paddingTop: "5px", position: "relative"}}>
-                          <Link to="/artist" style={{ display: 'flex'}}>
+                          <Link to={`/artists/${item.name}`}style={{ display: 'flex'}}>
                             <div style={{ width: "50px", height: "50px" }}>
                                 <img className="artist-album-playlist-pic" style={{borderRadius: '50%'}} src={item.picture}/>
                             </div>
