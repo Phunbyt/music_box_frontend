@@ -194,16 +194,16 @@ export default function NavigationBar() {
                                 position: "relative",
                               }}
                             >
-                              <Link to="/artist" style={{ display: "flex" }}>
+                              <a href={`/artists/${item.name}`} style={{ display: "flex" }}>
                                 <div style={{ width: "50px", height: "50px" }}>
-                                  <img className="artist-album-playlist-pic"
+                                  <img className="artist-album-playlist-pic" 
                                     src={item.picture} alt="pic"
                                   />
                                 </div>
                                 <span className="names-of-artists-albums">
                                   {item.name}
                                 </span>
-                              </Link>
+                              </a>
                             </li>
                           ))
                           .slice(0, 3)
