@@ -183,7 +183,30 @@ input:-ms-input-placeholder {
 }
 
 .selected-links{
-  color: #2DCEEF;
+  width: 120px;
+  height: 30px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+  background: transparent linear-gradient(273deg, #9b2def 0%, #2d9bef 58%, #35edfb 100%) 0% 0% no-repeat padding-box;
+  
+}
+
+.nav-link{
+  background-color: #161a1a;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  border-radius: 40px;
+  margin: 0;
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+
+.Nav_link{
+
 }
 
 .noResultModalContent {

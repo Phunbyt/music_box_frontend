@@ -31,6 +31,7 @@ export default function NavigationBar() {
   const [info, setInfo] = useState("");
   const [display, setDisplay] = useState(false);
   const location = useLocation();
+  let currentPath = location.pathname
   // const [noResult, setNoResult] = useState({modal: true})
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
@@ -97,13 +98,25 @@ export default function NavigationBar() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto active">
             <NavLink activeClassName="selected-links" className="link-to-routes" to="/browse">
-              Browse
+              <div className="nav-link">Browse</div> 
             </NavLink>
             <NavLink activeClassName="selected-links" className="link-to-routes" to="/playlists">
-              Library
+            <div className="nav-link"style={{position: 'relative'}}>Library <span
+                    style={{
+                      color: '#2dceef',
+                      margin: '0',
+                      cursor: 'pointer',
+                      position: 'absolute',
+                      fontSize: '38px',
+                      top: currentPath === '/library' ? '-84px' : '2px',
+                      right: currentPath === '/library' ? '176px' : '25px', 
+                    }}
+                  >
+                    .
+                  </span></div> 
             </NavLink>
             <NavLink activeClassName="selected-links" className="link-to-routes" to="/home">
-              Home
+            <div className="nav-link">Home</div> 
             </NavLink>
           </Nav>
 

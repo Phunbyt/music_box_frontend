@@ -2,7 +2,6 @@ import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import LibraryPlaylists from '../../screens/Library/LibraryPlaylists/LibraryPlaylists';
 import LibraryAlbums from '../../screens/Library/LibraryAlbums/LibraryAlbums';
 import LibraryArtists from '../../screens/Library/LibraryArtists/LibraryArtists';
-//import LibraryNavBar from '../../screens/Library/LibraryNavBar/LibraryNavBar';
 import SearchNoResultComp from "../NoResult/SearchNoResultComp";
 import NavigationBar from '../Homepage/Navbar/Navbar'; 
 
