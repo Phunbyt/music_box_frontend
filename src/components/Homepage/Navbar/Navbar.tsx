@@ -3,13 +3,14 @@ import React, {
   FormEvent,
   useRef,
   useState,
-  useEffect
+  useEffect,
 } from "react";
 import axios from "axios";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { Navbar, Container, Nav, NavDropdown, Form } from "react-bootstrap";
 import "./Navbar.css";
-import 'font-awesome/css/font-awesome.min.css';
+import "font-awesome/css/font-awesome.min.css";
+import { FaTimes } from 'react-icons/fa';
 
 interface property {
   artist?: Record<string, any>[];
@@ -20,7 +21,7 @@ interface property {
 
 interface Props {
   firstName: string;
-  lastName: string; 
+  lastName: string;
 }
 
 export default function NavigationBar() {
@@ -28,6 +29,9 @@ export default function NavigationBar() {
   const [allData, setAllData] = useState({} as property);
   const [info, setInfo] = useState("");
   const [display, setDisplay] = useState(false);
+  const location = useLocation();
+  let currentPath = location.pathname
+  // const [noResult, setNoResult] = useState({modal: true})
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setInfo(e.target.value);
@@ -75,44 +79,72 @@ export default function NavigationBar() {
   }, []);
 
   return (
-  
-    <Navbar collapseOnSelect expand="lg" variant="dark" style={{position: 'fixed', top: 0, width: '100%', backgroundColor: '#161a1a', zIndex: 99}}>  
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      variant="dark"
+      style={{
+        position: "fixed",
+        top: 0,
+        width: "100%",
+        backgroundColor: "#161a1a",
+        zIndex: 99,
+      }}
+    >
       <Container>
-        <Navbar.Brand href="/home">Music-Box</Navbar.Brand>
+        <div></div>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto active">
-            <Nav.Link href="/genres">Browse</Nav.Link>
-            <Nav.Link href="/Library">Library</Nav.Link>
-            <Nav.Link href="/Home">Home</Nav.Link>
+            <NavLink activeClassName="selected-links" className="link-to-routes" to="/genres">
+              <div className="nav-link">Browse</div> 
+            </NavLink>
+            <NavLink activeClassName="selected-links" className="link-to-routes" to="/playlists">
+            <div className="nav-link"style={{position: 'relative'}}>Library <span
+                    style={{
+                      color: '#2dceef',
+                      margin: '0',
+                      cursor: 'pointer',
+                      position: 'absolute',
+                      fontSize: '38px',
+                      top: currentPath === '/library' ? '-84px' : '2px',
+                      right: currentPath === '/library' ? '176px' : '25px', 
+                    }}
+                  >
+                    .
+                  </span></div> 
+            </NavLink>
+            <NavLink activeClassName="selected-links" className="link-to-routes" to="/home">
+            <div className="nav-link">Home</div> 
+            </NavLink>
           </Nav>
+
+          {location.pathname && (location.pathname === '/playlists' || location.pathname === '/albums' || location.pathname === '/artists') && <div className="path">
+            <NavLink className="link-to-routes" to="/playlists">Playlists</NavLink>
+            <NavLink className="link-to-routes" to="/albums">Albums</NavLink>
+            <NavLink className="link-to-routes" to="/artists">Artists</NavLink>
+          </div>}
+
           <div>
             <Form
               className="d-flex"
-              style={{ position: "relative" }}
+              style={{ position: "relative", marginLeft: '10px' }}
               onSubmit={(e: FormEvent<HTMLFormElement>) => {
                 fetchAll(e);
               }}
             >
               <input
-                style={{
-                  paddingLeft: "40px",
-                  outline: "0",
-                  height: "40px",
-                  width: "300px",
-                  backgroundColor: "#898B91",
-                  font: "normal normal normal 18px/52px Lato"
-                }}
                 id="search"
                 type="search"
                 placeholder="Search"
-                className="mr-2 rounded-pill"
+                className="mr-2 rounded-pill search-box-input"
                 aria-label="Search"
                 onChange={handleChange}
                 value={info}
               />
               <i style={{ position: "absolute", left: "10px", top: "6px" }}>
-                <i className="fa fa-search"
+                <i
+                  className="fa fa-search"
                   style={{
                     cursor: "pointer",
                     border: "none",
@@ -122,119 +154,241 @@ export default function NavigationBar() {
                   }}
                 />
               </i>
-              <div ref={container} style={{
-                    zIndex: 99999,
-                    color: "white",
-                    position: "absolute",
-                    top: "50px",
-                    height: 550,
-                    background: "#3A3A3D 0% 0% no-repeat padding-box",
-                    visibility: display ? "visible": "hidden",
-                    borderRadius: "3%",
-                  }}>
-                {allData && allData.artist ? ( 
-                  allData.artist.length > 0 && <ul id="myUL" style={{height: 250, overflowY: "scroll"}}>
-                    <p style={{visibility: display ? "visible": "hidden", paddingLeft: 10, paddingTop: 10, font: 'normal normal bold 18px Lato', letterSpacing: 0.11, color: '#FFFFFF', opacity: 1}}>Artists<i className="italic" style={{position: "absolute", left: "220px"}}><Link style={{textDecoration: 'none', color: '#D5D5D5'}} to={{pathname: "/artistdetails", state: {artistDetails: allData.artist, info: info}}}>view All</Link></i></p>
-                    {allData.artist ? (
-                      allData.artist.map((item: Record<string, any>) => (
-                        <li key={item.id} style={{display: "inlineBlock", paddingLeft: "10px", paddingTop: "5px", position: "relative"}}>
-                          <Link to={`/artists/${item.name}`}style={{ display: 'flex'}}>
-                            <div style={{ width: "50px", height: "50px" }}>
-                                <img className="artist-album-playlist-pic" style={{borderRadius: '50%'}} src={item.picture}/>
-                            </div>
-                          <span className="names-of-artists-albums">{item.name}</span>
+              <div
+                ref={container}
+                className="ref-container-style"
+                style={{ visibility: display ? "visible" : "hidden" }}
+              >
+                {allData && allData.artist ? (
+                  allData.artist.length > 0 && (
+                    <ul id="myUL" style={{ height: 250, overflowY: "scroll" }}>
+                      <p className="artist-list-name"
+                        style={{ visibility: display ? "visible" : "hidden"}}>
+                        Artists
+                        <i
+                          className="italic"
+                          style={{ position: "absolute", left: "220px" }}
+                        >
+                          <Link
+                            style={{ textDecoration: "none", color: "#D5D5D5" }}
+                            to={{
+                              pathname: "/artistdetails",
+                              state: {
+                                artistDetails: allData.artist,
+                                info: info,
+                              },
+                            }}>
+                            view All
                           </Link>
-                        </li>
-                      )).slice(0, 3)
-                    ): (<></>)}
-                  </ul>
-                ) : <></> 
-                }
-                {allData && allData.album ? ( 
-                 allData.album.length > 0 && <ul id="myUL" style={{height: 250, overflowY: "scroll", paddingTop: 20}}>
-                    <p style={{visibility: display ? "visible": "hidden", paddingLeft: 10, paddingTop: 10, font: 'normal normal bold 18px Lato', letterSpacing: 0.11, color: '#FFFFFF', opacity: 1}}>Albums<i className="italic" style={{position: "absolute", left: "220px"}}> 
-                     <Link style={{textDecoration: 'none', color: '#D5D5D5'}} to={{pathname: "/albumdetails", state: {albumDetails: allData.album, info: info}}}>view All</Link>
-                    </i></p>
-                    {allData.album ? (
-                      allData.album.map((item: Record<string, any>) => (
-                        <li key={item.id} style={{display: "inlineBlock", paddingLeft: "10px", paddingTop: 10, position: "relative"}}>
-                          <Link to="/albumdetails"
-                            style={{ 
-                              display: 'flex',
+                        </i>
+                      </p>
+                      {allData.artist ? (
+                        allData.artist
+                          .map((item: Record<string, any>) => (
+                            <li
+                              key={item.id}
+                              style={{
+                                display: "inlineBlock",
+                                paddingLeft: "10px",
+                                paddingTop: "5px",
+                                position: "relative",
+                              }}
+                            >
+                              <Link to="/artist" style={{ display: "flex" }}>
+                                <div style={{ width: "50px", height: "50px" }}>
+                                  <img className="artist-album-playlist-pic"
+                                    src={item.picture} alt="pic"
+                                  />
+                                </div>
+                                <span className="names-of-artists-albums">
+                                  {item.name}
+                                </span>
+                              </Link>
+                            </li>
+                          ))
+                          .slice(0, 3)
+                      ) : (
+                        <></>
+                      )}
+                    </ul>
+                  )
+                ) : (
+                  <></>
+                )}
+                {allData && allData.album ? (
+                  allData.album.length > 0 && (
+                    <ul
+                      id="myUL"
+                      style={{
+                        height: 250,
+                        overflowY: "scroll",
+                        paddingTop: 20,
+                      }}
+                    >
+                      <p className="artist-list-name"
+                        style={{visibility: display ? "visible" : "hidden"}}>
+                        Albums
+                        <i
+                          className="italic"
+                          style={{ position: "absolute", left: "220px" }}
+                        >
+                          <Link
+                            style={{ textDecoration: "none", color: "#D5D5D5" }}
+                            to={{
+                              pathname: "/albumdetails",
+                              state: {
+                                albumDetails: allData.album,
+                                info: info,
+                              },
                             }}
                           >
-                            <div style={{ width: 50, height: 50 }}>
-                              <img className="artist-album-playlist-pic" src={item.cover}/>
-                            </div>
-                          <span className="names-of-artists-albums">{item.title}</span>
-                          <span style={{
-                            marginLeft: 10,
-                            position: "absolute",
-                            top: 30,
-                            left: 60,
-                            font: "normal normal normal 14px Lato",
-                            letterSpacing: "0.08px",
-                            color: "#99999F",
-                            opacity: 1,
-                          }}>{item.artistName}</span>
+                            view All
                           </Link>
-                        </li>
-                      )).slice(0, 3)
-                    ): (<></>)}
-                  </ul>
-                ) : <></>
-                }
-                {allData && allData.playlist ? ( 
-                 allData.playlist.length > 0 && <ul id="myUL" style={{height: 250, overflowY: "scroll", paddingTop: 20}}>
-                    <p style={{visibility: display ? "visible": "hidden", paddingLeft: 10, paddingTop: 10, font: 'normal normal bold 18px Lato', letterSpacing: 0.11, color: '#FFFFFF', opacity: 1}}>Playlists<i className="italic" style={{position: "absolute", left: "220px"}}>view more</i></p>
-                    {allData.playlist ? (
-                      allData.playlist.map((item: Record<string, any>) => (
-                        <li key={item.id} style={{display: "inlineBlock", paddingLeft: "10px", paddingTop: 10, position: "relative"}}>
-                          <Link to="/artist"
-                            style={{ 
-                              display: 'flex',
-                            }}
-                          >
-                            <div style={{ width: 50, height: 50 }}>
-                                <img className="artist-album-playlist-pic" src={item.cover}/>
-                            </div>
-                          <span
-                            style={{
-                              marginLeft: 10,
-                              position: "absolute",
-                              top: 15,
-                              left: 60,
-                              font: "normal normal normal 15px Lato",
-                              letterSpacing: "0.09px",
-                              color: "#FFFFFF",
-                              opacity: 1
-                            }}
-                          >{item.name}</span>
-                          </Link>
-                        </li>
-                      )).slice(0, 3)
-                    ): (<><h1></h1></>)} 
-                  </ul>
-                ) : <></>
-                }
-              {allData && allData.artist && allData.album && allData.artist.length === 0 && allData.album.length === 0 && <div style={{width: 500, background: 'yellow'}}>Try again</div>}
+                        </i>
+                      </p>
+                      {allData.album ? (
+                        allData.album
+                          .map((item: Record<string, any>) => (
+                            <li
+                              key={item.id}
+                              style={{
+                                display: "inlineBlock",
+                                paddingLeft: "10px",
+                                paddingTop: 10,
+                                position: "relative",
+                              }}
+                            >
+                              <Link
+                                to="/albumdetails"
+                                style={{
+                                  display: "flex",
+                                }}
+                              >
+                                <div style={{ width: 50, height: 50 }}>
+                                  <img
+                                    className="artist-album-playlist-pic"
+                                    src={item.cover}
+                                  />
+                                </div>
+                                <span className="names-of-artists-albums">
+                                  {item.title}
+                                </span>
+                                <span
+                                  style={{
+                                    marginLeft: 10,
+                                    position: "absolute",
+                                    top: 30,
+                                    left: 60,
+                                    font: "normal normal normal 14px Lato",
+                                    letterSpacing: "0.08px",
+                                    color: "#99999F",
+                                    opacity: 1,
+                                  }}
+                                >
+                                  {item.artistName}
+                                </span>
+                              </Link>
+                            </li>
+                          ))
+                          .slice(0, 3)
+                      ) : (
+                        <></>
+                      )}
+                    </ul>
+                  )
+                ) : (
+                  <></>
+                )}
+                {allData && allData.playlist ? (
+                  allData.playlist.length > 0 && (
+                    <ul
+                      id="myUL"
+                      style={{
+                        height: 250,
+                        overflowY: "scroll",
+                        paddingTop: 20,
+                      }}
+                    >
+                      <p
+                        style={{
+                          visibility: display ? "visible" : "hidden",
+                          paddingLeft: 10,
+                          paddingTop: 10,
+                          font: "normal normal bold 18px Lato",
+                          letterSpacing: 0.11,
+                          color: "#FFFFFF",
+                          opacity: 1,
+                        }}
+                      >
+                        Playlists
+                        <i
+                          className="italic"
+                          style={{ position: "absolute", left: "220px" }}
+                        >
+                          view more
+                        </i>
+                      </p>
+                      {allData.playlist ? (
+                        allData.playlist
+                          .map((item: Record<string, any>) => (
+                            <li
+                              key={item.id}
+                              style={{
+                                display: "inlineBlock",
+                                paddingLeft: "10px",
+                                paddingTop: 10,
+                                position: "relative",
+                              }}
+                            >
+                              <Link
+                                to="/artist"
+                                style={{
+                                  display: "flex",
+                                }}
+                              >
+                                <div style={{ width: 50, height: 50 }}>
+                                  <img
+                                    className="artist-album-playlist-pic"
+                                    src={item.cover}
+                                  />
+                                </div>
+                                <span className="album-artist-name-style">
+                                  {item.name}
+                                </span>
+                              </Link>
+                            </li>
+                          ))
+                          .slice(0, 3)
+                      ) : (
+                        <></>
+                      )}
+                    </ul>
+                  )
+                ) : (
+                  <></>
+                )}
               </div>
             </Form>
           </div>
           <NavDropdown
             title={
-              <span className="text-white my-auto" style={{font: "normal normal normal 20px Lato"}}>
-                <i className="fa fa-user-circle-o"
-                  style={{fontSize: "30px"}}
-                />{"    "}
+              <span
+                className="text-white my-auto"
+                style={{ font: "normal normal normal 20px Lato" }}
+              >
+                <i
+                  className="fa fa-user-circle-o"
+                  style={{ fontSize: "30px" }}
+                />
+                {"    "}
                 {firstName} {lastName}
               </span>
             }
             id="collasible-nav-dropdown"
           >
-            <NavLink className="dropdown-navbar" to="/action">Profile</NavLink>
+            <NavDropdown.Item to="/">Profile</NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavLink className="dropdown-navbar" to="/home">Log out</NavLink>  
+            <NavDropdown.Item to="/">Log out</NavDropdown.Item>
           </NavDropdown>
         </Navbar.Collapse>
       </Container>
