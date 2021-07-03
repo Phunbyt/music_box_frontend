@@ -27,7 +27,6 @@
     display: flex;
     margin: 0 auto;
     position: relative;
-    backdrop-filter: blur(20px) saturate(120%) contrast(200%);
 }
 
 .flow .dots{

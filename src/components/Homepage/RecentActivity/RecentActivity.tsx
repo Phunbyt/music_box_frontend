@@ -64,7 +64,7 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
             <div className="recent-activity-image">
               <img alt="pic"
                 className="recent-activity-real-image"
-                src={artistPic}
+                src={artistPic} style={{borderRadius: '50%'}}
                  />
               <div><i className="fa fa-play-circle play" style={{left: '80px'}}></i></div>
             </div>
@@ -83,12 +83,7 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
               <img alt="pic"
                 className="recent-activity-real-image"
                 src={albumPic}
-                style={{
-                  height: "100%",
-                  width: "100%",
-                  display: "block",
-                  objectFit: "cover",
-                 }} />
+                />
               <div><i className="fa fa-play-circle play"></i></div>
             </div>
             <div>
@@ -105,12 +100,7 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
               <img alt="pic"
                 className="recent-activity-real-image"
                 src={playlistPic}
-                style={{
-                  height: "100%",
-                  width: "100%",
-                  display: "block",
-                  objectFit: "cover",
-                 }} />
+                />
               <div><i className="fa fa-play-circle play"></i></div>
             </div>
             <div>

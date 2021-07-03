@@ -44,7 +44,6 @@
     width: 100%;
     display: block;
     object-fit: cover;
-    border-radius: 50%;
 }
 
 .recent-activity-real-image:hover{
