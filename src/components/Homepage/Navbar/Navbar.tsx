@@ -196,7 +196,7 @@ export default function NavigationBar() {
                             >
                               <a href={`/artists/${item.name}`} style={{ display: "flex" }}>
                                 <div style={{ width: "50px", height: "50px" }}>
-                                  <img className="artist-album-playlist-pic" 
+                                  <img className="artist-album-playlist-pic" style={{borderRadius: '50%'}} 
                                     src={item.picture} alt="pic"
                                   />
                                 </div>

@@ -26,6 +26,8 @@
     height: 320px;
     display: flex;
     margin: 0 auto;
+    position: relative;
+    backdrop-filter: blur(20px) saturate(120%) contrast(200%);
 }
 
 .flow .dots{
@@ -36,4 +38,23 @@
 .flow .play{
     font-size: 40px;
     color: #1C1C1C;
+    position: absolute;
+    left: 58px;
+    top: 225px;
+    color: white;
+}
+
+.flow-front-image{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 80px;
+    left: 40px;
+}
+
+.flow-front-image-image{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
 }

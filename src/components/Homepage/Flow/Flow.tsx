@@ -37,8 +37,8 @@ export default function Flow() {
           <i className="dots fa fa-ellipsis-h" />
         </p>
       </div>
-      {songs && songs[songs.length - 1] && <div className="card" style={{backgroundImage: `url(${songs[songs.length-1].listenPic})`}}>
-        <div className="front-image"></div>
+      {songs && songs[songs.length - 1] && <div className="card" style={{background: `url(${songs[songs.length-1].listenPic})`}}>
+        <div className="flow-front-image"><img className="flow-front-image-image" src={songs[songs.length-1].listenPic} alt="pic"/></div>
         {songs && <div className="image" onClick={() => handleClick(songs, songs.length-1)}>
           <i className="play fa fa-play-circle" />
         </div>}
