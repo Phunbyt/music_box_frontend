@@ -367,6 +367,10 @@ export default function NavigationBar() {
                 ) : (
                   <></>
                 )}
+                {allData && allData.artist && allData.album && allData.artist.length === 0 && allData.album.length === 0 &&
+                (
+                  <h1>No result</h1>
+                )}
               </div>
             </Form>
           </div>
