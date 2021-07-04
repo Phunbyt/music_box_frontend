@@ -10,7 +10,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { Navbar, Container, Nav, NavDropdown, Form } from "react-bootstrap";
 import "./Navbar.css";
 import "font-awesome/css/font-awesome.min.css";
-import { FaTimes } from 'react-icons/fa';
+import musicBox from './music-box.png';
 
 interface property {
   artist?: Record<string, any>[];
@@ -83,10 +83,11 @@ export default function NavigationBar() {
         width: "100%",
         backgroundColor: "#161a1a",
         zIndex: 99,
+        backdropFilter: 'blur(50px)',
       }}
     >
       <Container>
-        <div></div>
+        <div style={{height: 40, width: 88}}><Link to="/home"><img src={musicBox} alt="pic" style={{width: '100%', height: '100%', objectFit: 'cover', display: 'block'}}/></Link></div>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto active">
@@ -114,9 +115,9 @@ export default function NavigationBar() {
           </Nav>
 
           {location.pathname && (location.pathname === '/playlists' || location.pathname === '/albums' || location.pathname === '/artists') && <div className="path">
-            <NavLink className="link-to-routes" to="/playlists">Playlists</NavLink>
-            <NavLink className="link-to-routes" to="/albums">Albums</NavLink>
-            <NavLink className="link-to-routes" to="/artists">Artists</NavLink>
+            <NavLink className="link-to-routes" to="/playlists" activeClassName="selected-links-mini">Playlists</NavLink>
+            <NavLink className="link-to-routes" to="/albums" activeClassName="selected-links-mini">Albums</NavLink>
+            <NavLink className="link-to-routes" to="/artists" activeClassName="selected-links-mini">Artists</NavLink>
           </div>}
 
           <div>

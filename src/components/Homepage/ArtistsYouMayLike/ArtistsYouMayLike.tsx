@@ -27,6 +27,7 @@ const ArtistsYouMayLike: React.FC<ArtistsYouMayLikeProps> = () => {
             console.log(error)
         }
     }
+
     useEffect(()=>{
         getArtists();
     }, [])
