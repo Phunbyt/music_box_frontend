@@ -182,6 +182,7 @@ input:-ms-input-placeholder {
 }
 .search-box-input{
   padding-left: 40px;
+  outline: 0;
   height: 35px;
   width: 250px;
   background-color: #898B91;
