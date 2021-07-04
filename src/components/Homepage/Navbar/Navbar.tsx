@@ -19,11 +19,6 @@ interface property {
   allData?: Record<string, any>[];
 }
 
-interface Props {
-  firstName: string;
-  lastName: string;
-}
-
 export default function NavigationBar() {
   const container = useRef<HTMLDivElement>(null);
   const [allData, setAllData] = useState({} as property);
@@ -31,7 +26,6 @@ export default function NavigationBar() {
   const [display, setDisplay] = useState(false);
   const location = useLocation();
   let currentPath = location.pathname
-  // const [noResult, setNoResult] = useState({modal: true})
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setInfo(e.target.value);
@@ -107,8 +101,8 @@ export default function NavigationBar() {
                       cursor: 'pointer',
                       position: 'absolute',
                       fontSize: '38px',
-                      top: currentPath === '/library' ? '-84px' : '2px',
-                      right: currentPath === '/library' ? '176px' : '25px', 
+                      top: currentPath === '/playlists' ? '-14px' : '2px',
+                      right: currentPath === '/playlists' ? '0px' : '25px', 
                     }}
                   >
                     .
@@ -265,7 +259,7 @@ export default function NavigationBar() {
                                 }}
                               >
                                 <div style={{ width: 50, height: 50 }}>
-                                  <img
+                                  <img alt="pic"
                                     className="artist-album-playlist-pic"
                                     src={item.cover}
                                   />
