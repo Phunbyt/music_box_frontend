@@ -10,6 +10,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { Navbar, Container, Nav, NavDropdown, Form } from "react-bootstrap";
 import "./Navbar.css";
 import "font-awesome/css/font-awesome.min.css";
+import NoResult from "../../NoResult/NoResult";
 import { FaTimes } from 'react-icons/fa';
 
 interface property {
@@ -29,6 +30,8 @@ export default function NavigationBar() {
   const [allData, setAllData] = useState({} as property);
   const [info, setInfo] = useState("");
   const [display, setDisplay] = useState(false);
+  const [noResult, setNoResult] = useState({ modal: true });
+
   const location = useLocation();
   let currentPath = location.pathname
   // const [noResult, setNoResult] = useState({modal: true})
@@ -79,6 +82,18 @@ export default function NavigationBar() {
   }, []);
 
   return (
+    <div>
+      <NoResult show={noResult.modal} close={() => {setNoResult({...noResult, modal: false})}}>
+                {
+                    <div className="noResultMain">
+                        <span className="firstText">No Results</span><br />
+                        <span className="secondText">MusicFinder didn't quite catch that</span><br />
+                        <button className="tryAgain">TRY AGAIN</button>
+                    </div>
+                }
+        </NoResult>
+    
+      
     <Navbar
       collapseOnSelect
       expand="lg"
@@ -360,12 +375,17 @@ export default function NavigationBar() {
                           ))
                           .slice(0, 3)
                       ) : (
-                        <></>
+                          <></>
                       )}
                     </ul>
                   )
                 ) : (
-                  <></>
+                    <>
+                      <div style={{ position: "absolute"}}>
+                        {/* {setNoResult({...noResult, modal: true})} */}
+                    
+                        </div>
+                    </>
                 )}
               </div>
             </Form>
@@ -392,6 +412,7 @@ export default function NavigationBar() {
           </NavDropdown>
         </Navbar.Collapse>
       </Container>
-    </Navbar>
+      </Navbar>
+      </div>
   );
 }
