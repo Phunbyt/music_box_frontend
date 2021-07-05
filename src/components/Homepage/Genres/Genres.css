@@ -1,32 +1,45 @@
-.genres-main{
-    width: 75%;
-    height: 197px;
-    margin-left: 12.5%;
-    color: white;
-    margin-top: 50px;
+.genres-main {
+  width: 75%;
+  height: 197px;
+  margin-left: 12.5%;
+  color: white;
+  margin-top: 50px;
 }
 
-.genres-top{
-    height: 50px;
-    font: normal normal bold 24px Lato;
+.genres-top {
+  height: 50px;
+  font: normal normal bold 24px Lato;
 }
 
-.genres-bottom{
-    height: 100%;
-    display: flex;
-    overflow-x: scroll;
+.genres-bottom {
+  height: 100%;
+  display: flex;
+  overflow-x: scroll;
 }
 
-.genres{
-    height: 128px;
-    min-width: 200px;
-    border-radius: 8px;
-    opacity: 1;
-    margin-right: 10px;
-    position: relative;
+.genres {
+  height: 128px;
+  min-width: 200px;
+  border-radius: 8px;
+  opacity: 1;
+  margin-right: 10px;
+  position: relative;
 }
 
-.genres-pic:hover{
-    opacity: 0.7;
-    cursor: pointer;
+.genres-pic {
+  top: 0;
+  left: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  background: linear-gradient(
+    135deg,
+    rgba(156, 33, 49, 0.8) 0%,
+    rgba(222, 130, 130, 0.8) 40%,
+    rgb(250, 6, 6) 100%
+  );
+}
+
+.genres-pic:hover {
+  opacity: 0.7;
+  
 }

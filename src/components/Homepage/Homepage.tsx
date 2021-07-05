@@ -2,9 +2,11 @@ import Navigationbar from "./Navbar/Navbar";
 import Flow from "./Flow/Flow";
 import RecentActivity from "./RecentActivity/RecentActivity";
 import axios from "axios";
+import image from './BG.png';
 import ClipLoader from "react-spinners/ClipLoader";
 import { useEffect, useState } from "react";
 import Genres from "./Genres/Genres";
+import './Homepage.css';
 import ArtistsYouMayLike from "./ArtistsYouMayLike/ArtistsYouMayLike";
 
 export interface property {
@@ -85,8 +87,15 @@ export default function Homepage() {
         </div>
       ) : (
         <div>
-          <Navigationbar />
-          <Flow />
+          <div className='nav-bar'>
+            <Navigationbar />
+          </div>
+          <div className='home'>
+            <h1>Home</h1>
+          </div>
+          <div className='flow'>
+            <Flow />
+          </div>
           <RecentActivity value={recentlyPlayed} />
           <Genres />
           <ArtistsYouMayLike />
