@@ -1,7 +1,8 @@
-import {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from 'axios';
 import 'font-awesome/css/font-awesome.min.css';
 import './ArtistsYouMayLike.css';
+import ClipLoader from "react-spinners/ClipLoader";
 
 export interface ArtistsYouMayLikeProps {
     
@@ -9,9 +10,10 @@ export interface ArtistsYouMayLikeProps {
  
 const ArtistsYouMayLike: React.FC<ArtistsYouMayLikeProps> = () => {
     const [artistYouMayLike, setArtistYouMayLike] = useState([] as Record<string, any>[]);
-
+    const [loading, setLoading] = useState(false);
     const getArtists = async () => {
         try{
+            setLoading(true);
             const token = localStorage.getItem("Token");
             const config = {
                 headers: {
@@ -20,16 +22,24 @@ const ArtistsYouMayLike: React.FC<ArtistsYouMayLikeProps> = () => {
             };
             const { data } = await axios.get("https://music-box-a.herokuapp.com/artist/mostPlayedArtists", config);
             setArtistYouMayLike(data.data);
+            setLoading(false);
         }catch(error){
             console.log(error)
         }
     }
+
     useEffect(()=>{
         getArtists();
     }, [])
 
     return ( 
-    <div className="artists-you-may-like">
+        <>
+        {loading ? (
+        <div className="App">
+          <ClipLoader size={50} color={"#DEDFDF"} loading={loading} />
+        </div>
+      ) : (
+        <div className="artists-you-may-like">
         <div className="artists-you-may-like-top">
             <p>You may like these Artists</p>
         </div>
@@ -46,6 +56,10 @@ const ArtistsYouMayLike: React.FC<ArtistsYouMayLikeProps> = () => {
             ))}
         </div>
     </div> 
+      )}
+
+    
+    </>
     );
 }
  

@@ -12,6 +12,7 @@ import "./Navbar.css";
 import "font-awesome/css/font-awesome.min.css";
 import NoResult from "../../NoResult/NoResult";
 import { FaTimes } from 'react-icons/fa';
+import musicBox from './music-box.png';
 
 interface property {
   artist?: Record<string, any>[];
@@ -20,21 +21,15 @@ interface property {
   allData?: Record<string, any>[];
 }
 
-interface Props {
-  firstName: string;
-  lastName: string;
-}
-
 export default function NavigationBar() {
   const container = useRef<HTMLDivElement>(null);
   const [allData, setAllData] = useState({} as property);
   const [info, setInfo] = useState("");
   const [display, setDisplay] = useState(false);
-  const [noResult, setNoResult] = useState({ modal: true });
+  const [noResult, setNoResult] = useState({ modal: false });
 
   const location = useLocation();
   let currentPath = location.pathname
-  // const [noResult, setNoResult] = useState({modal: true})
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setInfo(e.target.value);
@@ -83,7 +78,7 @@ export default function NavigationBar() {
 
   return (
     <div>
-      <NoResult show={noResult.modal} close={() => {setNoResult({...noResult, modal: false})}}>
+      {/* <NoResult show={noResult.modal} close={() => {setNoResult({...noResult, modal: false})}}>
                 {
                     <div className="noResultMain">
                         <span className="firstText">No Results</span><br />
@@ -91,7 +86,7 @@ export default function NavigationBar() {
                         <button className="tryAgain">TRY AGAIN</button>
                     </div>
                 }
-        </NoResult>
+        </NoResult> */}
     
       
     <Navbar
@@ -104,10 +99,11 @@ export default function NavigationBar() {
         width: "100%",
         backgroundColor: "#161a1a",
         zIndex: 99,
+        backdropFilter: 'blur(50px)',
       }}
     >
       <Container>
-        <div></div>
+        <div style={{height: 40, width: 88}}><Link to="/home"><img src={musicBox} alt="pic" style={{width: '100%', height: '100%', objectFit: 'cover', display: 'block'}}/></Link></div>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto active">
@@ -122,8 +118,8 @@ export default function NavigationBar() {
                       cursor: 'pointer',
                       position: 'absolute',
                       fontSize: '38px',
-                      top: currentPath === '/library' ? '-84px' : '2px',
-                      right: currentPath === '/library' ? '176px' : '25px', 
+                      top: currentPath === '/playlists' ? '-14px' : '2px',
+                      right: currentPath === '/playlists' ? '0px' : '25px', 
                     }}
                   >
                     .
@@ -135,9 +131,9 @@ export default function NavigationBar() {
           </Nav>
 
           {location.pathname && (location.pathname === '/playlists' || location.pathname === '/albums' || location.pathname === '/artists') && <div className="path">
-            <NavLink className="link-to-routes" to="/playlists">Playlists</NavLink>
-            <NavLink className="link-to-routes" to="/albums">Albums</NavLink>
-            <NavLink className="link-to-routes" to="/artists">Artists</NavLink>
+            <NavLink className="link-to-routes" to="/playlists" activeClassName="selected-links-mini">Playlists</NavLink>
+            <NavLink className="link-to-routes" to="/albums" activeClassName="selected-links-mini">Albums</NavLink>
+            <NavLink className="link-to-routes" to="/artists" activeClassName="selected-links-mini">Artists</NavLink>
           </div>}
 
           <div>
@@ -280,7 +276,7 @@ export default function NavigationBar() {
                                 }}
                               >
                                 <div style={{ width: 50, height: 50 }}>
-                                  <img
+                                  <img alt="pic"
                                     className="artist-album-playlist-pic"
                                     src={item.cover}
                                   />
@@ -386,6 +382,40 @@ export default function NavigationBar() {
                     
                         </div>
                     </>
+                )}
+                {allData && allData.artist && allData.album && allData.artist.length === 0 && allData.album.length === 0 &&
+                (
+                  // <h1 onAuxClickCapture={() => {setNoResult({...noResult, modal: true})}}>No result</h1>
+                    <>
+                {/* <div className="noResultOverlay" onClick={() => {setNoResult({...noResult, modal: false})}}>
+                    <div className="fatimesCont">
+                        <FaTimes className="noResultFaTimes" onClick={() => {setNoResult({...noResult, modal: false})}} />
+                    </div>
+          </div>
+                  <div className="noResultModal">
+                      <div className="noResultModalContent">
+                        <div className="noResultMain">
+                        <span className="firstText">No Results</span><br />
+                        <span className="secondText">MusicFinder didn't quite catch that</span><br />
+                        <button className="tryAgain">TRY AGAIN</button>
+                        </div>
+                    </div>
+                      </div> */}
+                  <div className="noResultModal">
+                <div className="noResultOverlay" onClick={() => {setNoResult({...noResult, modal: true})}}>
+                    <div className="fatimesCont">
+                        <FaTimes className="noResultFaTimes" onClick={() => {setNoResult({...noResult, modal: true})}} />
+                    </div>
+          </div>
+                      <div className="noResultModalContent">
+                        <div className="noResultMain">
+                        <span className="firstText">No Results</span><br />
+                        <span className="secondText">MusicFinder didn't quite catch that</span><br />
+                        <button className="tryAgain">TRY AGAIN</button>
+                        </div>
+                    </div>
+                      </div>
+                      </>
                 )}
               </div>
             </Form>
