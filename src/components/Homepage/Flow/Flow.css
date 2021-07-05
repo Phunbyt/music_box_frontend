@@ -3,7 +3,7 @@
 }
 
 .flow .top{
-    max-width: 75%;
+    max-width: 40%;
     height: 30px;
     margin-left: 12.5%;
     display: flex;
@@ -22,10 +22,10 @@
 }
 
 .flow .card{
-    max-width: 75%;
+    max-width: 40%;
     height: 320px;
     display: flex;
-    margin: 0 auto;
+    margin-left: 12.5%;
     position: relative;
 }
 
