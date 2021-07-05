@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react'
-import AlbumTop from './Components/AlbumComponents/AlbumTop'
-import AlbumSideTop from './Components/AlbumComponents/AlbumSideTop'
-import AlbumSideTableHeader from './Components/AlbumComponents/AlbumSideTableHeader'
-import AlbumSideTableSongs from './Components/AlbumComponents/AlbumSideTableSongs'
-import AlbumMore from './Components/AlbumComponents/AlbumMore'
-import Mobile from './Components/AlbumComponents/Mobile/Mobile'
+import AlbumTop from './components/AlbumComponents/AlbumTop'
+import AlbumSideTop from './components/AlbumComponents/AlbumSideTop'
+import AlbumSideTableHeader from './components/AlbumComponents/AlbumSideTableHeader'
+import AlbumSideTableSongs from './components/AlbumComponents/AlbumSideTableSongs'
+import AlbumMore from './components/AlbumComponents/AlbumMore'
+import Mobile from './components/AlbumComponents/Mobile/Mobile'
 import axios, { AxiosRequestConfig } from 'axios'
 import styles from './Album.module.css'
+import {useParams} from 'react-router-dom'
 
 const Album = () => {
+    const {albumid}:any = useParams()
     const [albumImage, setAlbumImage] =useState('')
     const [albumTitle, setAlbumTitle] = useState('')
     const [albumArtist, setAlbumArtist] =useState('')
@@ -40,7 +42,7 @@ const Album = () => {
         };
         try {
           const album = await axios.get(
-            `http://localhost:9080/album/getOneAlbum/302127`,
+            `http://localhost:9080/album/getOneAlbum/${albumid}`,
             config
           );
           

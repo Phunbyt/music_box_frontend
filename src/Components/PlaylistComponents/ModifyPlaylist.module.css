@@ -1,0 +1,34 @@
+.modifyPlaylist {
+    margin-top: 20px;
+    display: flex;
+    color: #FFFFFF;
+  }
+  
+  .addSong {
+    width: 188px;
+    height: 40px;
+    background: transparent linear-gradient(269deg, #9B2DEF 0%, #2D9BEF 61%, #35EDFB 100%) 0% 0% no-repeat padding-box;
+    border-radius: 40px;
+    border-style: none;
+    color: #FFFFFF;
+    opacity: 1;
+  }
+  
+  .addSong:focus{
+    outline: none;
+  }
+  
+  .deleteSong {
+    margin-left: auto;
+    width: 188px;
+    height: 40px;
+    background: transparent linear-gradient(269deg, #9B2DEF 0%, #2D9BEF 61%, #35EDFB 100%) 0% 0% no-repeat padding-box;
+    border-radius: 40px;
+    border-style: none;
+    color: #FFFFFF;
+    opacity: 1;
+  }
+  
+  .deleteSong:focus{
+    outline: none;
+  }

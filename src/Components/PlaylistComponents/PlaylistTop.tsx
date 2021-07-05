@@ -9,8 +9,8 @@ const PlaylistTop = (props: Record<string, any>) =>{
             <PlaylistImage />
             <PlaylistTopDetails name={props.name} description={props.description} songsAndDuration={props.songsAndDuration}/>
             <div className={styles.topRight}>
-            <TopButtons  />
-            <p className={styles.topBottomText}>{props.createdAt}</p>
+            <TopButtons  collapse={props.collapse} />
+            <p className={styles.topBottomText} >{props.createdAt} </p>
             </div>
         </div>
     )

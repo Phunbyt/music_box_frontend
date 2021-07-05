@@ -1,17 +1,19 @@
 
 import axios, { AxiosRequestConfig } from 'axios'
 import { useState, useEffect } from 'react'
-import PublicPlaylistTop from './Components/PublicPlaylistComponents/PublicPlaylistTop'
-import TracksTableControls from './Components/PublicPlaylistComponents/TracksControls'
-import TracksTableHeader from './Components/PublicPlaylistComponents/TracksTableHeader'
-import TracksTableBody from './Components/PublicPlaylistComponents/TracksTableBody'
-import FeaturedArtistTop from './Components/PublicPlaylistComponents/FeaturedArtistTop'
-import FeaturedArtist from './Components/PublicPlaylistComponents/FeaturedArtist'
-import Mobile from './Components/PublicPlaylistComponents/Mobile/Mobile'
+import PublicPlaylistTop from './components/PublicPlaylistComponents/PublicPlaylistTop'
+import TracksTableControls from './components/PublicPlaylistComponents/TracksControls'
+import TracksTableHeader from './components/PublicPlaylistComponents/TracksTableHeader'
+import TracksTableBody from './components/PublicPlaylistComponents/TracksTableBody'
+import FeaturedArtistTop from './components/PublicPlaylistComponents/FeaturedArtistTop'
+import FeaturedArtist from './components/PublicPlaylistComponents/FeaturedArtist'
+import Mobile from './components/PublicPlaylistComponents/Mobile/Mobile'
+import {useParams} from 'react-router-dom'
 import styles from './PublicPlaylist.module.css'
 
 
 const PublicPlaylist = () => {
+    const {publicplaylistid}:any = useParams()
     const [playlistName, setPlaylistName] = useState("");
     const [playlistFollowers, setPlaylistFollowers] = useState("");
     const [playlistDuratioAndSongsNum, setPlaylistDurationAndSongsNum] = useState('');
@@ -40,7 +42,7 @@ const PublicPlaylist = () => {
         };
         try {
           const playlist = await axios.get(
-            `http://localhost:9080/playlist/get/60d91955f83599393b9846e3`,
+            `http://localhost:9080/playlist/get/${publicplaylistid}`,
             config
           );
           

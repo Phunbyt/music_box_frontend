@@ -1,0 +1,39 @@
+.flow{
+    margin-top: 136px;
+}
+
+.flow .top{
+    max-width: 75%;
+    height: 30px;
+    margin-left: 12.5%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font: normal normal bold 24px Lato;
+}
+
+.flow .recently{
+    margin: 0;
+    text-align: left;
+    font: normal normal bold 24px Lato;
+    letter-spacing: 0.24px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+.flow .card{
+    max-width: 75%;
+    height: 320px;
+    display: flex;
+    margin: 0 auto;
+}
+
+.flow .dots{
+    font-size: 24px;
+    color: #ffff;
+}
+
+.flow .play{
+    font-size: 40px;
+    color: #1C1C1C;
+}

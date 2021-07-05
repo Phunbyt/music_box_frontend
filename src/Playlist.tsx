@@ -1,17 +1,20 @@
 import axios, { AxiosRequestConfig } from 'axios'
 import { useState, useEffect } from 'react'
-import PlaylistTop from './Components/PlaylistComponents/PlaylistTop'
-import TrackTableControls from './Components/PlaylistComponents/TrackTableControls'
-import TracksTableHeader from './Components/PlaylistComponents/TracksTableHeader'
-import TracksTable from './Components/PlaylistComponents/TracksTable'
-import RefreshTop from './Components/PlaylistComponents/RefreshTop'
-import RefreshTableHeader from './Components/PlaylistComponents/RefreshTableHeader'
+import PlaylistTop from './components/PlaylistComponents/PlaylistTop'
+import TrackTableControls from './components/PlaylistComponents/TrackTableControls'
+import TracksTableHeader from './components/PlaylistComponents/TracksTableHeader'
+import TracksTable from './components/PlaylistComponents/TracksTable'
+import RefreshTop from './components/PlaylistComponents/RefreshTop'
+import RefreshTableHeader from './components/PlaylistComponents/RefreshTableHeader'
 // import RefreshTable from './Components/PlaylistComponents/RefreshTable'
-import Mobile from './Components/PlaylistComponents/Mobile/Mobile'
+import Mobile from './components/PlaylistComponents/Mobile/Mobile'
 import styles from './Playlist.module.css'
+import ModifyPlaylist from './components/PlaylistComponents/ModifyPlaylist'
+import {useParams} from 'react-router-dom'
 
 
 const Playlists = () => {
+  const {playlistid}:any = useParams()
     const [playlistName, setPlaylistName] = useState("");
     const [playlistCreatedAt, setPlaylistCreatedAt] = useState("");
     const [playlistDuratioAndSongsNum, setPlaylistDurationAndSongsNum] = useState('');
@@ -19,6 +22,7 @@ const Playlists = () => {
     const [playlistSongs, setPlaylistSongs] = useState([])
     const [loading, setLoading] = useState(true)
     const [displayTable, setDisplayTable] = useState('block')
+    const [displayModifyPlaylist, setDisplayModifyPlaylist] = useState('none' as string)
     const callApi = async () => {
         try {
           const { data } = await axios.post('https://music-box-a.herokuapp.com/music/signIn', {
@@ -40,7 +44,7 @@ const Playlists = () => {
         };
         try {
           const playlist = await axios.get(
-            `http://localhost:9080/playlist/get/60d91955f83599393b9846e3`,
+            `http://localhost:9080/playlist/get/${playlistid}`,
             config
           );
           
@@ -78,10 +82,21 @@ const Playlists = () => {
           setDisplayTable('block')
         }
       }
+      const collapseModifyPlaylistHandler = () => {
+        if (displayModifyPlaylist === 'block') {
+          setDisplayModifyPlaylist('none')
+        }
+        if (displayModifyPlaylist === 'none') {
+          setDisplayModifyPlaylist('block')
+        }
+      }
     return (
         <div className={styles.playlist}>
           <div className={styles.web}>
-            <PlaylistTop name={playlistName} description={playlistDescription} songsAndDuration={playlistDuratioAndSongsNum} createdAt={playlistCreatedAt} />
+            <PlaylistTop name={playlistName} description={playlistDescription}
+             songsAndDuration={playlistDuratioAndSongsNum} createdAt={playlistCreatedAt} collapse={collapseModifyPlaylistHandler}  />
+             <ModifyPlaylist displayModifyPlaylist={displayModifyPlaylist}
+             name={playlistName} tracks={playlistSongs} deleteTrack={setPlaylistSongs} playlistId={playlistid} />
             <TrackTableControls toggleDisplay={collapseTableHandler} />
             <div style={{display: `${displayTable}`}}>
             <TracksTableHeader />
