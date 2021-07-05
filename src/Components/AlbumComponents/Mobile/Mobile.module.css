@@ -1,0 +1,11 @@
+
+.mobile{
+    display:none
+}
+
+@media (max-width: 769px) {
+    .mobile {
+      display: block;
+      color: #FFFFFF;
+    }
+}

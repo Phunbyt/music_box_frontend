@@ -2,6 +2,7 @@ import React from "react";
 import { FaHeart } from "react-icons/fa";
 import axios from 'axios'
 import { recentPlay } from "../Homepage";
+import { useHistory } from "react-router-dom";
 import "./RecentActivity.css";
 import 'font-awesome/css/font-awesome.min.css';
 
@@ -33,7 +34,9 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
   let artistLikes;
   let playListName = "";
   let playListLikes;
-  let artistUniqueId = ""
+  let artistUniqueId = "";
+  let albumId = ''
+  let history = useHistory();
 
   if (
     value &&
@@ -51,6 +54,8 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
     artistLikes = value.artist[0].artist.likeCount;
     playListName = value.playlist[0].playlist.name;
     playListLikes = value.playlist[0].playlist.likes.length;
+    albumId = value.albums[0].album.id;
+
   }
 
   return (
@@ -64,7 +69,7 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
             <div className="recent-activity-image">
               <img alt="pic"
                 className="recent-activity-real-image"
-                src={artistPic} style={{borderRadius: '50%'}}
+                src={artistPic} style={{borderRadius: '50%'}} onClick={() => history.push(`/artists/${artistName}`)}
                  />
               <div><i className="fa fa-play-circle play" style={{left: '80px'}}></i></div>
             </div>
@@ -82,7 +87,7 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
             <div className="recent-activity-image">
               <img alt="pic"
                 className="recent-activity-real-image"
-                src={albumPic}
+                src={albumPic} onClick={() => history.push(`/album/${albumId}`)}
                 />
               <div><i className="fa fa-play-circle play"></i></div>
             </div>

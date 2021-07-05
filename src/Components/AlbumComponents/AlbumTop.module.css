@@ -1,0 +1,22 @@
+.albumTop{
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+}
+
+.albumTopRight{
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.topBottomText {
+    align-self: flex-end;
+    margin-bottom: -75px;
+    margin-top: 70px;
+    color: #99999F;
+    font-size: 14px;
+    letter-spacing: 0.1px;
+}

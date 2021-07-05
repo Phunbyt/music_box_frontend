@@ -1,0 +1,33 @@
+.topButtons{
+    display: flex;
+    justify-content: space-between;
+  }
+
+.follow{
+color: #FFFFFF;
+width: 171px;
+height: 42px;
+border: 2px solid #FFFFFF;
+border-radius: 40px;
+opacity: 1;
+background: transparent;
+margin-right: 20px
+}
+
+.follow:focus{
+outline: none;
+}
+
+.shuffle{
+color: #FFFFFF;
+width: 171px;
+height: 42px;
+background: transparent linear-gradient(269deg, #9B2DEF 0%, #2D9BEF 61%, #35EDFB 100%) 0% 0% no-repeat padding-box;
+border-radius: 40px;
+opacity: 1;
+border-style: none;
+}
+
+.shuffle:focus{
+    outline: none;
+}

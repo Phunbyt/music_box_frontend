@@ -1,0 +1,31 @@
+.refreshHeader {
+    display: grid;
+    grid-template-columns: 0.8fr 0.8fr 4.2fr 5.92fr 6.1fr 0.8fr 0.8fr;
+    grid-gap: 10px;
+    text-align: left;
+    font: normal normal bold 14px/32px Lato;
+    letter-spacing: 0.08px;
+    color: #99999F;
+    opacity: 1;
+    height: 56px;
+}
+  
+.refreshNum{
+    grid-column: 1/2;
+    color: #99999F;
+}
+
+.refreshTitle{
+    grid-column: 3/4;
+    color: #99999F;
+}
+
+.refreshArtist{
+    grid-column: 4/5;
+    color: #99999F;
+}
+
+.refreshAlbum{
+    grid-column: 5/6;
+    color: #99999F;
+}

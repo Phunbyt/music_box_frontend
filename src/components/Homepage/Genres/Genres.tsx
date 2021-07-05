@@ -1,6 +1,7 @@
 import "./Genres.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import {useHistory} from 'react-router-dom';
 
 interface Props {
   genres: Record<string, any>;
@@ -8,6 +9,7 @@ interface Props {
 
 export default function Genres() {
   const [genres, setGenres] = useState([] as Record<string, any>);
+  let history = useHistory();
   const getGenres = async () => {
     try {
       const token = localStorage.getItem("Token");
@@ -45,6 +47,7 @@ export default function Genres() {
               <img alt='pic'
                 className="genres-pic"
                 src={item.picture}
+                onClick={() => history.push(`/genres/${item.id}`)}
                 style={{
                   height: "100%",
                   width: "100%",

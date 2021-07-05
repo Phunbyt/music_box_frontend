@@ -1,0 +1,25 @@
+.artistMobileTopControls{
+    display: flex;
+    justify-content: space-between;
+}
+
+.artistMobileTopBack{
+    background: transparent;
+    color: #FFFFFF;
+    border-style: none;
+    font-size: 18px;
+}
+
+.artistMobileTopShare{
+    background: transparent;
+    color: #FFFFFF;
+    border-style: none;
+    font-size: 18px;
+}
+
+.artistMobileTopMenu{
+    background: transparent;
+    color: #FFFFFF;
+    border-style: none;
+    font-size: 18px;
+}

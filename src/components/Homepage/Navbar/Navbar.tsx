@@ -450,7 +450,6 @@ export default function NavigationBar() {
                   ) : (
                     <>
                       <div style={{ position: "absolute" }}>
-                        {/* {setNoResult({...noResult, modal: true})} */}
                       </div>
                     </>
                   )}
@@ -459,22 +458,7 @@ export default function NavigationBar() {
                     allData.album &&
                     allData.artist.length === 0 &&
                     allData.album.length === 0 && (
-                      // <h1 onAuxClickCapture={() => {setNoResult({...noResult, modal: true})}}>No result</h1>
                       <>
-                        {/* <div className="noResultOverlay" onClick={() => {setNoResult({...noResult, modal: false})}}>
-                    <div className="fatimesCont">
-                        <FaTimes className="noResultFaTimes" onClick={() => {setNoResult({...noResult, modal: false})}} />
-                    </div>
-          </div>
-                  <div className="noResultModal">
-                      <div className="noResultModalContent">
-                        <div className="noResultMain">
-                        <span className="firstText">No Results</span><br />
-                        <span className="secondText">MusicFinder didn't quite catch that</span><br />
-                        <button className="tryAgain">TRY AGAIN</button>
-                        </div>
-                    </div>
-                      </div> */}
                         <div className="noResultModal" style={{visibility: display ? "visible" : "hidden"}}>
                           <div
                             className="noResultOverlay"

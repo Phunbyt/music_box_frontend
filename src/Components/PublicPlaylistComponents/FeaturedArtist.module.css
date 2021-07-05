@@ -1,0 +1,6 @@
+.featuredArtist{
+    display: flex;
+    color: #FFFFFF;
+    box-sizing: border-box;
+    overflow-x: scroll;
+  }

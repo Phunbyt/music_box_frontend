@@ -1,0 +1,28 @@
+.albumSideTableHeader{
+    display: grid;
+    grid-template-columns: 1fr 22.5fr 21.80fr 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    /* margin-top: 31.9px; */
+    text-align: left;
+    font: normal normal bold 14px/32px Lato;
+    letter-spacing: 0.08px;
+    color: #99999F;
+    opacity: 1;
+    height: 56px;
+  }
+  
+  .albumSideTableHeaderNum{
+    grid-column: 1/2;
+  }
+  
+  .albumSideTableHeaderTitle{
+    grid-column: 2/3;
+  }
+  
+  .albumSideTableHeaderArtist{
+    grid-column: 3/4;
+  }
+  
+  .albumSideTableHeaderTime{
+    grid-column: 4/5;
+  }

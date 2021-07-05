@@ -5,7 +5,7 @@ import axios from 'axios'
 import playerContext from "../../../Contexts/playerContext";
 import Controls from "../../Player/controls";
 
-interface Props{
+interface Props{ 
 
 }
 export default function Flow() {

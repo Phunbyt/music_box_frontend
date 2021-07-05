@@ -1,0 +1,19 @@
+.tracksControls{
+    margin-top: 28px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.collapseContainer{
+    align-self: center;
+}
+
+.collapse{
+    background: transparent;
+    color: #FFFFFF;
+    border-style: none;
+}
+
+.collapse:focus{
+    outline: none;
+}
