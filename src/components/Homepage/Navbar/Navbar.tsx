@@ -118,6 +118,7 @@ export default function NavigationBar() {
             <NavLink className="link-to-routes" to="/playlists" activeClassName="selected-links-mini">Playlists</NavLink>
             <NavLink className="link-to-routes" to="/albums" activeClassName="selected-links-mini">Albums</NavLink>
             <NavLink className="link-to-routes" to="/artists" activeClassName="selected-links-mini">Artists</NavLink>
+            <NavLink className="link-to-routes" to="/artists" activeClassName="selected-links-mini">Listening history</NavLink>
           </div>}
 
           <div>
@@ -342,7 +343,7 @@ export default function NavigationBar() {
                                 }}
                               >
                                 <div style={{ width: 50, height: 50 }}>
-                                  <img
+                                  <img alt="pic"
                                     className="artist-album-playlist-pic"
                                     src={item.cover}
                                   />

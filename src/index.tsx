@@ -12,5 +12,18 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+ 
+// const ProtectedRoutes = ({children, ...rest} : any) => {
+//     return ( 
+//         <Route {...rest} 
+//         render={({location}) => localStorage.getItem('Token') ?
+//          (children) : 
+//          <Redirect to={{pathname: '/login', state: {from: location}}}/>
+//         }
+//         />
+//      );
+// }
+ 
+// export default ProtectedRoutes;
 
 

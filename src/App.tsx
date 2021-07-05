@@ -1,10 +1,4 @@
-import React from "react";
-import BrowserGenresComp from "./BrowseGenresComp";
-
 import "./App.css";
-// import Header from './components/Header/Header'
-// import Footer from './components/Footer/Footer'
-// import LandingPage from './screens/LandingPage/LandingPage'
 import LibraryComponents from "./components/LibraryComponents/LibraryComponents";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Homepage from "./components/Homepage/Homepage";
