@@ -2841,7 +2841,10 @@ axios@*, axios@^0.21.1:
   dependencies:
     follow-redirects "^1.10.0"
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 6f7983485d6062fa96b5223457eadb80a6fa7321
 
 axios@^0.21.1:
   version "0.21.1"
@@ -2849,7 +2852,12 @@ axios@^0.21.1:
   integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
   dependencies:
     follow-redirects "^1.10.0"
+<<<<<<< HEAD
 >>>>>>> 2fa300f0165e63dfc924432d4be2cdd1f6bb981e
+=======
+=======
+>>>>>>> 7ded0f72a02ac7c31e585f6ea8ff1287ea9dc640
+>>>>>>> 6f7983485d6062fa96b5223457eadb80a6fa7321
 
 axobject-query@^2.2.0:
   version "2.2.0"
@@ -5585,13 +5593,21 @@ font-awesome@^4.7.0:
   resolved "https://registry.yarnpkg.com/font-awesome/-/font-awesome-4.7.0.tgz#8fa8cf0411a1a31afd07b06d2902bb9fc815a133"
   integrity sha1-j6jPBBGhoxr9B7BtKQK7n8gVoTM=
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 6f7983485d6062fa96b5223457eadb80a6fa7321
 
 follow-redirects@^1.10.0:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.1.tgz#d9114ded0a1cfdd334e164e6662ad02bfd91ff43"
   integrity sha512-HWqDgT7ZEkqRzBvc2s64vSZ/hfOceEol3ac/7tKwzuvEyWx3/4UegXh5oBOIotkGsObyk3xznnSRVADBgWSQVg==
+<<<<<<< HEAD
 >>>>>>> 2fa300f0165e63dfc924432d4be2cdd1f6bb981e
+=======
+=======
+>>>>>>> 7ded0f72a02ac7c31e585f6ea8ff1287ea9dc640
+>>>>>>> 6f7983485d6062fa96b5223457eadb80a6fa7321
 
 for-in@^1.0.2:
   version "1.0.2"

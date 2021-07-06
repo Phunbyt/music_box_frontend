@@ -1,6 +1,7 @@
 import React, {useEffect, useContext} from 'react';
 import { GenreContext } from '../../../../context/GenreContext';
 import { useParams } from 'react-router';
+import {Link} from 'react-router-dom'
 import { Row,Col } from 'react-bootstrap';
 import './ArtistDetails.css'
 import NavigationBar from '../../../Homepage/Navbar/Navbar'
@@ -70,12 +71,16 @@ const ArtistDetails = () => {
     <Row className = "text-white">
     {artistAlbums.map((album: Albums,i:number) => {
      return (
-      <Col key={album.id} xl={2} lg={3} md={4} sm={6}>
+      
+        <Col key={album.id} xl={2} lg={3} md={4} sm={6}>
+          <a href = {`/album/${album.id}`} style = {{textDecoration:'none', color:'white'}}>
          <div className=" song-bg" style = {{background:gradients[Math.floor(Math.random()*i)]}}>
           <img src={album.cover} alt="song poster" className="artistSong" />
-         </div>
+          </div>
          <p className = "song-title">{album.title}</p>
+         </a>
         </Col>
+     
        );
     })}
     </Row>

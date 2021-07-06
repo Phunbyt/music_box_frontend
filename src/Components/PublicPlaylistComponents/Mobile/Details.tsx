@@ -20,8 +20,8 @@ const ArtistMobileDetails = (props: Record<string, any>) =>{
 
     return (
         <div className={styles.details}>
-            <h1>{title}</h1>
-            <p className='fas fa-heart' style={{textAlign: 'center', marginTop: '-15px'}}> {followers} <i className="fas fa-circle" style={{fontSize: '6px', alignSelf: 'center'}}></i> {songsAndDuration}</p>
+            <h1 className={styles.title}>{title}</h1>
+            <p className='fas fa-heart' style={{textAlign: 'center'}}> {followers} <i className="fas fa-circle" style={{fontSize: '6px', alignSelf: 'center'}}></i> {songsAndDuration}</p>
             <TopButtons />
             <p style={{color: '#99999F', marginTop: '13px'}}>{description}</p>
             <div className={styles.download}>

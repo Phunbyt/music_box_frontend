@@ -20,7 +20,7 @@ const ArtistMobileDetails = (props: Record<string, any>) =>{
     return (
         <div className={styles.details}>
             <h1 className={styles.title}>{title}</h1>
-            <p  style={{color: '#FFFFFF', textAlign: 'center', marginTop: '-15px'}}>{songsAndDuration}</p>
+            <p  style={{color: '#FFFFFF', textAlign: 'center', marginTop: '-5px'}}>{songsAndDuration}</p>
             <TopButtons />
             <p style={{color: '#99999F', marginTop: '13px'}}>{description}</p>
             <div className={styles.download}>

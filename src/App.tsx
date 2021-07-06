@@ -1,11 +1,4 @@
-
-import React from "react";
-import BrowserGenresComp from "./BrowseGenresComp";
-
 import "./App.css";
-// import Header from './components/Header/Header'
-// import Footer from './components/Footer/Footer'
-// import LandingPage from './screens/LandingPage/LandingPage'
 import LibraryComponents from "./components/LibraryComponents/LibraryComponents";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Homepage from "./components/Homepage/Homepage";
@@ -35,9 +28,6 @@ const App = () => {
           <GenreContextProvider>
             <NavigationBar />
             <Switch>
-              <Route exact path='/playlist/:playlistid' component={Playlist} />
-              <Route exact path='/publicplaylist/:publicplaylistid' component={PublicPlaylist} />
-              <Route exact path='/album/:albumid' component={Album} />
               <Route exact path="/genres" component={BrowseGenres} />
               <Route exact path="/genres/:genreid">
                 <GenresMore />
@@ -48,6 +38,9 @@ const App = () => {
               <Route exact path="/artists/:artistname">
                 <ArtistDetails />
               </Route>
+              <Route exact path='/playlist/:playlistid' component={Playlist} />
+              <Route exact path='/publicplaylist/:publicplaylistid' component={PublicPlaylist} />
+              <Route exact path='/album/:albumid' component={Album} />
               <Route exact path="/library" component={LibraryComponents} />
               <Route exact path="/home" component={Homepage} />
               <Route exact path="/artistdetails" component={ArtistsResults} />

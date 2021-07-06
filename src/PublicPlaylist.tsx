@@ -42,7 +42,7 @@ const PublicPlaylist = () => {
         };
         try {
           const playlist = await axios.get(
-            `http://localhost:9080/playlist/get/${publicplaylistid}`,
+            `https://music-box-a.herokuapp.com/playlist/get/${publicplaylistid}`,
             config
           );
           
@@ -89,7 +89,7 @@ const PublicPlaylist = () => {
             <TracksTableHeader />
             {!loading ? (
                 playlistSongs.map((song: Record<string, any>, index) => (
-                    <TracksTableBody num={index+1} title={song.title} image={song.img} artist={song.artist} album={song.album} time={`${String(song.duration)[0]}:${String(song.duration).slice(1)}`} key={`${song.title} ${song.artist}`} />
+                    <TracksTableBody num={index+1} title={song.trackTitle} image={song.listenPic} artist={song.trackArtist} album={song.trackAlbum} time={`${String(song.duration)[0]}:${String(song.duration).slice(1)}`} key={`${song.trackTitle} ${song.trackArtist}`} />
                 ))
             ): null}
             </div>

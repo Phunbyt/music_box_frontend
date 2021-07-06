@@ -6,6 +6,10 @@
     margin-top: -10px;
 }
 
+.title{
+    margin-top: 15px;
+}
+
 .download{
     width: 100%;
     display: flex;

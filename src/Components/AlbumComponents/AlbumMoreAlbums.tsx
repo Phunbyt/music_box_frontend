@@ -6,6 +6,7 @@ const AlbumMoreAlbums = (props: Record<string, any>) =>{
         <div className={styles.albumMoreAlbums}>
             <div className={styles.albumMoreAlbumsDetails}>
             {props.albums.map((album: Record<string, any>) => (
+                <a style = {{textDecoration:'none', color:'white'}}href = {`/album/${album.id}`}>
                 <div className={styles.albumMoreAlbumsDetailsContainer} key={album.id}>
                 <div className={styles.albumMoreAlbumsImageContainer}>
                     <img className={styles.albumMoreAlbumsImage} src={album.cover} alt='' />
@@ -13,8 +14,10 @@ const AlbumMoreAlbums = (props: Record<string, any>) =>{
                 <p className='album-more-albums-title'>{album.title}</p>
                 <p className='album-more-album-release-date' style={{marginTop: '-10px'}} >{`Released: ${album.release_date}`}</p>
                 </div>
+                </a>
                 ))}
                 </div>
+              
         </div>
     )
 }
