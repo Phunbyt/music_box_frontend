@@ -1,8 +1,5 @@
 import "./Flow.css";
-import { FaEllipsisH, FaPlay, FaPlayCircle, FaPlusCircle } from "react-icons/fa";
-import flowcover from './flowcover.png';
-import flowcoverTwo from "./flowcover2.png";
-import React, { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 
 import axios from 'axios'
 import playerContext from "../../../Contexts/playerContext";
@@ -37,9 +34,9 @@ export default function Flow() {
           <i className="dots fa fa-ellipsis-h" />
         </p>
       </div>
-      {songs && songs[songs.length - 1] && <div className="card" style={{backgroundImage: `url(${songs[songs.length-1].listenPic})`}}>
-        <div className="front-image"></div>
-        {songs && <div className="image" onClick={() => handleClick(songs, songs.length-1)}>
+      {songs && songs[songs.length - 1] && <div className="card"><img src={songs[songs.length-1].listenPic} alt="pic" style={{width: '100%', height: '100%', background: 'rgba(255, 255, 255, 0.2)', filter: 'blur(2px)'}}/>
+        <div className="flow-front-image"><img className="flow-front-image-image" src={songs[songs.length-1].listenPic} alt="pic"/></div>
+        {songs && <div className="flow-image" onClick={() => handleClick(songs, songs.length-1)}>
           <i className="play fa fa-play-circle" />
         </div>}
       </div>}

@@ -42,7 +42,7 @@ const Album = () => {
         };
         try {
           const album = await axios.get(
-            `http://localhost:9080/album/getOneAlbum/${albumid}`,
+            `https://music-box-a.herokuapp.com/album/getOneAlbum/${albumid}`,
             config
           );
           
@@ -61,7 +61,7 @@ const Album = () => {
               tracksMinutes += Math.floor(Number(tracksDuration.slice(1))/60)
           })
           const albumDuration = (`${Math.floor(tracksMinutes/60)}hrs ${tracksMinutes % 60}`)
-          const albumNumofTracksandTime = `${albumNumofTracks} ${albumDuration}`
+          const albumNumofTracksandTime = `${albumNumofTracks}, ${albumDuration}`
           setAlbumTracksDetails(`${albumNumofTracksandTime}`)
           const date = albumDetails.release_date;
           let reg1 = /-/g
@@ -77,7 +77,6 @@ const Album = () => {
       };
       const artistAlbums = async () =>{
           try {
-              console.log(albumArtistId)
             const tokenValue = localStorage.getItem('token');
             const config:AxiosRequestConfig = {
               headers: {
@@ -85,7 +84,7 @@ const Album = () => {
               },
             };
               const albums = await axios.get(
-                `http://localhost:9080/album/getartistalbums/${albumArtistId}`,
+                `https://music-box-a.herokuapp.com/album/getartistalbums/${albumArtistId}`,
                 config
               );
               console.log(albums.data.data.artistAlbumsData)

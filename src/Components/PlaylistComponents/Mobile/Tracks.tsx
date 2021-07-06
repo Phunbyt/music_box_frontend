@@ -18,7 +18,7 @@ const Tracks = (props: Record<string, any>) =>{
             <TracksControls toggleDisplay={collapseTableHandler} />
             <div className='artist-mobile-tracks-collapse' style={{display: `${displayTable}`}}>
             {tracks.map((track:Record<string, any>) =>(
-                <TracksTable title={track.title} artist={track.artist} image={track.img} time={`${String(track.duration)[0]}:${String(track.duration).slice(1)}`} key={`${track.title} ${track.artist}`} />
+                <TracksTable title={track.trackTitle} artist={track.trackArtist} image={track.listenPic} time={`${String(track.duration)[0]}:${String(track.duration).slice(1)}`} key={`${track.trackTitle} ${track.trackArtist}`} />
             ))}
             </div>
         </div>

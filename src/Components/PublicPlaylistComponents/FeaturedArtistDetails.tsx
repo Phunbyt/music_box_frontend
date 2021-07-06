@@ -30,7 +30,7 @@ const FeaturedArtistDetails = (props: Record<string, any>) => {
         };
         try {
           const artist = await axios.post(
-            `http://localhost:9080/artist/create/${artistId}`,{},
+            `https://music-box-a.herokuapp.com/artist/create/${artistId}`,{},
             config
           );
           const featuredArtistDetails = artist.data;
@@ -47,13 +47,13 @@ const FeaturedArtistDetails = (props: Record<string, any>) => {
       }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
     return (
-        <div className={styles.featuredArtistContainer}>
+        <a style = {{textDecoration:'none', color:'white'}} href ={`/artists/${artist}`} className={styles.featuredArtistContainer}>
                 <div className={styles.featuredArtistImageContainer}>
                 <img className={styles.featuredArtistImage} src={artistImg} alt='' />
                 </div>
                 <p>{artist}</p>
                 <p className='fas fa-heart' style={{marginTop: '-10px'}} >  {noOfFans}</p>
-            </div> 
+            </a> 
     )
 }
 

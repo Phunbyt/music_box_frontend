@@ -42,7 +42,7 @@ export default function Genres() {
         {genres &&
           genres.map((item: Record<string, any>) => (
             <div className="genres">
-              <img
+              <img alt='pic'
                 className="genres-pic"
                 src={item.picture}
                 style={{

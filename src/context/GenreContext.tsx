@@ -63,7 +63,7 @@ const GenreContextProvider = ({children}:any) => {
       const token = localStorage.getItem("Token");
       const config = {
        headers: {
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
        },
       };
       const res: any = await axios.get(
