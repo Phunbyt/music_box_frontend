@@ -339,8 +339,8 @@ export default function NavigationBar() {
                                   position: "relative",
                                 }}
                               >
-                                <Link
-                                  to="/albumdetails"
+                                <a
+                                  href={`/album/${item.id}`}
                                   style={{
                                     display: "flex",
                                   }}
@@ -369,7 +369,7 @@ export default function NavigationBar() {
                                   >
                                     {item.artistName}
                                   </span>
-                                </Link>
+                                </a>
                               </li>
                             ))
                             .slice(0, 3)

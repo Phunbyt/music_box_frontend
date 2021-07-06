@@ -71,7 +71,7 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
                 className="recent-activity-real-image"
                 src={artistPic} style={{borderRadius: '50%'}} onClick={() => history.push(`/artists/${artistName}`)}
                  />
-              <div><i className="fa fa-play-circle play" style={{left: '80px'}}></i></div>
+              {/* <div><i className="fa fa-play-circle play" style={{left: '80px'}}></i></div> */}
             </div>
             <div>
               <p className="details" style={{textAlign: "center", marginTop: "10px"}}>
@@ -89,7 +89,7 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
                 className="recent-activity-real-image"
                 src={albumPic} onClick={() => history.push(`/album/${albumId}`)}
                 />
-              <div><i className="fa fa-play-circle play"></i></div>
+              {/* <div><i className="fa fa-play-circle play"></i></div> */}
             </div>
             <div>
               <p className="details" style={{textAlign: "center", marginTop: "10px"}}>
@@ -106,7 +106,7 @@ const RecentActivity: React.SFC<RecentActivityProps> = ({ value }) => {
                 className="recent-activity-real-image"
                 src={playlistPic}
                 />
-              <div><i className="fa fa-play-circle play"></i></div>
+              {/* <div><i className="fa fa-play-circle play"></i></div> */}
             </div>
             <div>
               <p className="details" style={{textAlign: "center", marginTop: "10px"}}>
