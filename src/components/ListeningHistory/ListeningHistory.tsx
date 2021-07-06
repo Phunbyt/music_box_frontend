@@ -49,18 +49,24 @@ const ListeningHistory = () => {
 
   let history = useHistory();
   const logOut = () => {
-    localStorage.removeItem('Token');
-    localStorage.removeItem('UserId');
+    // localStorage.removeItem('Token');
+    // localStorage.removeItem('UserId');
+    localStorage.removeItem('userInfo');
     history.push('/');
     console.log('logged out');
   };
 
+  const userInfo = JSON.parse(localStorage.getItem('userInfo') as string);
+  const token = userInfo.token;
+  const userId = userInfo.user._id;
+  const userFirstName = userInfo.user.firstName;
+
   const fetchListenHistory = async () => {
     try {
-      const Token: any = localStorage.getItem('Token');
+      // const Token: any = localStorage.getItem('Token');
       const config = {
         headers: {
-          Authorization: `Bearer ${Token}`,
+          Authorization: `Bearer ${token}`,
         },
       };
       const data = await axios.get(
@@ -82,14 +88,14 @@ const ListeningHistory = () => {
 
   // console.log(songsArray);
 
-  const userFirstName: string = localStorage.getItem('FirstName') as string;
+  // const userFirstName: string = localStorage.getItem('FirstName') as string;
   // const userlastName: string = localStorage.getItem('LastName') as string;
 
   return (
     <>
       <HistoryHeader firstName={userFirstName} logOut={logOut} />
-      
-      {listenSong && today.length !== 0 &&(
+
+      {listenSong && today.length !== 0 && (
         <div className='container'>
           <h5 className='subtitle'>Today</h5>
           <table>
@@ -112,11 +118,11 @@ const ListeningHistory = () => {
               .map((item: any, index: number) => (
                 <tr key={item._id}>
                   <td>{index + 1}</td>
-                  {/* <img className='List-img' src={item} alt='img' /> */}
+                  <img className='List-img' src={item.listenPic} alt='img' />
                   <td>{item.trackTitle}</td>
                   <td>{item.trackArtist}</td>
                   <td>{item.trackAlbum}</td>
-                  {/* <td>{item.time}</td> */}
+                  <td>{item.duration}</td>
                   <td>
                     <span>
                       <i className='far fa-heart space' />

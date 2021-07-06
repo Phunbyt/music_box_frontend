@@ -27,9 +27,6 @@ const months: string[] = [
   'December',
 ];
 
-const userInfo = JSON.parse(localStorage.getItem('userInfo') as string);
-const token = userInfo.token;
-const userId = userInfo.user._id;
 interface userInterface {
   firstName?: string;
   lastName?: string;
@@ -44,6 +41,11 @@ const UserForm = () => {
   const [field, setField] = useState({
     modal: false,
   });
+
+  const userInfo = JSON.parse(localStorage.getItem('userInfo') as string);
+  const token = userInfo.token;
+  const userId = userInfo.user._id;
+
   useEffect(() => {
     const { user } = userInfo;
     console.log(user);

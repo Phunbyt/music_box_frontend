@@ -38,14 +38,14 @@ const UserHeader = ({ name, logOut }: prop) => {
               title={<span className='text-white my-auto'>{name}</span>}
               id='collasible-nav-dropdown'
             >
-              <NavDropdown.Item href='#action/3.1'>Action</NavDropdown.Item>
+              {/* <NavDropdown.Item href='#action/3.1'>Action</NavDropdown.Item>
               <NavDropdown.Item href='#action/3.2'>
                 Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href='#action/3.3'>Something</NavDropdown.Item>
-              <NavDropdown.Divider />
+              </NavDropdown.Item> */}
+              {/* <NavDropdown.Item href='#action/3.3'>Something</NavDropdown.Item> */}
+              {/* <NavDropdown.Divider /> */}
               <NavDropdown.Item>
-                <button className='logout' onClick={logOut}>
+                <button className='logout2' onClick={logOut}>
                   LOG OUT{' '}
                 </button>
               </NavDropdown.Item>
