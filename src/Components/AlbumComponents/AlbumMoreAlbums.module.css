@@ -1,0 +1,41 @@
+.albumMoreAlbums{
+    display: flex;
+    flex-direction: row;
+    color: #FFFFFF;
+    overflow-x: scroll;
+
+}
+
+.albumMoreAlbumsDetails{
+    display: flex;
+}
+
+.albumMoreAlbumsDetailsContainer{
+    margin-right: 26px;;
+}
+
+.albumMoreAlbumsImageContainer{
+    width: 225px;
+    height: 225px;
+}
+
+.albumMoreAlbumsImage{
+    height: 225px;
+    width: 225px;
+    height: 100%;
+    width: 100%;
+}
+
+@media (max-width: 769px){
+    .albumMoreAlbumsImageContainer{
+        width: 151px;
+        height: 151px;
+    }
+    
+    .albumMoreAlbumsImage{
+        height: 151px;
+        width: 151px;
+        height: 100%;
+        width: 100%;
+    }
+}

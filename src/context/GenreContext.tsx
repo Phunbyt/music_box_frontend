@@ -1,6 +1,6 @@
 import React, { createContext , useState, useEffect}  from 'react';
-import {  AxiosRequestConfig } from "axios";
-import axios from '../utils/AxiosInterceptor'
+import axios, {  AxiosRequestConfig } from "axios";
+// import axios from '../utils/AxiosInterceptor'
 
 export interface Props {
   
@@ -19,15 +19,21 @@ const GenreContextProvider = ({children}:any) => {
   const [artistAlbums, setArtistAlbums]  = useState([])
   const [trimmedArtists, setTrimmedArtists] = useState([])
   const [trimmedPlaylists, setTrimmedPlaylists] = useState([])
-  const [error, setError] = useState('')
   const getOneGenre = async (id: any) => {
+
    try {
+     const token = localStorage.getItem("Token");
+     const config = {
+      headers: {
+       Authorization: `Bearer ${token}`,
+      },
+     };
     const { data } = await axios.get(
-     `${baseUrl}/music/genres/${id}`
+     `${baseUrl}/music/genres/${id}`, config
     );
     return data.data[0].name
    } catch (error) {
-    setError('An error occurred')
+    console.log(error.message);
    }
   };
 
@@ -45,30 +51,43 @@ const GenreContextProvider = ({children}:any) => {
       const res = await axios.request(options);
 
       setSearch(res.data.data);
+      console.log(searchResults)
     } catch (error) {
-      setError('An error occurred')
+      console.log(error.message)
     }
   };
 
   const  getAllGenres= async() => {
     try{
+      const token = localStorage.getItem("Token");
+      const config = {
+       headers: {
+        "Authorization": `Bearer ${token}`,
+       },
+      };
       const res: any = await axios.get(
-       `${baseUrl}/music/genres`
+       `${baseUrl}/music/genres`, config
       );
       setGenres(res.data.data)
     }catch(error){
-      setError("An error occurred");
+      console.log(error.message)
     }
   }
   
   const getArtistRelatedGenres = async (id:number) =>{
     try{
-      const {data} = await axios.get(`${baseUrl}/genre/artist/${id}`)
+      const token = localStorage.getItem("Token");
+      const config = {
+       headers: {
+        Authorization: `Bearer ${token}`,
+       },
+      };
+      const {data} = await axios.get(`${baseUrl}/genre/artist/${id}`, config)
       setArtists(data.data)
       setTrimmedArtists(data.data.slice(0,6))
     }
     catch(error){
-      setError("An error occurred");
+      console.log(error.message)
     }
   }
   const getPlaylistRelatedGenres = async (id:number)=>{
@@ -80,26 +99,39 @@ const GenreContextProvider = ({children}:any) => {
       setTrimmedPlaylists(data.data.slice(0, 6));
 
     }catch(error){
-      setError("An error occurred");
+      console.log(error.message)
     }
   }
 
   const getOnePlaylist= async (id:string)=>{
     try {
-      const res = await axios.get(`${baseUrl}/playlist/get/${id}`);
+      const token = localStorage.getItem("Token");
+      const config = {
+       headers: {
+        Authorization: `Bearer ${token}`,
+       },
+      };
+      const res = await axios.get(`${baseUrl}/playlist/get/${id}`, config);
       setPlaylistSongs(res.data.data.songs)
+      console.log(res.data.data.songs)
     } catch (error) {
-      setError("An error occurred");
+      console.log(error.message)
     }
   }
 
   const getArtistDetails = async (query:string) =>{
     try {
-      const res = await axios.get(`${baseUrl}/artistdetails/${query}`);
+      const token = localStorage.getItem("Token");
+      const config = {
+       headers: {
+        Authorization: `Bearer ${token}`,
+       },
+      };
+      const res = await axios.get(`${baseUrl}/artistdetails/${query}`, config);
       setArtistAlbums(res.data.albums)
       setArtistSongs(res.data.songs)
     } catch (error) {
-      setError("An error occurred");
+      console.log(error.message)
     }
   }
   const trimArray = (arr:[])=>{
@@ -122,22 +154,9 @@ const GenreContextProvider = ({children}:any) => {
     artistAlbums,
     trimArray,
     trimmedArtists,
-    trimmedPlaylists,
-    error
+    trimmedPlaylists
   };
-  // const login = async () => {
-   
-  //   const {data} = await axios.post(
-  //    `${baseUrl}/music/signIn`,
-  //    { email: "akinloludavid@mail.com", password: "password2929" }
-  //   );
-  //   const token =data.token
-  //   localStorage.setItem('token', token)
-  // }
-  useEffect(()=>{
-    console.log(error)
-    
-  },[])
+
 
   return ( 
     <GenreContext.Provider value = {values}>

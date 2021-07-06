@@ -35,8 +35,15 @@ export const login = (email: string, password: string) => async(dispatch: any) =
             type: USER_LOGIN_SUCCESS,
             payload: data
         })
-
-        localStorage.setItem('userInfo', JSON.stringify(data))
+        const {token} = data
+        const {firstName, lastName,gender, userId} = data.user
+        
+        localStorage.setItem('Token', token)
+        localStorage.setItem('firstName', firstName)
+        localStorage.setItem('lastName', lastName)
+        localStorage.setItem('gender', gender)
+        localStorage.setItem('userId', userId)
+        
     } catch (error) {
         dispatch({
             type: USER_LOGIN_FAIL,
@@ -105,6 +112,7 @@ export const registration = (email: string, password: string, userName: string, 
         })
 
         localStorage.setItem('userInfo', JSON.stringify(data))
+
     } catch (error) {
         dispatch({
             type: USER_REGISTRATION_FAIL,

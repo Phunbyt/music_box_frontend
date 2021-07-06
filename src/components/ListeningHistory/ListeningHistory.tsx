@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './style.css';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import HistoryHeader from './HistoryHeader';
+import NavigationBar from '../Homepage/Navbar/Navbar';
 import { useHistory } from 'react-router-dom';
 
 interface songInterface {
@@ -47,26 +47,12 @@ const ListeningHistory = () => {
     return new Date(item.updatedAt).getDay() === new Date().getDay() - 7;
   });
 
-  let history = useHistory();
-  const logOut = () => {
-    // localStorage.removeItem('Token');
-    // localStorage.removeItem('UserId');
-    localStorage.removeItem('userInfo');
-    history.push('/');
-    console.log('logged out');
-  };
-
-  const userInfo = JSON.parse(localStorage.getItem('userInfo') as string);
-  const token = userInfo.token;
-  const userId = userInfo.user._id;
-  const userFirstName = userInfo.user.firstName;
-
   const fetchListenHistory = async () => {
     try {
-      // const Token: any = localStorage.getItem('Token');
+      const Token: any = localStorage.getItem('Token');
       const config = {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${Token}`,
         },
       };
       const data = await axios.get(
@@ -93,10 +79,11 @@ const ListeningHistory = () => {
 
   return (
     <>
-      <HistoryHeader firstName={userFirstName} logOut={logOut} />
+      {/* <HistoryHeader firstName={userFirstName} logOut={logOut} /> */}
+      <NavigationBar />
 
       {listenSong && today.length !== 0 && (
-        <div className='container'>
+        <div className='container text-white'>
           <h5 className='subtitle'>Today</h5>
           <table>
             <thead>

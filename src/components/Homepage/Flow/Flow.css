@@ -1,0 +1,59 @@
+.flow{
+    margin-top: 136px;
+}
+
+.flow .top{
+    max-width: 40%;
+    height: 30px;
+    margin-left: 12.5%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font: normal normal bold 24px Lato;
+}
+
+.flow .recently{
+    margin: 0;
+    text-align: left;
+    font: normal normal bold 24px Lato;
+    letter-spacing: 0.24px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+.flow .card{
+    max-width: 40%;
+    height: 320px;
+    display: flex;
+    margin-left: 12.5%;
+    position: relative;
+}
+
+.flow .dots{
+    font-size: 24px;
+    color: #ffff;
+}
+
+.flow .play{
+    font-size: 40px;
+    color: #1C1C1C;
+    position: absolute;
+    left: 58px;
+    top: 225px;
+    color: white;
+}
+
+.flow-front-image{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 80px;
+    left: 40px;
+}
+
+.flow-front-image-image{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
+}

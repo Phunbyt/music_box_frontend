@@ -1,0 +1,52 @@
+.Modal {
+    color: white;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.75);
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.75);
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2
+}
+
+.modalContent {
+    position: relative;
+    height: 270px;
+    width: 280px;
+    background: #3a3a3d 0% 0% no-repeat padding-box;
+    padding: 20px;
+    z-index: 10000
+}
+
+.faTimes {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 510px) {
+    .modalContent {
+        height: 400px;
+        width: 420px;
+    }
+}
+
+@media screen and (min-width: 1240px) {
+    .modalContent {
+        height: 340px;
+        width: 460px;
+    }
+}

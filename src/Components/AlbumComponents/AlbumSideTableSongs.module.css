@@ -1,0 +1,39 @@
+.albumSideTableSongs{
+    display: grid;
+    grid-template-columns: 1fr 22.5fr 21.80fr 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    text-align: left;
+    font: normal normal bold 14px/32px Lato;
+    letter-spacing: 0.08px;
+    color: #99999F;
+    opacity: 1;
+    height: 56px;
+    align-items: center;
+  }
+  .albumSideTableSongsNumber{
+    grid-column: 1/2;
+  }
+  .albumSideTableSongsTitle{
+    overflow: hidden;
+    grid-column: 2/3;
+  }
+  .albumSideTableSongsArtist{
+    overflow: hidden;
+    grid-column: 3/4;
+  }
+  .albumSideTableSongsTime{
+    grid-column: 4/5;
+  }
+  .albumSideTableSongsLove{
+    grid-column: 5/6;
+    background: transparent;
+    color: white;
+    border-style: none;
+    align-self: center;
+  }
+  .albumSideTableSongsPlus{
+    grid-column: 6/7;
+    background: transparent;
+    color: white;
+    border-style: none;
+  }

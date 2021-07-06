@@ -1,0 +1,33 @@
+.artistTrackTableControls{
+    margin-top: 59.6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.trackSearch{
+    color: #FFFFFF;
+}
+
+.playlistTracksSearch {
+    background: transparent;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    border-color: #FFFFFF;
+    color: #FFFFFF;
+    outline: none;
+    text-align: left;
+  }
+
+.tracklistCollapse{
+    background: transparent;
+    border-style: none;
+    color: #FFFFFF;
+    border-style: none;
+}
+  
+.tracklistCollapse:focus {
+    outline: none;
+}

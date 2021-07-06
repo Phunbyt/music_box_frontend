@@ -10,6 +10,7 @@ import { Col, Row } from 'react-bootstrap';
 import { Grid, Container, TextField, MenuItem } from '@material-ui/core';
 import axios from 'axios';
 import image from './user.png';
+import NavigationBar from '../Homepage/Navbar/Navbar';
 
 const days: number[] = Array.from({ length: 31 }, (x, i) => i);
 const months: string[] = [
@@ -42,13 +43,12 @@ const UserForm = () => {
     modal: false,
   });
 
-  const userInfo = JSON.parse(localStorage.getItem('userInfo') as string);
-  const token = userInfo.token;
-  const userId = userInfo.user._id;
+  const lastName = localStorage.getItem('lastName');
+  const firstName = localStorage.getItem('firstName');
+  const userId = localStorage.getItem('userId')
+  const gender = localStorage.getItem('gender');
 
   useEffect(() => {
-    const { user } = userInfo;
-    console.log(user);
     setUser(user);
   }, []);
   let history = useHistory();
@@ -60,6 +60,7 @@ const UserForm = () => {
 
   const onBlurFunc = async () => {
     try {
+      const token = localStorage.getItem('Token');
       const { firstName, lastName, gender } = user;
       await axios.put(
         `http://music-box-a.herokuapp.com/music/profile/${userId}`,
@@ -100,7 +101,7 @@ const UserForm = () => {
 
   return (
     <>
-      <UserHeader name={user.firstName} logOut={logOut} />
+      <NavigationBar />
       <Modal
         show={field.modal}
         close={() => {
@@ -109,14 +110,14 @@ const UserForm = () => {
       >
         <ChangePassword />
       </Modal>
-      <div className='div-container'>
+      <div className='div-container text-white'>
         <div className='flex-container'>
           <div className='image-parent'>
             <img src={image} alt='user icon' className='image' />
           </div>
           <div className='hello'>
             <div className='username'>
-              {user.firstName} {user.lastName}
+              {firstName} {lastName}
             </div>
             <div className='hello2'>Free Account</div>
           </div>
@@ -126,7 +127,7 @@ const UserForm = () => {
           <h3 className='form-title'>Contact</h3>
         </div>
         <div>
-          <div className='container'>
+          <div className='container text-white'>
             <div className='row'>
               <div className='col-md-12 mx-auto'>
                 <div className='row'>
@@ -169,7 +170,7 @@ const UserForm = () => {
         </div>
       </div>
       {/* <Container style={{ maxWidth: '90%' }}> */}
-      <div className='div-container'>
+      <div className='div-container text-white'>
         <Row>
           <Grid item md={6} xs={12}>
             <TextField
