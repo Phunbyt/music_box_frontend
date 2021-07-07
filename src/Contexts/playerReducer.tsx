@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { SET_CURRENT_SONG, TOGGLE_RANDOM, TOGGLE_REPEAT, TOGGLE_PLAYING, SET_SONGS } from './types';
+import { SET_CURRENT_SONG, TOGGLE_RANDOM, TOGGLE_REPEAT, TOGGLE_PLAYING, SET_SONGS, TOGGLE_ISACTIVE } from './types';
 
 export default (state: any, action: { type: any; data: any }) => {
   switch (action.type) {
@@ -29,6 +29,11 @@ export default (state: any, action: { type: any; data: any }) => {
       return {
         ...state,
         songs: action.data,
+      };
+    case TOGGLE_ISACTIVE:
+      return {
+        ...state,
+        isActive: action.data,
       };
     default:
       return state;

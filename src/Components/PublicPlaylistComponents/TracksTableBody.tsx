@@ -10,7 +10,7 @@ const TracksTableBody = (props: Record<string, any>) => {
     const time = props.time
     const image = props.image
     return (
-        <div className={styles.artistTrackTable}>
+        <div className={styles.artistTrackTable} onClick={props.click}>
             <p className={styles.artistTrackTableNum}>{num}</p>
             <img className={styles.artistTrackTableImage} src={image} alt=''></img>
             <p className={styles.artistTrackTableTitle} style={{overflow: 'hidden'}} >{title}</p>

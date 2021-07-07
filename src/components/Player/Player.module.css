@@ -22,8 +22,7 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
-  Z-index: 5;
-
+  z-index: 10;
 }
 .controls {
   width: 98%;
@@ -49,12 +48,13 @@ body {
   display: flex;
   width: 25%;
   flex: 1;
+  padding: 0.5rem;
 }
 .songtext {
   display: flex;
   justify-content: center;
   flex-direction: column;
-    margin-right: .5em;
+  margin-right: 0.5em;
 }
 .img > img {
   width: 100%;
@@ -64,7 +64,7 @@ body {
 .fav_bttn,
 .shuffle_bttn,
 .prev,
-input,
+.input,
 .currentTime,
 .totalTime,
 .playlist_bttn,
@@ -97,7 +97,7 @@ input,
 }
 
 .bttn__green {
-  color: green;
+  color: #2d9bef;
   width: 30px !important;
   height: 30px !important;
 }
@@ -112,7 +112,7 @@ input,
   /* background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box; */
   width: 80px;
   height: 3px;
-  color: green !important;
+  color: #2d9bef !important;
 }
 
 .progressbar {
@@ -122,19 +122,26 @@ input,
   border-radius: 5px;
 }
 
+
+
 .artistname {
   margin: 0;
   color: var(--unnamed-color-99999f);
 }
 
-.title {
+.song_title {
   margin: 0;
   padding: 0;
   color: var(--unnamed-color-ffffff);
 }
+.addIcon_div {
+  padding: 0.5rem;
+  margin-left: auto;
+  flex-grow: 1;
+}
 
 @media screen and (min-width: 480px) {
-  .fav-bttn,
+  .fav_bttn,
   .shuffle_bttn,
   .prev,
   .repeat_bttn {
@@ -159,43 +166,73 @@ input,
   .playlist_bttn {
     margin-left: 1.2em;
   }
-  .queued_songs_div{
+  .queued_songs_div {
     background-color: #303033;
-
+    min-height: 5vh;
+    max-height: 75vh;
     position: fixed;
     width: 40%;
     max-width: 400px;
     z-index: 3;
     right: 1em;
-    bottom: 9em;
-    border-radius: 1em;  
-    padding: 2em;
+    bottom: 6em;
+    border-radius: 1em;
+    padding: 1em;
+    overflow-y: auto;
   }
-  
-  .queued_songs{
-   margin-top: 1em;
-   display: flex;
-   align-items: center;
-   color: #fff;
+  .queued_songs_image {
+    position: relative;
+  }
+  .queued_songs_image .fa-music::before {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    display: none;
+  }
+  .empty_queue_paragraph {
+    position: relative;
+    color: white;
+    margin: 0rem;
+    padding: 0.25rem 1rem;
+  }
+  .empty_queue_paragraph::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0.5rem;
+    padding: 0.125rem 0.125rem;
+    background: linear-gradient(to right, #9b2def 0%, #2dceef 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+  }
+  .queued_songs {
+    margin-top: 1em;
+    display: flex;
+    align-items: center;
+    color: #fff;
   }
 
-  .queued_songs:hover{
-    background-color: #3A3A3D;
+  .queued_songs:hover {
+    background-color: #3a3a3d;
   }
 
-  .queued_songs_details{
+  .queued_songs_details {
     display: flex;
     flex: 1;
   }
 
-  .queued_songs_image{
+  .queued_songs_image {
     display: flex;
     margin-right: 1em;
   }
 
-  .queued_songs_image img{
-   width: 50px;
-   height: 50px;
+  .queued_songs_image img {
+    width: 50px;
+    height: 50px;
   }
 
   .options {
@@ -206,34 +243,47 @@ input,
     margin-right: 15px;
   }
   .remove {
-    font-size: 25px;
+    font-size: 1.25rem;
   }
 
-  .queued_songs_title{
+  .queued_songs_title {
     text-align: left;
   }
-  .queued_songs_bttn{
+  .queued_songs_bttn {
+    display: flex;
+    align-items: center;
     justify-self: flex-end;
+    margin-left: auto;
   }
-
+  .next_shuffle_spans_div {
+    color: #f2fafb;
+    font-weight: bold;
+  }
   .playlist_display {
     background-color: #fff;
     position: fixed;
     width: 30%;
-    max-width: 400px;
+    max-width: 200px;
     z-index: 3;
-    left: 1em;
-    bottom: 9em;
-    border-radius: 1em;  
-    padding: 2em;
+    left: 18.5rem;
+    bottom: 3em;
+    border-radius: 0.5em;
+    padding: 1em;
+    color: black;
+    text-align: center;
+    cursor: pointer;
   }
-
+  
+  .fav_bttn_like {
+    color: red
+  }
   .playlist_display > p {
     color: black;
+    margin: 0px;
   }
 }
 @media screen and (min-width: 900px) {
-  input,
+  .input,
   .currentTime,
   .totalTime,
   .volum,
@@ -262,6 +312,7 @@ input,
   }
   .audio_hero {
     flex: 1;
+    justify-content: flex-end;
   }
 
   .icons {
@@ -277,50 +328,48 @@ input,
 
   .songtext {
     flex-direction: column;
+    padding: 0.5rem;
   }
 }
 
-
-
-.progressbar > input[type=range] {
+.progressbar > input[type='range'] {
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
   width: 100%; /* Specific width is required for Firefox. */
   background: transparent; /* Otherwise white in Chrome */
 }
-.progressbar > input[type=range]::-webkit-slider-thumb {
+.progressbar > input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
 }
-.progressbar > input[type=range]:focus {
+.progressbar > input[type='range']:focus {
   outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
 }
-.progressbar > input[type=range]::-ms-track {
+.progressbar > input[type='range']::-ms-track {
   width: 100%;
   cursor: pointer;
   /* Hides the slider so custom styles can be added */
-  background: transparent; 
+  background: transparent;
   border-color: transparent;
   color: transparent;
 }
-.progressbar > input[type=range]::-webkit-slider-thumb {
+.progressbar > input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 16px;
   width: 16px;
   background: #5f08ec00;
   cursor: pointer;
-  margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic *//* Add cool effects to your sliders! */
+  margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */ /* Add cool effects to your sliders! */
 }
 /* All the same stuff for Firefox */
-.progressbar > input[type=range]::-moz-range-thumb {
+.progressbar > input[type='range']::-moz-range-thumb {
   height: 16px;
   width: 16px;
   background: #21db09;
   cursor: pointer;
 }
 /* All the same stuff for IE */
-.progressbar > input[type=range]::-ms-thumb {
+.progressbar > input[type='range']::-ms-thumb {
   height: 16px;
   width: 16px;
   background: #ca0505;
   cursor: pointer;
 }
-

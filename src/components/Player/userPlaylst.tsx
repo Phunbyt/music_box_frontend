@@ -5,12 +5,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState, useContext } from 'react';
-import playerContext from '../../Contexts/playerContext';
-import axios from 'axios';
-
+import axios from '../../utils/axiosInstance';
+import PlayerContext from '../../Contexts/playerContext';
+import classes from './Player.module.css';
 
 const UserPlaylist = () => {
-  const { handleAddSong } = useContext(playerContext);
+  const { handleAddSong } = useContext(PlayerContext);
   const userId = localStorage.getItem('UserId');
   const [userPlaylist, setUserPlaylist] = useState([] as Record<string, any>[]);
 
@@ -24,19 +24,16 @@ const UserPlaylist = () => {
   }, []);
 
   const playlistList = userPlaylist.map((playlist: Record<string, any>) => (
-    <div className='playlist-display' onClick={() => handleAddSong(playlist._id)}>
-      {playlist?.name}
-    </div>
+    <>
+      <div className='playlist_detailss' onClick={() => handleAddSong(playlist._id)} key={playlist._id}>
+        {playlist?.name}
+      </div>
+      <hr />
+    </>
   ));
   return (
     <>
-      {playlistList.length ? (
-        playlistList
-      ) : (
-        <div className='playlist-display'>
-          <p>No Playlist Found</p>
-        </div>
-      )}
+      <div className={classes.playlist_display}>{playlistList.length ? playlistList : <p>No Playlist Found</p>}</div>
     </>
   );
 };

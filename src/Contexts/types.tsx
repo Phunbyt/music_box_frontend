@@ -3,3 +3,5 @@ export const TOGGLE_RANDOM = 'TOGGLE_RANDOM';
 export const TOGGLE_REPEAT = 'TOGGLE_OPTIONS';
 export const TOGGLE_PLAYING = 'TOGGLE_PLAYING';
 export const SET_SONGS = 'SET_SONGS';
+export const TOGGLE_ISACTIVE = "TOGGLE_ISACTIVE";
+
