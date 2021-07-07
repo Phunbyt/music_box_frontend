@@ -8,7 +8,7 @@ const AlbumSidetableSongs = (props: Record<string, any>) => {
     const artist = props.artist;
     const time = props.time;
     return (
-        <div className={styles.albumSideTableSongs} style={{color: "#FFFFFF"}}>
+        <div onClick={props.click} className={styles.albumSideTableSongs} style={{color: "#FFFFFF"}}>
             <p className={styles.albumSideTableSongsNum}>{num}</p>
             <p className={styles.albumSideTableSongsTitle}>{title}</p>
             <p className={styles.albumSideTableSongsArtist}>{artist}</p>

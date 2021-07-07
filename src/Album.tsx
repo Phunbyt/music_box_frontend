@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from "react";
 import AlbumTop from './components/AlbumComponents/AlbumTop'
 import AlbumSideTop from './components/AlbumComponents/AlbumSideTop'
 import AlbumSideTableHeader from './components/AlbumComponents/AlbumSideTableHeader'
@@ -8,6 +8,8 @@ import Mobile from './components/AlbumComponents/Mobile/Mobile'
 import axios, { AxiosRequestConfig } from 'axios'
 import styles from './Album.module.css'
 import {useParams} from 'react-router-dom'
+import playerContext from "./Contexts/playerContext";
+import Controls from "./components/Player/controls";
 
 const Album = () => {
     const {albumid}:any = useParams()
@@ -20,7 +22,9 @@ const Album = () => {
     const [releaseDate, setReleaseDate] = useState('')
     const [albumTracks, setAlbumTracks] = useState([])
     const [artistAlbumsMore, setArtistAlbumMore] = useState([])
-    const [displayTable, setDisplayTable] = useState('block')
+  const [displayTable, setDisplayTable] = useState('block')
+    const { handleClick } = useContext(playerContext);
+    const [songs, setSongs] = useState([] as Record<string, any>[]);
     // const callApi = async () => {
     //     try {
     //       const { data } = await axios.post('https://music-box-a.herokuapp.com/music/signIn', {
@@ -53,6 +57,8 @@ const Album = () => {
           setAlbumArtist(albumDetails.artist.name)
           setAlbumArtistId(albumDetails.artist.id)
           setAlbumTracks(albumDetails.tracks.data)
+          setSongs(albumDetails.tracks.data);
+
           const albumNumofTracks = `${albumDetails.nb_tracks} songs`
           let tracksMinutes = 0;
           albumDetails.tracks.data.forEach((track: Record<string, any>) => {
@@ -112,26 +118,53 @@ const Album = () => {
       }
 
     return (
+      <>
         <div className={styles.album}>
-            <div className={styles.web}>
-            <AlbumTop image={albumImage} title={albumTitle} artist={albumArtist} trackDetails={albumTracksDetails} releaseDate={releaseDate}/>
+          <div className={styles.web}>
+            <AlbumTop
+              image={albumImage}
+              title={albumTitle}
+              artist={albumArtist}
+              trackDetails={albumTracksDetails}
+              releaseDate={releaseDate}
+            />
             <AlbumSideTop toggleDisplay={collapseTableHandler} />
-            <div style={{display: `${displayTable}`}}>
-             <AlbumSideTableHeader />
-             {!loading?
-              (albumTracks.map((track:Record<string, any>, index) =>(
-                  <AlbumSideTableSongs key={track.title} num={index+ 1} title={track.title}
-                   artist={track.artist.name} time={String(track.duration)[0]+":"+String(track.duration).slice(1)} />
-              )))
-             : null}
-             <AlbumMore albumArtist={albumArtist} albums={artistAlbumsMore} />
+            <div style={{ display: `${displayTable}` }}>
+              <AlbumSideTableHeader />
+              {!loading
+                ? albumTracks.map((track: Record<string, any>, index) => (
+                    <AlbumSideTableSongs
+                      click={() => handleClick(songs, index)}
+                      key={track.title}
+                      num={index + 1}
+                      title={track.title}
+                      artist={track.artist.name}
+                      time={
+                        String(track.duration)[0] +
+                        ":" +
+                        String(track.duration).slice(1)
+                      }
+                    />
+                  ))
+                : null}
+              <AlbumMore albumArtist={albumArtist} albums={artistAlbumsMore} />
             </div>
-            </div>
-            <Mobile image={albumImage} title={albumTitle} artist={albumArtist}
-             trackDetails={albumTracksDetails} releaseDate={releaseDate} tracks={albumTracks} status={loading}
-             albumArtist={albumArtist} albums={artistAlbumsMore} />
+          </div>
+          <Mobile
+            image={albumImage}
+            title={albumTitle}
+            artist={albumArtist}
+            trackDetails={albumTracksDetails}
+            releaseDate={releaseDate}
+            tracks={albumTracks}
+            status={loading}
+            albumArtist={albumArtist}
+            albums={artistAlbumsMore}
+          />
         </div>
-    )
+        <Controls />
+      </>
+    );
 }
 
 export default Album

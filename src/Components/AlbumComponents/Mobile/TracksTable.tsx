@@ -6,7 +6,7 @@ const TracksTable = (props: Record<string, any>) =>{
     const title = props.title
     const time = props.time
     return (
-        <div className={styles.tracksTable}>
+        <div onClick={props.click} className={styles.tracksTable}>
             <p>{num}</p>
             <div className={styles.tracksDetailsContainer}>
                 <p style={{margin: '0px'}}>{title}</p>
